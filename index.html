@@ -1,0 +1,1615 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flag Bingo</title>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>flagBingo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- My own CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Bootstrap's icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+</head>
+<body>
+<div class="page-header">
+    <div class="row" id="header_row">
+        <div class="col-4">
+            <h1 id="Title">LALCC Flag Bingo Caller</h1>
+        </div>
+        <div class="col-4">
+            <img src="Images/LALCC_Logo.png" alt="LALCC_Logo" id="LALCC_img" border="5px">
+        </div>
+        <div class="col-4">
+            <p id="instructions"><b>Instructions:</b> Choose the countries to be included for your flag bingo game,
+                the countries that are automatically selected are used for Central Connecticut State University's
+                LALCC flag bingo games, and a copy of their cards can be obtained by using the contact info
+                at the bottom of the page. Once the countries are selected, click "Start" to begin the bingo game,
+                and use the call button to call a new flag until someone says "Bingo". Game will restart when all flags
+                have been called. <br> You can reset the game sooner by simply refreshing the page (F5)</p>
+        </div>
+    </div>
+<hr>
+</div>
+<div id="country-selection">
+    <form action="bingo.html">
+
+            <input id="select-all" type="button" value="Select All" class="button">
+
+        <div class="row" id="selection_row">
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-na" type="button" value="Select All North America" class="button">
+                        <legend class="col-form-label">North America</legend>
+                        <div id="select-north-america" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Canada"
+                                       value="Canada" checked>
+                                <label class="form-check-label" for="Canada">
+                                    Canada
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Costa Rica"
+                                       value="Costa Rica"
+                                       checked>
+                                <label class="form-check-label" for="Costa Rica">
+                                    Costa Rica
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="El Salvador"
+                                       value="El Salvador"
+                                       checked>
+                                <label class="form-check-label" for="El Salvador">
+                                    El Salvador
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Guatemala"
+                                       value="Guatemala"
+                                       checked>
+                                <label class="form-check-label" for="Guatemala">
+                                    Guatemala
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Honduras"
+                                       value="Honduras"
+                                       checked>
+                                <label class="form-check-label" for="Honduras">
+                                    Honduras
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Mexico"
+                                       value="Mexico" checked>
+                                <label class="form-check-label" for="Mexico">
+                                    Mexico
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Nicaragua"
+                                       value="Nicaragua"
+                                       checked>
+                                <label class="form-check-label" for="Nicaragua">
+                                    Nicaragua
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Panama"
+                                       value="Panama" checked>
+                                <label class="form-check-label" for="Panama">
+                                    Panama
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="UnitedStates"
+                                       value="United States" checked>
+                                <label class="form-check-label" for="UnitedStates">
+                                    United States
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-caribbean" type="button" value="Select All Caribbean" class="button">
+                        <legend class="col-form-label">Caribbean</legend>
+                        <div id="select-caribbean" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Antigua and Barbuda"
+                                       value="Antigua and Barbuda"
+                                       checked>
+                                <label class="form-check-label" for="Antigua and Barbuda">
+                                    Antigua and Barbuda
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Bahamas"
+                                       value="Bahamas" checked>
+                                <label class="form-check-label" for="Bahamas">
+                                    Bahamas
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Barbados"
+                                       value="Barbados"
+                                       checked>
+                                <label class="form-check-label" for="Barbados">
+                                    Barbados
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Belize"
+                                       value="Belize"
+                                       checked>
+                                <label class="form-check-label" for="Belize">
+                                    Belize
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Cuba"
+                                       value="Cuba" checked>
+                                <label class="form-check-label" for="Cuba">
+                                    Cuba
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Dominica"
+                                       value="Dominica"
+                                       checked>
+                                <label class="form-check-label" for="Dominica">
+                                    Dominica
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America"
+                                       id="Dominican Republic"
+                                       value="Dominican Republic" checked>
+                                <label class="form-check-label" for="Dominican Republic">
+                                    Dominican Republic
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Grenada"
+                                       value="Grenada" checked>
+                                <label class="form-check-label" for="Grenada">
+                                    Grenada
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Guyana"
+                                       value="Guyana" checked>
+                                <label class="form-check-label" for="Guyana">
+                                    Guyana
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Haiti"
+                                       value="Haiti" checked>
+                                <label class="form-check-label" for="Haiti">
+                                    Haiti
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Jamaica"
+                                       value="Jamaica"
+                                       checked>
+                                <label class="form-check-label" for="Jamaica">
+                                    Jamaica
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Montserrat"
+                                       value="Montserrat" >
+                                <label class="form-check-label" for="Montserrat">
+                                    Montserrat
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="Puerto Rico"
+                                       value="Puerto Rico" checked>
+                                <label class="form-check-label" for="Puerto Rico">
+                                    Puerto Rico
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Saint Kitts and Nevis"
+                                       value="Saint Kitts and Nevis" checked>
+                                <label class="form-check-label" for="Saint Kitts and Nevis">
+                                    Saint Kitts and Nevis
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Saint Lucia"
+                                       value="Saint Lucia" checked>
+                                <label class="form-check-label" for="Saint Lucia">
+                                    Saint Lucia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Saint Vincent and the Grenadines"
+                                       value="Saint Vincent and the Grenadines" checked>
+                                <label class="form-check-label" for="Saint Vincent and the Grenadines">
+                                    Saint Vincent and the Grenadines
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Suriname"
+                                       value="Suriname"
+                                       checked>
+                                <label class="form-check-label" for="Suriname">
+                                    Suriname
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Caribbean" id="Trinidad and Tobago"
+                                       value="Trinidad and Tobago"
+                                       checked>
+                                <label class="form-check-label" for="Trinidad and Tobago">
+                                    Trinidad and Tobago
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="North America" id="US Virgin Islands"
+                                       value="US Virgin Islands" checked>
+                                <label class="form-check-label" for="US Virgin Islands">
+                                    US Virgin Islands
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                         <input id="select-all-sa" type="button" value="Select All South America" class="button">
+                        <legend class="col-form-label">South America</legend>
+                        <div id="select-sa" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Argentina"
+                                       value="Argentina"
+                                       checked>
+                                <label class="form-check-label" for="Argentina">
+                                    Argentina
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Aruba"
+                                       value="Aruba"
+                                       checked>
+                                <label class="form-check-label" for="Aruba">
+                                    Aruba
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Bonaire"
+                                       value="Bonaire"
+                                       checked>
+                                <label class="form-check-label" for="Bonaire">
+                                    Bonaire
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Bolivia"
+                                       value="Bolivia" checked>
+                                <label class="form-check-label" for="Bolivia">
+                                    Bolivia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Brazil"
+                                       value="Brazil" checked>
+                                <label class="form-check-label" for="Brazil">
+                                    Brazil
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Colombia"
+                                       value="Colombia"
+                                       checked>
+                                <label class="form-check-label" for="Colombia">
+                                    Colombia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Curacao"
+                                       value="Curacao"
+                                       checked>
+                                <label class="form-check-label" for="Curacao">
+                                    Curacao
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Chile"
+                                       value="Chile" checked>
+                                <label class="form-check-label" for="Chile">
+                                    Chile
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Ecuador"
+                                       value="Ecuador" checked>
+                                <label class="form-check-label" for="Ecuador">
+                                    Ecuador
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Paraguay"
+                                       value="Paraguay"
+                                       checked>
+                                <label class="form-check-label" for="Paraguay">
+                                    Paraguay
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Peru"
+                                       value="Peru" checked>
+                                <label class="form-check-label" for="Peru">
+                                    Peru
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Uruguay"
+                                       value="Uruguay" checked>
+                                <label class="form-check-label" for="Uruguay">
+                                    Uruguay
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="South America" id="Venezuela"
+                                       value="Venezuela"
+                                       checked>
+                                <label class="form-check-label" for="Venezuela">
+                                    Venezuela
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-europe" type="button" value="Select All Europe" class="button">
+                        <legend class="col-form-label">Europe</legend>
+                        <div id="select-europe" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Austria" value="Austria">
+                                <label class="form-check-label" for="Austria">
+                                    Austria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Albania" value="Albania">
+                                <label class="form-check-label" for="Albania">
+                                    Albania
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Andorra" value="Andorra">
+                                <label class="form-check-label" for="Andorra">
+                                    Andorra
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Belgium" value="Belgium">
+                                <label class="form-check-label" for="Belgium">
+                                    Belgium
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Belarus" value="Belarus">
+                                <label class="form-check-label" for="Belarus">
+                                    Belarus
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Bulgaria"
+                                       value="Bulgaria">
+                                <label class="form-check-label" for="Bulgaria">
+                                    Bulgaria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Bosnia and Herzegovina"
+                                       value="Bosnia and Herzegovina">
+                                <label class="form-check-label" for="Bosnia and Herzegovina">
+                                    Bosnia and Herzegovina
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Croatia" value="Croatia">
+                                <label class="form-check-label" for="Croatia">
+                                    Croatia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Czechia" value="Czechia">
+                                <label class="form-check-label" for="Czechia">
+                                    Czechia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Denmark" value="Denmark">
+                                <label class="form-check-label" for="Denmark">
+                                    Denmark
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Estonia" value="Estonia">
+                                <label class="form-check-label" for="Estonia">
+                                    Estonia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="France" value="France"
+                                       checked>
+                                <label class="form-check-label" for="France">
+                                    France
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Finland" value="Finland">
+                                <label class="form-check-label" for="Finland">
+                                    Finland
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Greece" value="Greece">
+                                <label class="form-check-label" for="Greece">
+                                    Greece
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Germany" value="Germany">
+                                <label class="form-check-label" for="Germany">
+                                    Germany
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Holy See"
+                                       value="Holy See">
+                                <label class="form-check-label" for="Holy See">
+                                    Holy See
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Hungary" value="Hungary">
+                                <label class="form-check-label" for="Hungary">
+                                    Hungary
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Italy" value="Italy">
+                                <label class="form-check-label" for="Italy">
+                                    Italy
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Ireland" value="Ireland">
+                                <label class="form-check-label" for="Ireland">
+                                    Ireland
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Iceland" value="Iceland">
+                                <label class="form-check-label" for="Iceland">
+                                    Iceland
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Liechtenstein"
+                                       value="Liechtenstein">
+                                <label class="form-check-label" for="Liechtenstein">
+                                    Liechtenstein
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Lithuania"
+                                       value="Lithuania">
+                                <label class="form-check-label" for="Lithuania">
+                                    Lithuania
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Latvia" value="Latvia">
+                                <label class="form-check-label" for="Latvia">
+                                    Latvia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Luxembourg"
+                                       value="Luxembourg">
+                                <label class="form-check-label" for="Luxembourg">
+                                    Luxembourg
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Montenegro"
+                                       value="Montenegro">
+                                <label class="form-check-label" for="Montenegro">
+                                    Montenegro
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Malta" value="Malta">
+                                <label class="form-check-label" for="Malta">
+                                    Malta
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Monaco" value="Monaco">
+                                <label class="form-check-label" for="Monaco">
+                                    Monaco
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Netherlands"
+                                       value="Netherlands">
+                                <label class="form-check-label" for="Netherlands">
+                                    Netherlands
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Norway" value="Norway">
+                                <label class="form-check-label" for="Norway">
+                                    Norway
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="North Macedonia"
+                                       value="North Macedonia">
+                                <label class="form-check-label" for="North Macedonia">
+                                    North Macedonia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Poland" value="Poland">
+                                <label class="form-check-label" for="Poland">
+                                    Poland
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Portugal"
+                                       value="Portugal"
+                                       checked>
+                                <label class="form-check-label" for="Portugal">
+                                    Portugal
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Russia" value="Russia">
+                                <label class="form-check-label" for="Russia">
+                                    Russia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Romania" value="Romania">
+                                <label class="form-check-label" for="Romania">
+                                    Romania
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Serbia" value="Serbia">
+                                <label class="form-check-label" for="Serbia">
+                                    Serbia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Switzerland"
+                                       value="Switzerland">
+                                <label class="form-check-label" for="Switzerland">
+                                    Switzerland
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Slovakia"
+                                       value="Slovakia">
+                                <label class="form-check-label" for="Slovakia">
+                                    Slovakia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Slovenia"
+                                       value="Slovenia">
+                                <label class="form-check-label" for="Slovenia">
+                                    Slovenia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="San Marino"
+                                       value="San Marino">
+                                <label class="form-check-label" for="San Marino">
+                                    San Marino
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Spain" value="Spain"
+                                       checked>
+                                <label class="form-check-label" for="Spain">
+                                    Spain
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Sweden" value="Sweden">
+                                <label class="form-check-label" for="Sweden">
+                                    Sweden
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="United Kingdom"
+                                       value="United Kingdom">
+                                <label class="form-check-label" for="United Kingdom">
+                                    United Kingdom
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Europe" id="Ukraine" value="Ukraine">
+                                <label class="form-check-label" for="Ukraine">
+                                    Ukraine
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-africa" type="button" value="Select All Africa" class="button">
+                        <legend class="col-form-label">Africa</legend>
+                        <div id="select-africa" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Algeria" value="Algeria">
+                                <label class="form-check-label" for="Algeria">
+                                    Algeria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Angola" value="Angola">
+                                <label class="form-check-label" for="Angola">
+                                    Angola
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Benin" value="Benin">
+                                <label class="form-check-label" for="Benin">
+                                    Benin
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Botswana"
+                                       value="Botswana">
+                                <label class="form-check-label" for="Botswana">
+                                    Botswana
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Burkina Faso"
+                                       value="Burkina Faso">
+                                <label class="form-check-label" for="Burkina Faso">
+                                    Burkina Faso
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Burundi" value="Burundi">
+                                <label class="form-check-label" for="Burundi">
+                                    Burundi
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Cape Verde"
+                                       value="Cape Verde">
+                                <label class="form-check-label" for="Cape Verde">
+                                    Cape Verde
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Cameroon"
+                                       value="Cameroon">
+                                <label class="form-check-label" for="Cameroon">
+                                    Cameroon
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Central African Republic"
+                                       value="Central African Republic">
+                                <label class="form-check-label" for="Central African Republic">
+                                    Central African Republic
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Chad" value="Chad">
+                                <label class="form-check-label" for="Chad">
+                                    Chad
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Comoros" value="Comoros">
+                                <label class="form-check-label" for="Comoros">
+                                    Comoros
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa"
+                                       id="Democratic Republic of the Congo"
+                                       value="Democratic Republic of the Congo">
+                                <label class="form-check-label" for="Democratic Republic of the Congo">
+                                    Democratic Republic of the Congo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Djibouti"
+                                       value="Djibouti">
+                                <label class="form-check-label" for="Djibouti">
+                                    Djibouti
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Egypt" value="Egypt">
+                                <label class="form-check-label" for="Egypt">
+                                    Egypt
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Equatorial Guinea"
+                                       value="Equatorial Guinea">
+                                <label class="form-check-label" for="Equatorial Guinea">
+                                    Equatorial Guinea
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Eritrea" value="Eritrea">
+                                <label class="form-check-label" for="Eritrea">
+                                    Eritrea
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Eswatini" value="Eswatini">
+                                <label class="form-check-label" for="Eswatini">
+                                    Eswatini
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Ethiopia"
+                                       value="Ethiopia">
+                                <label class="form-check-label" for="Ethiopia">
+                                    Ethiopia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Gabon" value="Gabon">
+                                <label class="form-check-label" for="Gabon">
+                                    Gabon
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Gambia" value="Gambia">
+                                <label class="form-check-label" for="Gambia">
+                                    Gambia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Ghana" value="Ghana">
+                                <label class="form-check-label" for="Ghana">
+                                    Ghana
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Guinea" value="Guinea">
+                                <label class="form-check-label" for="Guinea">
+                                    Guinea
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Guinea-Bissau"
+                                       value="Guinea-Bissau">
+                                <label class="form-check-label" for="Guinea-Bissau">
+                                    Guinea-Bissau
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Ivory Coast"
+                                       value="Ivory Coast">
+                                <label class="form-check-label" for="Ivory Coast">
+                                    Ivory Coast
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Kenya" value="Kenya">
+                                <label class="form-check-label" for="Kenya">
+                                    Kenya
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Lesotho" value="Lesotho">
+                                <label class="form-check-label" for="Lesotho">
+                                    Lesotho
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Liberia" value="Liberia">
+                                <label class="form-check-label" for="Liberia">
+                                    Liberia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Libya" value="Libya">
+                                <label class="form-check-label" for="Libya">
+                                    Libya
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Madagascar"
+                                       value="Madagascar">
+                                <label class="form-check-label" for="Madagascar">
+                                    Madagascar
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Malawi" value="Malawi">
+                                <label class="form-check-label" for="Malawi">
+                                    Malawi
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Mali" value="Mali">
+                                <label class="form-check-label" for="Mali">
+                                    Mali
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Mauritania"
+                                       value="Mauritania">
+                                <label class="form-check-label" for="Mauritania">
+                                    Mauritania
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Mauritius"
+                                       value="Mauritius">
+                                <label class="form-check-label" for="Mauritius">
+                                    Mauritius
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Morocco" value="Morocco">
+                                <label class="form-check-label" for="Morocco">
+                                    Morocco
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Mozambique"
+                                       value="Mozambique">
+                                <label class="form-check-label" for="Mozambique">
+                                    Mozambique
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Namibia" value="Namibia">
+                                <label class="form-check-label" for="Namibia">
+                                    Namibia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Niger" value="Niger">
+                                <label class="form-check-label" for="Niger">
+                                    Niger
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Nigeria" value="Nigeria">
+                                <label class="form-check-label" for="Nigeria">
+                                    Nigeria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Rwanda" value="Rwanda">
+                                <label class="form-check-label" for="Rwanda">
+                                    Rwanda
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Republic of the Congo"
+                                       value="Republic of the Congo">
+                                <label class="form-check-label" for="Republic of the Congo">
+                                    Republic of the Congo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Sao Tome and Principe"
+                                       value="Sao Tome and Principe">
+                                <label class="form-check-label" for="Sao Tome and Principe">
+                                    Sao Tome and Principe
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Seychelles"
+                                       value="Seychelles">
+                                <label class="form-check-label" for="Seychelles">
+                                    Seychelles
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Senegal" value="Senegal">
+                                <label class="form-check-label" for="Senegal">
+                                    Senegal
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Sierra Leone"
+                                       value="Sierra Leone">
+                                <label class="form-check-label" for="Sierra Leone">
+                                    Sierra Leone
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Somalia" value="Somalia">
+                                <label class="form-check-label" for="Somalia">
+                                    Somalia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="South Africa"
+                                       value="South Africa">
+                                <label class="form-check-label" for="South Africa">
+                                    South Africa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="South Sudan"
+                                       value="South Sudan">
+                                <label class="form-check-label" for="South Sudan">
+                                    South Sudan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Sudan" value="Sudan">
+                                <label class="form-check-label" for="Sudan">
+                                    Sudan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Tanzania"
+                                       value="Tanzania">
+                                <label class="form-check-label" for="Tanzania">
+                                    Tanzania
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Togo" value="Togo">
+                                <label class="form-check-label" for="Togo">
+                                    Togo
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Tunisia" value="Tunisia">
+                                <label class="form-check-label" for="Tunisia">
+                                    Tunisia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Uganda" value="Uganda">
+                                <label class="form-check-label" for="Uganda">
+                                    Uganda
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Zambia" value="Zambia">
+                                <label class="form-check-label" for="Zambia">
+                                    Zambia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Africa" id="Zimbabwe"
+                                       value="Zimbabwe">
+                                <label class="form-check-label" for="Zimbabwe">
+                                    Zimbabwe
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-asia" type="button" value="Select All Asia" class="button">
+                        <legend class="col-form-label">Asia</legend>
+                        <div id="select-asia" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Afghanistan"
+                                       value="Afghanistan">
+                                <label class="form-check-label" for="Afghanistan">
+                                    Afghanistan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Azerbaijan"
+                                       value="Azerbaijan">
+                                <label class="form-check-label" for="Azerbaijan">
+                                    Azerbaijan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Armenia" value="Armenia">
+                                <label class="form-check-label" for="Armenia">
+                                    Armenia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Bangladesh"
+                                       value="Bangladesh">
+                                <label class="form-check-label" for="Bangladesh">
+                                    Bangladesh
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Bahrain" value="Bahrain">
+                                <label class="form-check-label" for="Bahrain">
+                                    Bahrain
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Bhutan" value="Bhutan">
+                                <label class="form-check-label" for="Bhutan">
+                                    Bhutan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Brunei" value="Brunei">
+                                <label class="form-check-label" for="Brunei">
+                                    Brunei
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="China" value="China">
+                                <label class="form-check-label" for="China">
+                                    China
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Cambodia"
+                                       value="Cambodia">
+                                <label class="form-check-label" for="Cambodia">
+                                    Cambodia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Cyprus" value="Cyprus">
+                                <label class="form-check-label" for="Cyprus">
+                                    Cyprus
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Georgia" value="Georgia">
+                                <label class="form-check-label" for="Georgia">
+                                    Georgia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="India" value="India">
+                                <label class="form-check-label" for="India">
+                                    India
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Indonesia"
+                                       value="Indonesia">
+                                <label class="form-check-label" for="Indonesia">
+                                    Indonesia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Iran" value="Iran">
+                                <label class="form-check-label" for="Iran">
+                                    Iran
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Iraq" value="Iraq">
+                                <label class="form-check-label" for="Iraq">
+                                    Iraq
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Israel" value="Israel">
+                                <label class="form-check-label" for="Israel">
+                                    Israel
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Jordan" value="Jordan">
+                                <label class="form-check-label" for="Jordan">
+                                    Jordan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Japan" value="Japan">
+                                <label class="form-check-label" for="Japan">
+                                    Japan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Kazakhstan"
+                                       value="Kazakhstan">
+                                <label class="form-check-label" for="Kazakhstan">
+                                    Kazakhstan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Kyrgyzstan"
+                                       value="Kyrgyzstan">
+                                <label class="form-check-label" for="Kyrgyzstan">
+                                    Kyrgyzstan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Kuwait" value="Kuwait">
+                                <label class="form-check-label" for="Kuwait">
+                                    Kuwait
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Laos" value="Laos">
+                                <label class="form-check-label" for="Laos">
+                                    Laos
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Lebanon" value="Lebanon">
+                                <label class="form-check-label" for="Lebanon">
+                                    Lebanon
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Myanmar" value="Myanmar">
+                                <label class="form-check-label" for="Myanmar">
+                                    Myanmar
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Malaysia"
+                                       value="Malaysia">
+                                <label class="form-check-label" for="Malaysia">
+                                    Malaysia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Mongolia"
+                                       value="Mongolia">
+                                <label class="form-check-label" for="Mongolia">
+                                    Mongolia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Maldives"
+                                       value="Maldives">
+                                <label class="form-check-label" for="Maldives">
+                                    Maldives
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Nepal" value="Nepal">
+                                <label class="form-check-label" for="Nepal">
+                                    Nepal
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="North Korea"
+                                       value="North Korea">
+                                <label class="form-check-label" for="North Korea">
+                                    North Korea
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Oman" value="Oman">
+                                <label class="form-check-label" for="Oman">
+                                    Oman
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Pakistan"
+                                       value="Pakistan">
+                                <label class="form-check-label" for="Pakistan">
+                                    Pakistan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Philippines"
+                                       value="Philippines">
+                                <label class="form-check-label" for="Philippines">
+                                    Philippines
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Qatar" value="Qatar">
+                                <label class="form-check-label" for="Qatar">
+                                    Qatar
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="South Korea"
+                                       value="South Korea">
+                                <label class="form-check-label" for="South Korea">
+                                    South Korea
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Saudi Arabia"
+                                       value="Saudi Arabia">
+                                <label class="form-check-label" for="Saudi Arabia">
+                                    Saudi Arabia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Sri Lanka"
+                                       value="Sri Lanka">
+                                <label class="form-check-label" for="Sri Lanka">
+                                    Sri Lanka
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Syria" value="Syria">
+                                <label class="form-check-label" for="Syria">
+                                    Syria
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Singapore"
+                                       value="Singapore">
+                                <label class="form-check-label" for="Singapore">
+                                    Singapore
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="State of Palestine"
+                                       value="State of Palestine">
+                                <label class="form-check-label" for="State of Palestine">
+                                    State of Palestine
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Turkey" value="Turkey">
+                                <label class="form-check-label" for="Turkey">
+                                    Turkey
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Tajikistan"
+                                       value="Tajikistan">
+                                <label class="form-check-label" for="Tajikistan">
+                                    Tajikistan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Turkmenistan"
+                                       value="Turkmenistan">
+                                <label class="form-check-label" for="Turkmenistan">
+                                    Turkmenistan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Timor-Leste"
+                                       value="Timor-Leste">
+                                <label class="form-check-label" for="Timor-Leste">
+                                    Timor-Leste
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Thailand"
+                                       value="Thailand">
+                                <label class="form-check-label" for="Thailand">
+                                    Thailand
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="United Arab Emirates"
+                                       value="United Arab Emirates">
+                                <label class="form-check-label" for="United Arab Emirates">
+                                    United Arab Emirates
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Uzbekistan"
+                                       value="Uzbekistan">
+                                <label class="form-check-label" for="Uzbekistan">
+                                    Uzbekistan
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Vietnam" value="Vietnam">
+                                <label class="form-check-label" for="Vietnam">
+                                    Vietnam
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Asia" id="Yemen" value="Yemen">
+                                <label class="form-check-label" for="Yemen">
+                                    Yemen
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-australia" type="button" value="Select All Australia" class="button">
+                        <legend class="col-form-label">Australia/Oceania</legend>
+                        <div id="select-australia" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Australia"
+                                       value="Australia">
+                                <label class="form-check-label" for="Australia">
+                                    Australia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="American Samoa"
+                                       value="American Samoa">
+                                <label class="form-check-label" for="American Samoa">
+                                    American Samoa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Cook Islands"
+                                       value="Cook Islands">
+                                <label class="form-check-label" for="Cook Islands">
+                                    Cook Islands
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Fiji" value="Fiji">
+                                <label class="form-check-label" for="Fiji">
+                                    Fiji
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="French Polynesia"
+                                       value="French Polynesia">
+                                <label class="form-check-label" for="French Polynesia">
+                                    French Polynesia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Guam" value="Guam">
+                                <label class="form-check-label" for="Guam">
+                                    Guam
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Kiribati"
+                                       value="Kiribati">
+                                <label class="form-check-label" for="Kiribati">
+                                    Kiribati
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Micronesia"
+                                       value="Micronesia">
+                                <label class="form-check-label" for="Micronesia">
+                                    Micronesia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Marshall Islands"
+                                       value="Marshall Islands">
+                                <label class="form-check-label" for="Marshall Islands">
+                                    Marshall Islands
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="New Zealand"
+                                       value="New Zealand">
+                                <label class="form-check-label" for="New Zealand">
+                                    New Zealand
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Northern Mariana Islands"
+                                       value="Northern Mariana Islands">
+                                <label class="form-check-label" for="Northern Mariana Islands">
+                                    Northern Mariana Islands
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Nauru" value="Nauru">
+                                <label class="form-check-label" for="Nauru">
+                                    Nauru
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Niue" value="Niue">
+                                <label class="form-check-label" for="Niue">
+                                    Niue
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="New Caledonia"
+                                       value="New Caledonia">
+                                <label class="form-check-label" for="New Caledonia">
+                                    New Caledonia
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Papua New Guinea"
+                                       value="Papua New Guinea">
+                                <label class="form-check-label" for="Papua New Guinea">
+                                    Papua New Guinea
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Palau" value="Palau">
+                                <label class="form-check-label" for="Palau">
+                                    Palau
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Solomon Islands"
+                                       value="Solomon Islands">
+                                <label class="form-check-label" for="Solomon Islands">
+                                    Solomon Islands
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Samoa" value="Samoa">
+                                <label class="form-check-label" for="Samoa">
+                                    Samoa
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Tonga" value="Tonga">
+                                <label class="form-check-label" for="Tonga">
+                                    Tonga
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Tuvalu" value="Tuvalu">
+                                <label class="form-check-label" for="Tuvalu">
+                                    Tuvalu
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Tokelau" value="Tokelau">
+                                <label class="form-check-label" for="Tokelau">
+                                    Tokelau
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia" id="Vanuatu" value="Vanuatu">
+                                <label class="form-check-label" for="Vanuatu">
+                                    Vanuatu
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Australia"
+                                       id="Wallis and Futuna Islands" value="Wallis and Futuna Islands">
+                                <label class="form-check-label" for="Wallis and Futuna Islands">
+                                    Wallis and Futuna Islands
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                </div>
+
+                <div class="col-3">
+                <fieldset class="form-group">
+                    <div class="row">
+                        <input id="select-all-antarctica" type="button" value="Select All Antarctica" class="button">
+                        <legend class="col-form-label">Antarctica</legend>
+                        <div id="select-antarctica" class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="Antarctica" id="Antarctica"
+                                       value="Antarctica">
+                                <label class="form-check-label" for="Antarctica">
+                                    Antarctica
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+        <div id="sub"><input type="button" value="Start" id="submit" class="button"></div>
+
+    </form>
+</div>
+
+<div id="bingo"
+     class="container p-3 mt-4 bg-light border border-info rounded shadow justify-content-center text-center">
+    <!-- Part 1 -->
+    <!-- Row just holds the title of the game -->
+    <div class="row">
+        <div class="col-12">
+            <h1>Flag Bingo</h1>
+        </div>
+
+        <!-- Part 2 -->
+        <!-- This row holds the button to call the new flag/country at random. -->
+        <div class="row">
+            <div class="col m-1 p-1">
+                <button id="call-button" type="button" class="button">Call</button>
+            </div>
+
+            <!-- Part 3 -->
+            <!--  -->
+            <div class="row">
+                <div class="col-4">
+                    <div class="border border-info">
+                        <h3>Previously called</h3>
+                        <div class="row">
+                            <div style="height: 700px;overflow:auto;" class="col">
+                                <ol id="previous_img">
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 350px" class="col-4 card border border border-info">
+                    <h3>Current call</h3>
+                    <img id="flag-call" class="card-img-top img-fluid" src="" width="297px" height="170px"
+                         alt="Press &quot;Call&quot; to call a flag.">
+                    <p id="flag-text" class="card-text"></p>
+                </div>
+                <div class="col-4">
+                    <div class="border border-info">
+                        <h3>Available list</h3>
+                        <div class="row">
+                            <div style="height: 700px;overflow:auto;" class="col">
+                                <ol id="available_img">
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<div id="footer_row">
+    <div class="row">
+        <div class="col-6">
+            <h4>Contact Info For LALCC Center:</h4>
+            <p>Elihu Burrit Library, Room 408: 860-832-0056</p>
+            <p>Dr. Mary Ann Mahony, Director: mahonym@ccsu.edu</p>
+            <p>Mildred Guzman-Young, University Assistant: mguzman-young@ccsu.edu</p>
+        </div>
+        <div class="col-6">
+            <h4>Webpage Credit to:</h4>
+            <p>Computer Science Students at CCSU: David Rece, Ryan Sharp, Jesse Kostoss, Taylor McLean</p>
+            <p>Flag Images used from: commons.wikimedia.org</p>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<!-- Bootstrap's JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+
+<!-- JS -->
+<script src="js/bingo.js"></script>
+</body>
+</html>

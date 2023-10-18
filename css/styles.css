@@ -1,0 +1,58 @@
+#Title {
+    text-align: center;
+    color: darkblue;
+}
+body {
+    background-color: lightblue;
+    font-family: "PT Sans", sans-serif;
+}
+
+#header_row {
+    padding-top: 40px;
+    padding-right: 20px;
+}
+
+#LALCC_img {
+    border-color: darkblue;
+}
+
+#instructions {
+    color: darkblue;
+    text-align: center;
+}
+
+#footer_row {
+    padding: 20px;
+}
+
+#sub {
+    text-align: center;
+    padding: 20px;
+}
+
+.button {
+    display: block;
+    margin: auto;
+  padding: 5px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: royalblue;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+
+}
+.button:hover {background-color: darkblue}
+
+.button:active {
+  background-color: midnightblue;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+ legend {
+
+ }
