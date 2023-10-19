@@ -1,0 +1,927 @@
+[
+    {
+        "countryCode": "AF",
+        "continent": "AS",
+        "countryName": "Afghanistan"
+    },
+    {
+        "countryCode": "AL",
+        "continent": "EU",
+        "countryName": "Albania"
+    },
+    {
+        "countryCode": "DZ",
+        "continent": "AF",
+        "countryName": "Algeria"
+    },
+    {
+        "countryCode": "AD",
+        "continent": "EU",
+        "countryName": "Andorra"
+    },
+    {
+        "countryCode": "AO",
+        "continent": "AF",
+        "countryName": "Angola"
+    },
+    {
+        "countryCode": "AI",
+        "continent": "NA",
+        "countryName": "Anguilla"
+    },
+    {
+        "countryCode": "AG",
+        "continent": "NA",
+        "countryName": "Antigua and Barbuda"
+    },
+    {
+        "countryCode": "AR",
+        "continent": "SA",
+        "countryName": "Argentina"
+    },
+    {
+        "countryCode": "AM",
+        "continent": "AS",
+        "countryName": "Armenia"
+    },
+    {
+        "countryCode": "AW",
+        "continent": "NA",
+        "countryName": "Aruba"
+    },
+    {
+        "countryCode": "AU",
+        "continent": "OC",
+        "countryName": "Australia"
+    },
+    {
+        "countryCode": "AT",
+        "continent": "EU",
+        "countryName": "Austria"
+    },
+    {
+        "countryCode": "AZ",
+        "continent": "AS",
+        "countryName": "Azerbaijan"
+    },
+    {
+        "countryCode": "BS",
+        "continent": "NA",
+        "countryName": "Bahamas"
+    },
+    {
+        "countryCode": "BH",
+        "continent": "AS",
+        "countryName": "Bahrain"
+    },
+    {
+        "countryCode": "BD",
+        "continent": "AS",
+        "countryName": "Bangladesh"
+    },
+    {
+        "countryCode": "BB",
+        "continent": "NA",
+        "countryName": "Barbados"
+    },
+    {
+        "countryCode": "BY",
+        "continent": "EU",
+        "countryName": "Belarus"
+    },
+    {
+        "countryCode": "BE",
+        "continent": "EU",
+        "countryName": "Belgium"
+    },
+    {
+        "countryCode": "BZ",
+        "continent": "NA",
+        "countryName": "Belize"
+    },
+    {
+        "countryCode": "BJ",
+        "continent": "AF",
+        "countryName": "Benin"
+    },
+    {
+        "countryCode": "BT",
+        "continent": "AS",
+        "countryName": "Bhutan"
+    },
+    {
+        "countryCode": "BO",
+        "continent": "SA",
+        "countryName": "Bolivia (Plurinational State of)"
+    },
+    {
+        "countryCode": "BA",
+        "continent": "EU",
+        "countryName": "Bosnia and Herzegovina"
+    },
+    {
+        "countryCode": "BW",
+        "continent": "AF",
+        "countryName": "Botswana"
+    },
+    {
+        "countryCode": "BR",
+        "continent": "SA",
+        "countryName": "Brazil"
+    },
+    {
+        "countryCode": "BN",
+        "continent": "AS",
+        "countryName": "Brunei Darussalam"
+    },
+    {
+        "countryCode": "BG",
+        "continent": "EU",
+        "countryName": "Bulgaria"
+    },
+    {
+        "countryCode": "BF",
+        "continent": "AF",
+        "countryName": "Burkina Faso"
+    },
+    {
+        "countryCode": "BI",
+        "continent": "AF",
+        "countryName": "Burundi"
+    },
+    {
+        "countryCode": "CV",
+        "continent": "AF",
+        "countryName": "Cabo Verde"
+    },
+    {
+        "countryCode": "KH",
+        "continent": "AS",
+        "countryName": "Cambodia"
+    },
+    {
+        "countryCode": "CM",
+        "continent": "AF",
+        "countryName": "Cameroon"
+    },
+    {
+        "countryCode": "CA",
+        "continent": "NA",
+        "countryName": "Canada"
+    },
+    {
+        "countryCode": "CF",
+        "continent": "AF",
+        "countryName": "Central African Republic"
+    },
+    {
+        "countryCode": "CL",
+        "continent": "SA",
+        "countryName": "Chile"
+    },
+    {
+        "countryCode": "CN",
+        "continent": "AS",
+        "countryName": "China"
+    },
+    {
+        "countryCode": "CO",
+        "continent": "SA",
+        "countryName": "Colombia"
+    },
+    {
+        "countryCode": "KM",
+        "continent": "AF",
+        "countryName": "Comoros"
+    },
+    {
+        "countryCode": "CG",
+        "continent": "AF",
+        "countryName": "Congo"
+    },
+    {
+        "countryCode": "CD",
+        "continent": "AF",
+        "countryName": "Congo, Democratic Republic of the"
+    },
+    {
+        "countryCode": "CR",
+        "continent": "NA",
+        "countryName": "Costa Rica"
+    },
+    {
+        "countryCode": "CI",
+        "continent": "AF",
+        "countryName": "Côte d'Ivoire"
+    },
+    {
+        "countryCode": "HR",
+        "continent": "EU",
+        "countryName": "Croatia"
+    },
+    {
+        "countryCode": "CU",
+        "continent": "NA",
+        "countryName": "Cuba"
+    },
+    {
+        "countryCode": "CY",
+        "continent": "EU",
+        "countryName": "Cyprus"
+    },
+    {
+        "countryCode": "CZ",
+        "continent": "EU",
+        "countryName": "Czechia"
+    },
+    {
+        "countryCode": "DK",
+        "continent": "EU",
+        "countryName": "Denmark"
+    },
+    {
+        "countryCode": "DJ",
+        "continent": "AF",
+        "countryName": "Djibouti"
+    },
+    {
+        "countryCode": "DM",
+        "continent": "NA",
+        "countryName": "Dominica"
+    },
+    {
+        "countryCode": "DO",
+        "continent": "NA",
+        "countryName": "Dominican Republic"
+    },
+    {
+        "countryCode": "EC",
+        "continent": "SA",
+        "countryName": "Ecuador"
+    },
+    {
+        "countryCode": "EG",
+        "continent": "AF",
+        "countryName": "Egypt"
+    },
+    {
+        "countryCode": "SV",
+        "continent": "NA",
+        "countryName": "El Salvador"
+    },
+    {
+        "countryCode": "GQ",
+        "continent": "AF",
+        "countryName": "Equatorial Guinea"
+    },
+    {
+        "countryCode": "ER",
+        "continent": "AF",
+        "countryName": "Eritrea"
+    },
+    {
+        "countryCode": "EE",
+        "continent": "EU",
+        "countryName": "Estonia"
+    },
+    {
+        "countryCode": "SZ",
+        "continent": "AF",
+        "countryName": "Eswatini"
+    },
+    {
+        "countryCode": "ET",
+        "continent": "AF",
+        "countryName": "Ethiopia"
+    },
+    {
+        "countryCode": "FK",
+        "continent": "SA",
+        "countryName": "Falkland Islands (Malvinas)"
+    },
+    {
+        "countryCode": "FO",
+        "continent": "EU",
+        "countryName": "Faroe Islands"
+    },
+    {
+        "countryCode": "FJ",
+        "continent": "OC",
+        "countryName": "Fiji"
+    },
+    {
+        "countryCode": "FI",
+        "continent": "EU",
+        "countryName": "Finland"
+    },
+    {
+        "countryCode": "FR",
+        "continent": "EU",
+        "countryName": "France"
+    },
+    {
+        "countryCode": "PF",
+        "continent": "OC",
+        "countryName": "French Polynesia"
+    },
+    {
+        "countryCode": "GA",
+        "continent": "AF",
+        "countryName": "Gabon"
+    },
+    {
+        "countryCode": "GM",
+        "continent": "AF",
+        "countryName": "Gambia"
+    },
+    {
+        "countryCode": "GE",
+        "continent": "AS",
+        "countryName": "Georgia"
+    },
+    {
+        "countryCode": "DE",
+        "continent": "EU",
+        "countryName": "Germany"
+    },
+    {
+        "countryCode": "GH",
+        "continent": "AF",
+        "countryName": "Ghana"
+    },
+    {
+        "countryCode": "GR",
+        "continent": "EU",
+        "countryName": "Greece"
+    },
+    {
+        "countryCode": "GL",
+        "continent": "NA",
+        "countryName": "Greenland"
+    },
+    {
+        "countryCode": "GD",
+        "continent": "NA",
+        "countryName": "Grenada"
+    },
+    {
+        "countryCode": "GT",
+        "continent": "NA",
+        "countryName": "Guatemala"
+    },
+    {
+        "countryCode": "GN",
+        "continent": "AF",
+        "countryName": "Guinea"
+    },
+    {
+        "countryCode": "GW",
+        "continent": "AF",
+        "countryName": "Guinea-Bissau"
+    },
+    {
+        "countryCode": "GY",
+        "continent": "SA",
+        "countryName": "Guyana"
+    },
+    {
+        "countryCode": "HT",
+        "continent": "NA",
+        "countryName": "Haiti"
+    },
+    {
+        "countryCode": "VA",
+        "continent": "EU",
+        "countryName": "Holy See"
+    },
+    {
+        "countryCode": "HN",
+        "continent": "NA",
+        "countryName": "Honduras"
+    },
+    {
+        "countryCode": "HU",
+        "continent": "EU",
+        "countryName": "Hungary"
+    },
+    {
+        "countryCode": "IS",
+        "continent": "EU",
+        "countryName": "Iceland"
+    },
+    {
+        "countryCode": "IN",
+        "continent": "AS",
+        "countryName": "India"
+    },
+    {
+        "countryCode": "ID",
+        "continent": "AS",
+        "countryName": "Indonesia"
+    },
+    {
+        "countryCode": "IR",
+        "continent": "AS",
+        "countryName": "Iran (Islamic Republic of)"
+    },
+    {
+        "countryCode": "IQ",
+        "continent": "AS",
+        "countryName": "Iraq"
+    },
+    {
+        "countryCode": "IE",
+        "continent": "EU",
+        "countryName": "Ireland"
+    },
+    {
+        "countryCode": "IT",
+        "continent": "EU",
+        "countryName": "Italy"
+    },
+    {
+        "countryCode": "JM",
+        "continent": "NA",
+        "countryName": "Jamaica"
+    },
+    {
+        "countryCode": "JP",
+        "continent": "AS",
+        "countryName": "Japan"
+    },
+    {
+        "countryCode": "JO",
+        "continent": "AS",
+        "countryName": "Jordan"
+    },
+    {
+        "countryCode": "KZ",
+        "continent": "AS",
+        "countryName": "Kazakhstan"
+    },
+    {
+        "countryCode": "KE",
+        "continent": "AF",
+        "countryName": "Kenya"
+    },
+    {
+        "countryCode": "KW",
+        "continent": "AS",
+        "countryName": "Kuwait"
+    },
+    {
+        "countryCode": "KG",
+        "continent": "AS",
+        "countryName": "Kyrgyzstan"
+    },
+    {
+        "countryCode": "LA",
+        "continent": "AS",
+        "countryName": "Lao People's Democratic Republic"
+    },
+    {
+        "countryCode": "LB",
+        "continent": "AS",
+        "countryName": "Lebanon"
+    },
+    {
+        "countryCode": "LY",
+        "continent": "AF",
+        "countryName": "Libya"
+    },
+    {
+        "countryCode": "MG",
+        "continent": "AF",
+        "countryName": "Madagascar"
+    },
+    {
+        "countryCode": "MW",
+        "continent": "AF",
+        "countryName": "Malawi"
+    },
+    {
+        "countryCode": "MY",
+        "continent": "AS",
+        "countryName": "Malaysia"
+    },
+    {
+        "countryCode": "MV",
+        "continent": "AS",
+        "countryName": "Maldives"
+    },
+    {
+        "countryCode": "ML",
+        "continent": "AF",
+        "countryName": "Mali"
+    },
+    {
+        "countryCode": "MT",
+        "continent": "EU",
+        "countryName": "Malta"
+    },
+    {
+        "countryCode": "MH",
+        "continent": "OC",
+        "countryName": "Marshall Islands"
+    },
+    {
+        "countryCode": "MR",
+        "continent": "AF",
+        "countryName": "Mauritania"
+    },
+    {
+        "countryCode": "MU",
+        "continent": "AF",
+        "countryName": "Mauritius"
+    },
+    {
+        "countryCode": "MX",
+        "continent": "NA",
+        "countryName": "Mexico"
+    },
+    {
+        "countryCode": "FM",
+        "continent": "OC",
+        "countryName": "Micronesia (Federated States of)"
+    },
+    {
+        "countryCode": "MD",
+        "continent": "EU",
+        "countryName": "Moldova, Republic of"
+    },
+    {
+        "countryCode": "MC",
+        "continent": "EU",
+        "countryName": "Monaco"
+    },
+    {
+        "countryCode": "MN",
+        "continent": "AS",
+        "countryName": "Mongolia"
+    },
+    {
+        "countryCode": "ME",
+        "continent": "EU",
+        "countryName": "Montenegro"
+    },
+    {
+        "countryCode": "MA",
+        "continent": "AF",
+        "countryName": "Morocco"
+    },
+    {
+        "countryCode": "MZ",
+        "continent": "AF",
+        "countryName": "Mozambique"
+    },
+    {
+        "countryCode": "MM",
+        "continent": "AS",
+        "countryName": "Myanmar"
+    },
+    {
+        "countryCode": "NA",
+        "continent": "AF",
+        "countryName": "Namibia"
+    },
+    {
+        "countryCode": "NR",
+        "continent": "OC",
+        "countryName": "Nauru"
+    },
+    {
+        "countryCode": "NP",
+        "continent": "AS",
+        "countryName": "Nepal"
+    },
+    {
+        "countryCode": "NL",
+        "continent": "EU",
+        "countryName": "Netherlands"
+    },
+    {
+        "countryCode": "NC",
+        "continent": "OC",
+        "countryName": "New Caledonia"
+    },
+    {
+        "countryCode": "NZ",
+        "continent": "OC",
+        "countryName": "New Zealand"
+    },
+    {
+        "countryCode": "NI",
+        "continent": "NA",
+        "countryName": "Nicaragua"
+    },
+    {
+        "countryCode": "NE",
+        "continent": "AF",
+        "countryName": "Niger"
+    },
+    {
+        "countryCode": "NG",
+        "continent": "AF",
+        "countryName": "Nigeria"
+    },
+    {
+        "countryCode": "MK",
+        "continent": "EU",
+        "countryName": "North Macedonia"
+    },
+    {
+        "countryCode": "NO",
+        "continent": "EU",
+        "countryName": "Norway"
+    },
+    {
+        "countryCode": "OM",
+        "continent": "AS",
+        "countryName": "Oman"
+    },
+    {
+        "countryCode": "PK",
+        "continent": "AS",
+        "countryName": "Pakistan"
+    },
+    {
+        "countryCode": "PW",
+        "continent": "OC",
+        "countryName": "Palau"
+    },
+    {
+        "countryCode": "PA",
+        "continent": "NA",
+        "countryName": "Panama"
+    },
+    {
+        "countryCode": "PG",
+        "continent": "OC",
+        "countryName": "Papua New Guinea"
+    },
+    {
+        "countryCode": "PY",
+        "continent": "SA",
+        "countryName": "Paraguay"
+    },
+    {
+        "countryCode": "PE",
+        "continent": "SA",
+        "countryName": "Peru"
+    },
+    {
+        "countryCode": "PH",
+        "continent": "AS",
+        "countryName": "Philippines"
+    },
+    {
+        "countryCode": "PL",
+        "continent": "EU",
+        "countryName": "Poland"
+    },
+    {
+        "countryCode": "PT",
+        "continent": "EU",
+        "countryName": "Portugal"
+    },
+    {
+        "countryCode": "PR",
+        "continent": "NA",
+        "countryName": "Puerto Rico"
+    },
+    {
+        "countryCode": "QA",
+        "continent": "AS",
+        "countryName": "Qatar"
+    },
+    {
+        "countryCode": "RE",
+        "continent": "AF",
+        "countryName": "Réunion"
+    },
+    {
+        "countryCode": "RO",
+        "continent": "EU",
+        "countryName": "Romania"
+    },
+    {
+        "countryCode": "RU",
+        "continent": "EU",
+        "countryName": "Russian Federation"
+    },
+    {
+        "countryCode": "RW",
+        "continent": "AF",
+        "countryName": "Rwanda"
+    },
+    {
+        "countryCode": "SH",
+        "continent": "AF",
+        "countryName": "Saint Helena, Ascension and Tristan da Cunha"
+    },
+    {
+        "countryCode": "KN",
+        "continent": "NA",
+        "countryName": "Saint Kitts and Nevis"
+    },
+    {
+        "countryCode": "LC",
+        "continent": "NA",
+        "countryName": "Saint Lucia"
+    },
+    {
+        "countryCode": "VC",
+        "continent": "NA",
+        "countryName": "Saint Vincent and the Grenadines"
+    },
+    {
+        "countryCode": "SM",
+        "continent": "EU",
+        "countryName": "San Marino"
+    },
+    {
+        "countryCode": "ST",
+        "continent": "AF",
+        "countryName": "Sao Tome and Principe"
+    },
+    {
+        "countryCode": "SA",
+        "continent": "AS",
+        "countryName": "Saudi Arabia"
+    },
+    {
+        "countryCode": "SN",
+        "continent": "AF",
+        "countryName": "Senegal"
+    },
+    {
+        "countryCode": "RS",
+        "continent": "EU",
+        "countryName": "Serbia"
+    },
+    {
+        "countryCode": "SC",
+        "continent": "AF",
+        "countryName": "Seychelles"
+    },
+    {
+        "countryCode": "SL",
+        "continent": "AF",
+        "countryName": "Sierra Leone"
+    },
+    {
+        "countryCode": "SG",
+        "continent": "AS",
+        "countryName": "Singapore"
+    },
+    {
+        "countryCode": "SK",
+        "continent": "EU",
+        "countryName": "Slovakia"
+    },
+    {
+        "countryCode": "SI",
+        "continent": "EU",
+        "countryName": "Slovenia"
+    },
+    {
+        "countryCode": "SB",
+        "continent": "OC",
+        "countryName": "Solomon Islands"
+    },
+    {
+        "countryCode": "SO",
+        "continent": "AF",
+        "countryName": "Somalia"
+    },
+    {
+        "countryCode": "ZA",
+        "continent": "AF",
+        "countryName": "South Africa"
+    },
+    {
+        "countryCode": "SS",
+        "continent": "AF",
+        "countryName": "South Sudan"
+    },
+    {
+        "countryCode": "ES",
+        "continent": "EU",
+        "countryName": "Spain"
+    },
+    {
+        "countryCode": "SD",
+        "continent": "AF",
+        "countryName": "Sudan"
+    },
+    {
+        "countryCode": "SR",
+        "continent": "SA",
+        "countryName": "Suriname"
+    },
+    {
+        "countryCode": "SE",
+        "continent": "EU",
+        "countryName": "Sweden"
+    },
+    {
+        "countryCode": "CH",
+        "continent": "EU",
+        "countryName": "Switzerland"
+    },
+    {
+        "countryCode": "SY",
+        "continent": "AS",
+        "countryName": "Syrian Arab Republic"
+    },
+    {
+        "countryCode": "TJ",
+        "continent": "AS",
+        "countryName": "Tajikistan"
+    },
+    {
+        "countryCode": "TZ",
+        "continent": "AF",
+        "countryName": "Tanzania, United Republic of"
+    },
+    {
+        "countryCode": "TN",
+        "continent": "AF",
+        "countryName": "Tunisia"
+    },
+    {
+        "countryCode": "TM",
+        "continent": "AS",
+        "countryName": "Turkmenistan"
+    },
+    {
+        "countryCode": "UG",
+        "continent": "AF",
+        "countryName": "Uganda"
+    },
+    {
+        "countryCode": "UA",
+        "continent": "EU",
+        "countryName": "Ukraine"
+    },
+    {
+        "countryCode": "AE",
+        "continent": "AS",
+        "countryName": "United Arab Emirates"
+    },
+    {
+        "countryCode": "GB",
+        "continent": "EU",
+        "countryName": "United Kingdom of Great Britain and Northern Ireland"
+    },
+    {
+        "countryCode": "US",
+        "continent": "NA",
+        "countryName": "United States of America"
+    },
+    {
+        "countryCode": "UY",
+        "continent": "SA",
+        "countryName": "Uruguay"
+    },
+    {
+        "countryCode": "UZ",
+        "continent": "AS",
+        "countryName": "Uzbekistan"
+    },
+    {
+        "countryCode": "VU",
+        "continent": "OC",
+        "countryName": "Vanuatu"
+    },
+    {
+        "countryCode": "VE",
+        "continent": "SA",
+        "countryName": "Venezuela (Bolivarian Republic of)"
+    },
+    {
+        "countryCode": "VN",
+        "continent": "AS",
+        "countryName": "Viet Nam"
+    },
+    {
+        "countryCode": "VI",
+        "continent": "NA",
+        "countryName": "Virgin Islands (U.S.)"
+    },
+    {
+        "countryCode": "YE",
+        "continent": "AS",
+        "countryName": "Yemen"
+    },
+    {
+        "countryCode": "ZM",
+        "continent": "AF",
+        "countryName": "Zambia"
+    },
+    {
+        "countryCode": "ZW",
+        "continent": "AF",
+        "countryName": "Zimbabwe"
+    }
+]
