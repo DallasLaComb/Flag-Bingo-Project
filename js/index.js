@@ -87,7 +87,8 @@ function selectedFlagsOnClick(){
 // LOGIC WILL CHANGE SLIGHTLY BELOW AFTER DOING THE COOKIES I THINK
 $(".play-button").on("click", function(){
     $("i").remove();
-    $(".play-button").addClass("deactivate")
+    $(".callGenerator").removeClass("deactivate");
+    $(".play-button").addClass("deactivate");
     $(".flagSelectionContainer").addClass("deactivate");
     $(".availableList").append(selectedFlags);
     console.log(selectedFlags);
