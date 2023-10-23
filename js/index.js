@@ -37,7 +37,7 @@ for (var country in countryData) {
     let continent = countryData[i].continent;
     let countryName = countryData[i].countryName;
     let countryImage = `<img class="img-fluid" src="imagesSmall/${countryCode}.png">`;
-    let newElement = $(`<div class='col-2-sm' id='${countryCode}'><hr>${countryName}<br>${countryImage}</div>`);
+    let newElement = $(`<div class='col-2-sm pt-3 border-top mt-3' id='${countryCode}'>${countryName}<br class ="hidden">${countryImage}<i class="bi bi-app "></i></div>`);
         newElement.on("click", function() {
          selectedFlagsOnClick.call(this);
     });
@@ -70,67 +70,25 @@ let selectedFlags = [];
 function selectedFlagsOnClick(){
     if ($(this).hasClass("selected")) {
         $(this).removeClass("selected");
+        $(this).children().removeClass("bi-check-square");
         let index = selectedFlags.indexOf(this);
         if (index > -1) {
             selectedFlags.splice(index, 1);
         }
     } else {
+        $(this).children().addClass("bi-check-square");
+
         $(this).addClass("selected");
         selectedFlags.push(this);
-        console.log(selectedFlags);
     }
-    console.log(selectedFlags);
 }
 
-
-// CODE FROM ORIGINAL GROUP TO CALL RANDOM FLAGS FOR THE MOST PART UNCHANGED AS OF NOW....
-//     $(".play-button").on("click",(function () {
-//         $.each($(selectedFlags), function(i, field) {
-//             var entry = <img className="img-fluid" src="./imagesSmall/`${countryCode}`.png">;
-//             console.log(entry);
-//             slotImages.push(entry);
-//         });
-//
-//         // Loops through each element of slotImages and creates list of available countries for calling
-//         $.each(slotImages, function (index) {
-//             $(generateCardHTML(slotImages[index].src, slotImages[index].name)).appendTo("#available_img");
-//         });
-//
-//         $("#country-selection").hide();
-//         $("#bingo").show();
-//     }));
-//
-//     // When clicked, call button should call a new, random country from the available list.
-//     // If no countries remain, it should reset the game by reloading the page.
-//     $("#call-button").click(function () {
-//         // If no countries are left to be called, reload the page.
-//         if(slotImages.length === 0){
-//             location.reload();
-//         }
-//         // There are still countries left
-//         else{
-//             // Pick a random country from the remaining list
-//             const callIndex = Math.floor(Math.random() * slotImages.length);
-//             // Remove the selected country from the displayed available list
-//             $("li#" + slotImages[callIndex].name.replaceAll(' ', '-')).remove();
-//             // Update the current call listing
-//             $("#flag-call").attr("src", slotImages[callIndex].src);
-//             $("#flag-text").text(slotImages[callIndex].name);
-//             // Add the current call to the previously called list
-//             $(generateCardHTML(slotImages[callIndex].src, slotImages[callIndex].name)).prependTo("#previous_img");
-//             // Remove current call from stored list of available calls
-//             slotImages.splice(callIndex, 1);
-//
-//             // When no countries remain, update the button's text to reflect its new functionality
-//             if(slotImages.length === 0){
-//                 $("#call-button").text("Reset Game");
-//             }
-//         }
-//     });
-//
-// // Generates the HTML string for the list item of each country in the available/previously called lists.
-// // src: String of the image path for the flag
-// // name: String of the name of the country
-// function generateCardHTML(src, name){
-//     return '<li id="' + name.replaceAll(' ','-') + '"><img src = "' + src + '" width="74px" height="44px" alt = ""><p>' + name + '</p></li>';
-// }
+//WHEN PLAY IS CLICKED LOAD THE CALL GENERATOR STUFF
+// LOGIC WILL CHANGE SLIGHTLY BELOW AFTER DOING THE COOKIES I THINK
+$(".play-button").on("click", function(){
+    $("i").remove();
+    $(".play-button").addClass("deactivate")
+    $(".flagSelectionContainer").addClass("deactivate");
+    $(".availableList").append(selectedFlags);
+    console.log(selectedFlags);
+})

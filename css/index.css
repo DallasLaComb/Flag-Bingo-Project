@@ -1,3 +1,13 @@
-.selected{
-    background-color: blue;
+.deactivate{
+    display: none;
+}
+
+.bi-app{
+    justify-content: end;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.bi-app:hover{
+    cursor: pointer;
 }
