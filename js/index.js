@@ -71,25 +71,35 @@ function selectedFlagsOnClick(){
     if ($(this).hasClass("selected")) {
         $(this).removeClass("selected");
         $(this).children().removeClass("bi-check-square");
-        let index = selectedFlags.indexOf(this);
-        if (index > -1) {
-            selectedFlags.splice(index, 1);
-        }
+        
     } else {
         $(this).children().addClass("bi-check-square");
-
         $(this).addClass("selected");
         selectedFlags.push(this);
     }
 }
 
-//WHEN PLAY IS CLICKED LOAD THE CALL GENERATOR STUFF
+//WHEN SAVE IS CLICKED LOAD THE CALL GENERATOR STUFF
 // LOGIC WILL CHANGE SLIGHTLY BELOW AFTER DOING THE COOKIES I THINK
-$(".play-button").on("click", function(){
+$("#save-button").on("click", function(){
     $("i").remove();
     $(".callGenerator").removeClass("deactivate");
     $(".play-button").addClass("deactivate");
     $(".flagSelectionContainer").addClass("deactivate");
     $(".availableList").append(selectedFlags);
     console.log(selectedFlags);
+    
+    //Saves the country codes for each flag selected after the save button is clicked
+    let savedCountryCodes = [];
+    for(let i = 0; i < selectedFlags.length; i++){
+        savedCountryCodes[i] = $(selectedFlags[i]).attr('id');
+    }
+    
+    //Flag names get saved to cookies
+    let flagsToCookies = JSON.stringify(savedCountryCodes);
+    Cookies.set('myCookie', flagsToCookies, {path: '/'})
+    let jsonString = Cookies.get('myCookie');
+    let retrievedCookies = JSON.parse(jsonString);
+    console.log("Cookie Dump: " + retrievedCookies);
+    
 })
