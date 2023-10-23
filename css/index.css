@@ -11,3 +11,10 @@
 .bi-app:hover{
     cursor: pointer;
 }
+
+.generateLobby{
+    position: sticky;
+    bottom: 10%;
+    left:80%;
+
+}
