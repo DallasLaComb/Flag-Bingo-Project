@@ -33,10 +33,10 @@ for (var country in countryData) {
     }
 }
     for (let i = 0; i < countryData.length; i++) {
-    let countryCode = countryData[i].countryCode;
+    let countryCode = countryData[i].countryCode.toLowerCase();
     let continent = countryData[i].continent;
     let countryName = countryData[i].countryName;
-    let countryImage = `<img class="img-fluid" src="./imagesSmall/${countryCode}.png">`;
+    let countryImage = `<img class="img-fluid" src="imagesSmall/${countryCode}.png">`;
     let newElement = $(`<div class='col-2-sm' id='${countryCode}'><hr>${countryName}<br>${countryImage}</div>`);
         newElement.on("click", function() {
          selectedFlagsOnClick.call(this);
