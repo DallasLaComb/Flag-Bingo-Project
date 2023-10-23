@@ -37,7 +37,7 @@ for (var country in countryData) {
     let continent = countryData[i].continent;
     let countryName = countryData[i].countryName;
     let countryImage = `<img class="img-fluid" src="./imagesSmall/${countryCode}.png">`;
-    let newElement = $("<div class=col-2-sm><hr>"+countryName+"<br> "+countryImage+"</div>");
+    let newElement = $(`<div class='col-2-sm' id='${countryCode}'><hr>${countryName}<br>${countryImage}</div>`);
         newElement.on("click", function() {
          selectedFlagsOnClick.call(this);
     });
@@ -77,6 +77,7 @@ function selectedFlagsOnClick(){
     } else {
         $(this).addClass("selected");
         selectedFlags.push(this);
+        console.log(selectedFlags);
     }
     console.log(selectedFlags);
 }
