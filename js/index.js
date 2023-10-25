@@ -37,6 +37,7 @@ for (var country in countryData) {
     let continent = countryData[i].continent;
     let countryName = countryData[i].countryName;
     let countryImage = `<img class="img-fluid" src="imagesSmall/${countryCode}.png">`;
+    // newElement gives the 'card' look.
     let newElement = $(`<div class='col-2-sm pt-3 border-top mt-3' id='${countryCode}'>${countryName}<br class ="hidden">${countryImage}<i class="bi bi-app "></i></div>`);
         newElement.on("click", function() {
          selectedFlagsOnClick.call(this);
@@ -98,8 +99,20 @@ $("#save-button").on("click", function(){
     //Flag names get saved to cookies
     let flagsToCookies = JSON.stringify(savedCountryCodes);
     Cookies.set('myCookie', flagsToCookies, {path: '/'})
+    
     let jsonString = Cookies.get('myCookie');
     let retrievedCookies = JSON.parse(jsonString);
     console.log("Cookie Dump: " + retrievedCookies);
     
 })
+
+
+// Creating saved card tab
+
+$("#savedCards").on("click", function() {
+    $('body > :not(nav)').remove();
+// ADD ANYTHING FOR SAVED CARDS TAB BELOW THIS LINE
+})
+// let obj = [
+//     {"lobbyname":"aw,bs,cr,ca,cr"},
+// ]
