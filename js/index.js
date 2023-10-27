@@ -42,84 +42,90 @@ function processData() {
     }
   }
   //   console.log(countryData);
+  let selectedFlags = [];
   for (let i = 0; i < countryData.length; i++) {
     let countryCode = countryData[i].countryCode.toLowerCase(); // country code is used for the image source. EX: us.png == ${countryCode}.png
     let continent = countryData[i].continent; // continent is used to determine which div the country will be appended to: EX: NA == .na, EU == .eu, etc.
     let countryName = countryData[i].countryName; // countryName is used to display the country name on the page: EX: United States
     let countryImage = `<img class="img-fluid" src="imagesSmall/${countryCode}.png">`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
-    // newelement is the div that is created for each country. It is appended to the appropriate continent div.
+    // newCountryCard is the div that is created for each country. It is appended to the appropriate continent div.
     // EX: <div class='col-2-sm pt-3 border-top mt-3' id='us'>United States<br><img class="img-fluid" src="imagesSmall/us.png"></div>
-    // newElements also get added new on click functionality.
-    let selectedFlags = [];
-    let newElement = $(
-      `<div class='col-2-sm pt-3 border-top mt-3' id='${countryCode}'>${countryName}<br class ="hidden">${countryImage}<i class="bi bi-app "></i></div>`
+    // newCountryCards also get added new on click functionality.
+
+    let newCountryCard = $(
+      `<div class='col-2-sm pt-3 border-top mt-3' id=${countryCode}>${countryName}<br class ="hidden">${countryImage}<i class="bi bi-app "></i></div>`
     ).on("click", function () {
       if ($(this).hasClass("selected")) {
+        let index = selectedFlags.indexOf(this);
+        selectedFlags.splice(index, 1);
         $(this).removeClass("selected");
+        
         $(this).children().removeClass("bi-check-square");
+        console.log(selectedFlags);
       } else {
         $(this).children().addClass("bi-check-square");
         $(this).addClass("selected");
+        console.log(this);
         selectedFlags.push(this);
+        console.log(selectedFlags);
       }
     });
 
-    // Appends the newElement div to the appropriate continent div. Appends means to add to the end of the current html div.
+    // Appends the newCountryCard div to the appropriate continent div. Appends means to add to the end of the current html div.
     switch (continent) {
       case "NA":
-        $(".na").append(newElement);
+        $("#na_").append(newCountryCard);
         break;
       case "EU":
-        $(".eu").append(newElement);
+        $("#eu_").append(newCountryCard);
         break;
       case "AS":
-        $(".as").append(newElement);
+        $("#as_").append(newCountryCard);
         break;
       case "AF":
-        $(".af").append(newElement);
+        $("#af_").append(newCountryCard);
         break;
       case "SA":
-        $(".sa").append(newElement);
+        $("#sa_").append(newCountryCard);
         break;
       case "OC":
-        $(".au").append(newElement);
+        $("#au_").append(newCountryCard);
         break;
     }
   }
+  $("#save-button").on("click", function(){
+    $("i").remove();
+    $(".callGenerator").removeClass("deactivate");
+    $("#save-button").addClass("deactivate");
+    $("#flagSelectionContainer").addClass("deactivate");
+    $(".availableList").append(selectedFlags);
+    console.log(selectedFlags);
+
+    //Saves the country codes for each flag selected after the save button is clicked
+    let savedCountryCodes = [];
+    for(let i = 0; i < selectedFlags.length; i++){
+        savedCountryCodes[i] = $(selectedFlags[i]).attr('id');
+        console.log("Saved Country Codes: " +savedCountryCodes[i]);
+    }
+
+    //Flag names get saved to cookies
+    let flagsToCookies = JSON.stringify(savedCountryCodes);
+    Cookies.set('myCookie', flagsToCookies, {path: '/'})
+
+  
+    
+})
 }
 loadData(processData);
-//WHEN SAVE IS CLICKED LOAD THE CALL GENERATOR STUFF
-// LOGIC WILL CHANGE SLIGHTLY BELOW AFTER DOING THE COOKIES I THINK
-// $("#save-button").on("click", function(){
-//     $("i").remove();
-//     $(".callGenerator").removeClass("deactivate");
-//     $(".play-button").addClass("deactivate");
-//     $(".flagSelectionContainer").addClass("deactivate");
-//     $(".availableList").append(selectedFlags);
-//     console.log(selectedFlags);
-
-//     //Saves the country codes for each flag selected after the save button is clicked
-//     let savedCountryCodes = [];
-//     for(let i = 0; i < selectedFlags.length; i++){
-//         savedCountryCodes[i] = $(selectedFlags[i]).attr('id');
-//     }
-
-//     //Flag names get saved to cookies
-//     let flagsToCookies = JSON.stringify(savedCountryCodes);
-//     Cookies.set('myCookie', flagsToCookies, {path: '/'})
-
-//     let jsonString = Cookies.get('myCookie');
-//     let retrievedCookies = JSON.parse(jsonString);
-//     console.log("Cookie Dump: " + retrievedCookies);
-
-// })
-
-// // Creating saved card tab
-
-// $("#savedCards").on("click", function() {
-//     $('body > :not(nav)').remove();
-// // ADD ANYTHING FOR SAVED CARDS TAB BELOW THIS LINE
-// })
+// // Creating saved cards tab. When you click on the saved cards tab, it will display the saved cards via cookies...
+$("#savedCards").on("click", function() {
+    $('body > :not(nav)').remove();
+// ADD ANYTHING FOR SAVED CARDS TAB BELOW THIS LINE
+let jsonString = Cookies.get('myCookie');
+    let retrievedCookies = JSON.parse(jsonString);
+    console.log("Cookie Dump: " + retrievedCookies);
+    $("body").append(retrievedCookies);
+})
 // // let obj = [
 // //     {"lobbyname":"aw,bs,cr,ca,cr"},
 // // ]
