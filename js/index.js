@@ -18,7 +18,6 @@ function processData() {
     oc: [],
     sa: [],
   };
-
   // Traverse through countryData (object that stores the json file info) and push each country into the appropriate continent array.
   for (let country of countryData) {
     switch (country.continent) {
@@ -51,6 +50,7 @@ function processData() {
     // newelement is the div that is created for each country. It is appended to the appropriate continent div.
     // EX: <div class='col-2-sm pt-3 border-top mt-3' id='us'>United States<br><img class="img-fluid" src="imagesSmall/us.png"></div>
     // newElements also get added new on click functionality.
+    let selectedFlags = [];
     let newElement = $(
       `<div class='col-2-sm pt-3 border-top mt-3' id='${countryCode}'>${countryName}<br class ="hidden">${countryImage}<i class="bi bi-app "></i></div>`
     ).on("click", function () {
@@ -88,23 +88,8 @@ function processData() {
   }
 }
 loadData(processData);
-
-let selectedFlags = [];
-
-// function selectedFlagsOnClick(){
-//     if ($(this).hasClass("selected")) {
-//         $(this).removeClass("selected");
-//         $(this).children().removeClass("bi-check-square");
-
-//     } else {
-//         $(this).children().addClass("bi-check-square");
-//         $(this).addClass("selected");
-//         selectedFlags.push(this);
-//     }
-// }
-
-// //WHEN SAVE IS CLICKED LOAD THE CALL GENERATOR STUFF
-// // LOGIC WILL CHANGE SLIGHTLY BELOW AFTER DOING THE COOKIES I THINK
+//WHEN SAVE IS CLICKED LOAD THE CALL GENERATOR STUFF
+// LOGIC WILL CHANGE SLIGHTLY BELOW AFTER DOING THE COOKIES I THINK
 // $("#save-button").on("click", function(){
 //     $("i").remove();
 //     $(".callGenerator").removeClass("deactivate");
