@@ -61,7 +61,6 @@
             <!-- ^^ Bootstrap Classes -->
               <button class="nav-link" id="howToPlay">How To Play</button>
             <!-- ^^ Bootstrap Classes. ID 'howToPlay' is used in index.js to select the How To Play Button. MUST STAY BUTTON IF NO SERVER SIDE CODE TO PREVENT REFRESH, DON'T CHANGE TO <a> TAG.-->
-            <!-- ^^ Bootstrap Classes -->
             </li>
             <li class="nav-item">
             <!-- ^^ Bootstrap Classes -->
@@ -78,22 +77,27 @@
       <div class="row">
         <!-- ^^ Bootstrap Class -->
         <div class="col-md-2 border" id="na_">
-            <!-- ^^ Bootstrap Classes -->
-          <h3>North America</h3>
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
+            <h3>North America</h3>
         </div>
         <div class="col-md-2 border" id="eu_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
           <h3>Europe</h3>
         </div>
         <div class="col-md-2 border" id="as_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
           <h3>Asia</h3>
         </div>
         <div class="col-md-2 border" id="af_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
             <h3>Africa</h3>
           </div>        
         <div class="col-md-2 border" id="sa_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
           <h3>South America</h3>
         </div>
         <div class="col-md-2 border" id="au_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
           <h3>Australia</h3>
         </div>
       </div>
@@ -101,8 +105,10 @@
     <!--End of Flag Selection Container-->
 
     <!--Start of Call Generator-->
-    <div class="container callGenerator deactivate">
+    <div class="container deactivate" id="callGenerator">
+        <!-- ^^ Container = Bootstrap. | callGenerator +  -->
       <div class="row">
+      <!-- ^^ Bootstrap Class -->
         <div class="btn btn-primary shadow mx-auto col-2 mb-3 callButton">
           Call
         </div>
