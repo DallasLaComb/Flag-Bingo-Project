@@ -1,20 +1,24 @@
 .deactivate{
     display: none;
 }
+/* The purpose of the deactivate class is to hide / unhide elements when certain things are clicked...
+   It is set up this way due to the fact that we don't have a back end, it's nice to have data consistency,
+   as well as the appearance of 'different tabs'...
+*/
 
 .bi-app{
     justify-content: end;
     align-items: center;
     padding-left: 20px;
 }
-
+/*  bi-app gets added as a class to each selection icon in index.js. This class makes it appear to the right of the flag with some space currently...*/
 .bi-app:hover{
     cursor: pointer;
 }
-
-.generateLobby{
+/* ^^ This makes it so when you hover over the selection box on a pc it changes your cursor.*/
+#save-button{
     position: sticky;
     bottom: 10%;
     left:80%;
-
 }
+/* ^^ This class  */
