@@ -1,23 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Everything above this is standard for every HTML page -->
     <title>Flag Bingo</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="css/index.css" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg bg-primary mb-4" data-bs-theme="dark">
-    <div class="container-fluid">
+    <!-- The title gets added to the tab / bookmarks of your page. This is also necessary meta-data -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- ^^ Links bootstrap CSS class. 5.3.2 was newest bootstrap at the time we created this project. -->
+    <!-- Within this HTML there will be comments when the class is related to bootstrap or our own classes... -->
+    <!-- If it is in bootstrap, we will not explain what it does in the comments, go to the bootstrap documentation to find out if you don't know. -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <!-- ^^ Links bootstrap icons.-->
+    <link href="css/index.css" rel="stylesheet" />
+    <!-- ^^ Links our personal css stylesheet -->
+  </head>
+  <body>
+    <!-- Makes the navbar you see at the top of the page. [LALCC] [Generate Game] [Saved Cards] [How To Play] [About LALCC]-->
+    <nav class="navbar navbar-expand-md bg-primary mb-4" data-bs-theme="dark">
+        <!-- ^^ Bootstrap Classes -->
+      <div class="container-fluid">
+        <!-- ^^ Bootstrap Classes -->
         <a class="navbar-brand" href="#">LALCC</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <!-- ^^ Bootstrap Classes , links to LALCC Webpage when you click on "LALCC Logo"-->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
+        <!-- ^^ Bootstrap functionality for when the hamburger icon shows up -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- ^^ Bootstrap Classes -->
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <!-- ^^ Bootstrap Classes -->
+            <li class="nav-item">
+            <!-- ^^ Bootstrap Classes -->
+              <a class="nav-link active" aria-current="page" href="index.html">Generate Game</a>
+              <!--^^ Creates link to homepage.-->
+            </li>
+            <li class="nav-item">
+            <!-- ^^ Bootstrap Classes -->
+            <button class="nav-link" id="savedCards">Saved Cards</button>
+            <!-- ^^ Bootstrap Classes. ID 'savedCards' is used in index.js to select the Saved Cards Button. MUST STAY BUTTON IF NO SERVER SIDE CODE TO PREVENT REFRESH, DON'T CHANGE TO <a> TAG.-->
+            </li>
+            <li class="nav-item">
+            <!-- ^^ Bootstrap Classes -->
+              <button class="nav-link" id="howToPlay">How To Play</button>
+            <!-- ^^ Bootstrap Classes. ID 'howToPlay' is used in index.js to select the How To Play Button. MUST STAY BUTTON IF NO SERVER SIDE CODE TO PREVENT REFRESH, DON'T CHANGE TO <a> TAG.-->
+            </li>
+            <li class="nav-item">
+            <!-- ^^ Bootstrap Classes -->
+              <button class="nav-link" id="aboutLALCC">About LALCC</button>
+            <!-- ^^ Bootstrap Classes. ID 'aboutLALCC' is used in index.js to select the About LALCC Button. MUST STAY BUTTON IF NO SERVER SIDE CODE TO PREVENT REFRESH, DON'T CHANGE TO <a> TAG.-->
+        </li>
+          </ul>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <button class="nav-link active" aria-current="page" href="#">Generate Game</button>
@@ -34,110 +84,74 @@
                 </li>
             </ul>
         </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-
-        <div class="col-md-2 na border">
+      </div>
+    </nav>
+    <!--End of NavBar / Start of Flag Selection Container...-->
+    <div class="container" id ="flagSelectionContainer">
+    <!-- ^^ Bootstrap Class | flagSelectionContainer is a selector used in index.js-->
+      <div class="row">
+        <!-- ^^ Bootstrap Class -->
+        <div class="col-md-2 border" id="na_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
             <h3>North America</h3>
-            <div id="na-checkboxes" class="checkbox-container">
-                <!-- Checkboxes for North America will be generated here -->
-            </div>
         </div>
-        <div class="col-md-2 eu border">
-            <h3>Europe</h3>
-            <div id="eu-checkboxes" class="checkbox-container">
-                <!-- Checkboxes for Europe will be generated here -->
-            </div>
+        <div class="col-md-2 border" id="eu_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
+          <h3>Europe</h3>
         </div>
-        <div class="col-md-2 as border">
-            <h3>Asia</h3>
-            <div id="as-checkboxes" class="checkbox-container">
-                <!-- Checkboxes for Asia will be generated here -->
-            </div>
+        <div class="col-md-2 border" id="as_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
+          <h3>Asia</h3>
         </div>
-        <div class="col-md-2 af border">
+        <div class="col-md-2 border" id="af_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
             <h3>Africa</h3>
-            <div id="af-checkboxes" class="checkbox-container">
-                <!-- Checkboxes for Africa will be generated here -->
-            </div>
+          </div>        
+        <div class="col-md-2 border" id="sa_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
+          <h3>South America</h3>
         </div>
-        <div class="col-md-2 sa border">
-            <h3>South America</h3>
-            <div id="sa-checkboxes" class="checkbox-container">
-                <!-- Checkboxes for South America will be generated here -->
-            </div>
+        <div class="col-md-2 border" id="au_">
+            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
+          <h3>Australia</h3>
         </div>
-        <div class="col-md-2 au border">
-            <h3>Australia</h3>
-            <div id="au-checkboxes" class="checkbox-container">
-                <!-- Checkboxes for Australia will be generated here -->
-            </div>
-        </div>
+      </div>
     </div>
-</div>
-<div class ="row play-button">
-    <div class="btn btn-primary col-sm-2 mx-auto mt-3">PLAY</div>
-</div>
+    <!--End of Flag Selection Container-->
 
-<!--FROM ORIGINAL PROJECT JUST TO TEST FUNCTIONALITY FOR RIGHT NOW...-->
-<div id="bingo"
-     class="container p-3 mt-4 bg-light border border-info rounded shadow justify-content-center text-center">
-    <!-- Part 1 -->
-    <!-- Row just holds the title of the game -->
-    <div class="row">
-        <div class="col-12">
-            <h1>Flag Bingo</h1>
+    <!--Start of Call Generator-->
+    <div class="container deactivate" id="callGenerator">
+        <!-- ^^ Container = Bootstrap. | callGenerator +  -->
+      <div class="row">
+      <!-- ^^ Bootstrap Class -->
+        <div class="btn btn-primary shadow mx-auto col-2 mb-3 callButton">
+          Call
         </div>
-
-        <!-- Part 2 -->
-        <!-- This row holds the button to call the new flag/country at random. -->
         <div class="row">
-            <div class="col m-1 p-1">
-                <button id="call-button" type="button" class="button">Call</button>
-            </div>
-
-            <!-- Part 3 -->
-            <!--  -->
-            <div class="row">
-                <div class="col-4">
-                    <div class="border border-info">
-                        <h3>Previously called</h3>
-                        <div class="row">
-                            <div style="height: 700px;overflow:auto;" class="col">
-                                <ol id="previous_img">
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="height: 350px" class="col-4 card border border border-info">
-                    <h3>Current call</h3>
-                    <img id="flag-call" class="card-img-top img-fluid" src="" width="297px" height="170px"
-                         alt="Press &quot;Call&quot; to call a flag.">
-                    <p id="flag-text" class="card-text"></p>
-                </div>
-                <div class="col-4">
-                    <div class="border border-info">
-                        <h3>Available list</h3>
-                        <div class="row">
-                            <div style="height: 700px;overflow:auto;" class="col">
-                                <ol id="available_img">
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div class="col alreadyCalled border"><h1>Already Called:</h1></div>
+          <div class="col currentCall border"><h1>Current Call</h1></div>
+          <div class="col availableList border"><h1>Available List:</h1></div>
         </div>
+      </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-<script src="js/index.js"></script>
-</body>
+
+    <div class="btn btn-primary rounded shadow generateLobby" id="save-button">
+      Save Cards
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script src="
+        https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+    <script src="js/index.js"></script>
+  </body>
 </html>
