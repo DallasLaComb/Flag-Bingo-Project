@@ -28,7 +28,7 @@ $(jsonData).each(function (index, value) {
             <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h2>
         </div>
         <div class="col-3 my-auto btn">
-            <h1><i class="bi bi-x-square-fill"></i><span class="ps-2">Delete</span></h2>
+            <h1><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h2>
         </div>
   `);
 });
