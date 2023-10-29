@@ -14,7 +14,7 @@ $(jsonData).each(function (index, value) {
   let lobbyName = value.lobbyName;
   console.log(lobbyName);
   $("#saved-lobbies").append(`
-    <div class="row border m-3">
+    <div class="row border shadow m-3">
         <div class="col-3 my-auto">
             <h2>${lobbyName}</h2>
         </div>
