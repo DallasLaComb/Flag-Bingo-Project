@@ -97,33 +97,115 @@ function processData() {
   }
   // ^^ Ending brackect of for loop that creates newCountryCards for each country from the data in the json file.
   $("#save-button").on("click", function () {
-    $("i").remove();
-    $("#callGenerator").removeClass("deactivate");
-    $("#save-button").addClass("deactivate");
-    $("#flagSelectionContainer").addClass("deactivate");
-    $(".availableList").append(selectedFlags);
-    console.log(selectedFlags);
-    // ^^ save-button id is the button in the bottom right that says "Saved Cards".
-    // ^^ When "Saved Cards" is clicked, the selectedFlags array is appended to the .availableList div.
-    // ^^ The logic on this is going to change a lot, but for now, it removes the save button and the flags from the page, and adds the selectedFlags array to the .availableList div.
+    $("body > :not(nav)").remove();
+    // ^^ This removes everything from the body except for the navbar.
+    $("body").append(
+      `<div class="container border shadow p-4">
+        <h1>What name do you want to give to save your card selection?</h1>
+        <div class="row">
+          <div class="col-6 mx-auto text-center pb-3">
+            <div class="input-group">
+              <input type="text" id="my-input" class="form-control" placeholder="Enter name">
+              <div class="input-group-append">
+                <button class="btn btn-primary" id="submit" type="button">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 text-center"></div>
+        </div>
+      </div>`
+    );
     let savedCountryCodes = [];
-    // Array that will hold the country codes of the selected flags.
-    for (let i = 0; i < selectedFlags.length; i++) {
-      savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
-      // ^^ This for loop traverses through the selectedFlags array and adds the country codes (which is given to them as an ID) to the savedCountryCodes array.
-      // console.log("Saved Country Codes: " + savedCountryCodes[i]);
-    }
-    let flagsToCookies = JSON.stringify(savedCountryCodes);
-    // ^^ This converts the savedCountryCodes array into a string so that it can be stored in a cookie.
-    Cookies.set("myCookie", flagsToCookies, { path: "/" });
-    // ^^ This sets the cookie. The first parameter is the name of the cookie, the second parameter is the value of the cookie, and the third parameter is the path of the cookie.
+    let cookieArray = [];
+    
+    $("#submit").on("click", function() {
+        let userinput = $("#my-input").val();
+        console.log("User input:", userinput);
+    
+        for (let i = 0; i < selectedFlags.length; i++) {
+            savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
+        }
+        console.log("Saved country codes:", savedCountryCodes);
+    
+        let lobbyData = {
+            lobbyName: userinput,
+            countryCodes: savedCountryCodes
+        };
+        console.log("Lobby data:", lobbyData);
+    
+        let previousCookie = getCookie("lobbyData");
+        console.log("Previous cookie data:", previousCookie);
+    
+        if (previousCookie.length === 0) {
+            console.log("No previous cookie found. Setting new cookie...");
+            cookieArray.push(lobbyData);
+            setCookie("lobbyData", JSON.stringify(cookieArray));
+        } else {
+            try {
+                let existingData = JSON.parse(previousCookie);
+                console.log("Parsed existing cookie data:", existingData);
+                
+                // Check if existingData is an array
+                if (!Array.isArray(existingData)) {
+                    console.log("Existing data is not an array. Converting to array...");
+                    existingData = [existingData];
+                }
+                // existingData.length = 0;
+                // ^^ Can be reused to reset cookies... Just comment line below when doing so too...
+                existingData.push(lobbyData);
+                console.log("Updated cookie data:", existingData);
+                setCookie("lobbyData", JSON.stringify(existingData));
+    
+            } catch (e) {
+                console.error("Error parsing existing cookie data:", e);
+            }
+        }
+    });
+    
+    
+
   });
 }
-// ^^ Ending bracket of processData function.
-loadData(processData);
+  
+  // ^^ Ending bracket of processData function.
+  loadData(processData);
+  
+  // Helper function to set a cookie with a name and value
+  function setCookie(name, value) {
+    document.cookie = name + "=" + encodeURIComponent(value) + "; path=/";
+  }
+
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === name + "=") {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }  
+  // console.log(getCookie("lobbyData"));
 // ^^ The end of the hompage code. Code below this is for the other tabs...
 
 
-
-
-{/* <input type="text" id="my-input"> */}
+// // ^^ save-button id is the button in the bottom right that says "Saved Cards".
+// // ^^ When "Saved Cards" is clicked, the selectedFlags array is appended to the .availableList div.
+// // ^^ The logic on this is going to change a lot, but for now, it removes the save button and the flags from the page, and adds the selectedFlags array to the .availableList div.
+// // let savedCountryCodes = [];
+// // Array that will hold the country codes of the selected flags.
+// for (let i = 0; i < selectedFlags.length; i++) {
+//   savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
+//   // ^^ This for loop traverses through the selectedFlags array and adds the country codes (which is given to them as an ID) to the savedCountryCodes array.
+//   // console.log("Saved Country Codes: " + savedCountryCodes[i]);
+// }
+// let flagsToCookies = JSON.stringify(savedCountryCodes);
+// // ^^ This converts the savedCountryCodes array into a string so that it can be stored in a cookie.
+// Cookies.set("myCookie", flagsToCookies, { path: "/" });
+// // ^^ This sets the cookie. The first parameter is the name of the cookie, the second parameter is the value of the cookie, and the third parameter is the path of the cookie.
