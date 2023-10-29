@@ -135,15 +135,14 @@ function processData() {
         };
         console.log("Lobby data:", lobbyData);
     
-        let previousCookie = getCookie("lobbyData");
-        console.log("Previous cookie data:", previousCookie);
-    
-        if (previousCookie.length === 0) {
+        if (getCookie("lobbyData") == null) {
             console.log("No previous cookie found. Setting new cookie...");
             cookieArray.push(lobbyData);
             setCookie("lobbyData", JSON.stringify(cookieArray));
         } else {
             try {
+                let previousCookie = getCookie("lobbyData");
+                console.log("Previous cookie data:", previousCookie);
                 let existingData = JSON.parse(previousCookie);
                 console.log("Parsed existing cookie data:", existingData);
                 
