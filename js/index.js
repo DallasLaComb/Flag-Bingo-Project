@@ -119,19 +119,21 @@ function processData() {
     );
     let savedCountryCodes = [];
     let cookieArray = [];
-    
+    let countryName = [];
     $("#submit").on("click", function() {
         let userinput = $("#my-input").val();
         console.log("User input:", userinput);
     
         for (let i = 0; i < selectedFlags.length; i++) {
             savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
+            countryName[i] =  $(selectedFlags[i]).text();
         }
         console.log("Saved country codes:", savedCountryCodes);
     
         let lobbyData = {
             lobbyName: userinput,
-            countryCodes: savedCountryCodes
+            countryCodes: savedCountryCodes,
+            countryName: countryName
         };
         console.log("Lobby data:", lobbyData);
     
@@ -156,14 +158,14 @@ function processData() {
                 existingData.push(lobbyData);
                 console.log("Updated cookie data:", existingData);
                 setCookie("lobbyData", JSON.stringify(existingData));
-    
             } catch (e) {
                 console.error("Error parsing existing cookie data:", e);
             }
         }
+        window.location.href = "savedCards.html";
     });
     
-    
+  
 
   });
 }
