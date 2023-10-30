@@ -175,8 +175,13 @@ function processData() {
   
   // Helper function to set a cookie with a name and value
   function setCookie(name, value) {
-    document.cookie = name + "=" + encodeURIComponent(value) + "; path=/";
+    var expiryDate = new Date();
+    expiryDate.setFullYear(expiryDate.getFullYear() + 100);  // Setting expiry date to 10 years in the future
+    document.cookie = name + "=" + encodeURIComponent(value) + 
+                      "; expires=" + expiryDate.toUTCString() + 
+                      "; path=/";
   }
+  
 
   function getCookie(name) {
     let cookieValue = null;
