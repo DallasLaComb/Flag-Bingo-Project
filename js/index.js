@@ -53,7 +53,7 @@ function processData() {
     let countryCode = countryData[i].countryCode.toLowerCase(); // country code is used for the image source. EX: us.png == ${countryCode}.png
     let continent = countryData[i].continent; // continent is used to determine which div the country will be appended to: EX: NA == .na, EU == .eu, etc.
     let countryName = countryData[i].countryName; // countryName is used to display the country name on the page: EX: United States
-    let countryImage = `<img class="img-fluid" src="imagesSmall/${countryCode}.png" alt=${countryName}>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
+    let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=${countryName}>`; // countryImage is used to display the country flag on the page: EX: <img src="flagImages/us.png"> displays US Flag
 
     let newCountryCard = $(
       `<div class='col-2-sm pt-3 border-top mt-3' id=${countryCode}>${countryName}<br class ="hidden">${countryImage}<i class="bi bi-app"></i></div>`
@@ -74,7 +74,7 @@ function processData() {
       }
     });
     // ^^ newCountryCard is the div that is created for each country. It is appended to the appropriate continent div.
-    // EX: <div class='col-2-sm pt-3 border-top mt-3' id='us'>United States<br><img class="img-fluid" src="imagesSmall/us.png"></div>
+    // EX: <div class='col-2-sm pt-3 border-top mt-3' id='us'>United States<br><img class="img-fluid" src="flagImages/us.png"></div>
     // newCountryCards also get added new on click functionality.
 
     // Appends the newCountryCard div to the appropriate continent div. Appends means to add to the end of the current html div.
