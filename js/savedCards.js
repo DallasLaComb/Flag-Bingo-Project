@@ -1,6 +1,7 @@
 $(function () {
   $("#navbar-placeholder").load("navbar.html");
 });
+// ^^ Loads navbar.html into the navbar-placeholder div.
 let jsonString = Cookies.get("lobbyData");
 console.log(jsonString);
 let jsonData = JSON.parse(jsonString);
