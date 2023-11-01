@@ -1,7 +1,7 @@
 $(function () {
   $("#navbar-placeholder").load("navbar.html");
 });
-
+// ^^ Loads navbar.html into the navbar-placeholder div.
 // Pulls the country data from the json file and stores it in the countryData variable.
 let countryData = [];
 function loadData(callback) {
@@ -14,7 +14,6 @@ function loadData(callback) {
 function processData() {
   // processData function is where the countryData is processed and displayed on the page.
   // Create continent arrays in continents object.
-
   const continents = {
     na: [],
     eu: [],
@@ -76,7 +75,6 @@ function processData() {
     // ^^ newCountryCard is the div that is created for each country. It is appended to the appropriate continent div.
     // EX: <div class='col-2-sm pt-3 border-top mt-3' id='us'>United States<br><img class="img-fluid" src="flagImages/us.png"></div>
     // newCountryCards also get added new on click functionality.
-
     // Appends the newCountryCard div to the appropriate continent div. Appends means to add to the end of the current html div.
     switch (continent) {
       case "NA":
@@ -121,37 +119,38 @@ function processData() {
         </div>
       </div>`
     );
+    // ^^ When you click "Save Cards" this is the form that appears. It asks for a name to save the cards under.
     let savedCountryCodes = [];
     let cookieArray = [];
     let countryName = [];
     $("#submit").on("click", function () {
       let userinput = $("#my-input").val();
-      console.log("User input:", userinput);
-
+      // console.log("User input:", userinput);
       for (let i = 0; i < selectedFlags.length; i++) {
         savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
         countryName[i] = $(selectedFlags[i]).text();
       }
-      console.log("Saved country codes:", savedCountryCodes);
-
+      // console.log("Saved country codes:", savedCountryCodes);
       let lobbyData = {
         lobbyName: userinput,
         countryCodes: savedCountryCodes,
         countryName: countryName
       };
-      console.log("Lobby data:", lobbyData);
+      // The data we need for the "Saved Cards" page, this gets saved in a permanent cookie later...
+      // console.log("Lobby data:", lobbyData);
 
       if (getCookie("lobbyData") == null) {
-        console.log("No previous cookie found. Setting new cookie...");
+        // console.log("No previous cookie found. Setting new cookie...");
         cookieArray.push(lobbyData);
         setCookie("lobbyData", JSON.stringify(cookieArray));
+        // Sets a new cookie if user doesn't currently have one.
       } else {
         try {
+          // If user already has a cookie, we're gonna update the existing cookie.
           let previousCookie = getCookie("lobbyData");
           console.log("Previous cookie data:", previousCookie);
           let existingData = JSON.parse(previousCookie);
-          console.log("Parsed existing cookie data:", existingData);
-
+          // console.log("Parsed existing cookie data:", existingData);
           // Check if existingData is an array
           if (!Array.isArray(existingData)) {
             console.log("Existing data is not an array. Converting to array...");
@@ -173,20 +172,16 @@ function processData() {
 
   });
 }
-
 // ^^ Ending bracket of processData function.
 loadData(processData);
-
 // Helper function to set a cookie with a name and value
 function setCookie(name, value) {
   var expiryDate = new Date();
-  expiryDate.setFullYear(expiryDate.getFullYear() + 100);  // Setting expiry date to 10 years in the future
+  expiryDate.setFullYear(expiryDate.getFullYear() + 100);  // Setting expiry date to 100 years in the future
   document.cookie = name + "=" + encodeURIComponent(value) +
     "; expires=" + expiryDate.toUTCString() +
     "; path=/";
 }
-
-
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -201,3 +196,4 @@ function getCookie(name) {
   }
   return cookieValue;
 }
+// Helper function to get cookies that you have set earlier...
