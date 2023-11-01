@@ -25,50 +25,9 @@
   </head>
   <body>
     <!-- Makes the navbar you see at the top of the page. [LALCC] [Generate Game] [Saved Cards] [How To Play] [About LALCC]-->
-    <nav class="navbar navbar-expand-md bg-primary mb-4" data-bs-theme="dark">
-        <!-- ^^ Bootstrap Classes -->
-      <div class="container-fluid">
-        <!-- ^^ Bootstrap Classes -->
-        <a class="navbar-brand" href="https://www.ccsu.edu/latin-american-latino-and-caribbean-center/mission" target="_blank">LALCC</a>
-        <!-- ^^ Bootstrap Classes , links to LALCC Webpage when you click on "LALCC Logo"--> 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- ^^ Bootstrap functionality for when the hamburger icon shows up -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- ^^ Bootstrap Classes. Bootstrap ID...-->
-          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-            <!-- ^^ Bootstrap Classes -->
-            <li class="nav-item">
-            <!-- ^^ Bootstrap Classes -->
-              <a class="nav-link active" aria-current="page" href="index.html">Generate Game</a>
-              <!--^^ Creates link to homepage.-->
-            </li>
-            <li class="nav-item">
-            <!-- ^^ Bootstrap Classes -->
-            <a class="nav-link" id="savedCards" href="savedCards.html">Saved Cards</a>
-            <!-- ^^ Bootstrap Classes. ID 'savedCards' is used in index.js to select the Saved Cards Button. -->
-            </li>
-            <li class="nav-item">
-            <!-- ^^ Bootstrap Classes -->
-              <a class="nav-link" id="howToPlay" href="howToPlay.html">How To Play</a>
-            <!-- ^^ Bootstrap Classes. ID 'howToPlay' is used in index.js to select the How To Play Button..-->
-            </li>
-            <li class="nav-item">
-            <!-- ^^ Bootstrap Classes -->
-              <a class="nav-link" id="aboutLALCC" href="aboutLALCC.html">About LALCC</a>
-            <!-- ^^ Bootstrap Classes. ID 'aboutLALCC' is used in index.js to select the About LALCC Button.-->
-        </li>
-          </ul>
-    </nav>
+    <div id="navbar-placeholder"></div>
+    <!--^^ This is a navbar placeholder, the id is to target it in the javascript... It gets loaded navbar.html...-->
+    
 
         <script
         src="https://code.jquery.com/jquery-3.7.1.js"

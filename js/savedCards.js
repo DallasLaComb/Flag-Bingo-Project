@@ -1,12 +1,7 @@
-// // Creating saved cards tab. When you click on the saved cards tab, it will display the saved cards via cookies...
-// ADD ANYTHING FOR SAVED CARDS TAB BELOW THIS LINE
-// let retrievedCookies = JSON.parse(jsonString);
-// for (let i=0; i<retrievedCookies.length; i++) {
-//     let lobbyName = retrievedCookies[i].lobbyName;
-//     $("body").append(lobbyName);
-// }
-// console.log("Cookie Dump: " + jsonString);
-
+$(function () {
+  $("#navbar-placeholder").load("navbar.html");
+});
+// ^^ Loads navbar.html into the navbar-placeholder div.
 let jsonString = Cookies.get("lobbyData");
 console.log(jsonString);
 let jsonData = JSON.parse(jsonString);
@@ -33,8 +28,8 @@ $(jsonData).each(function (index, value) {
         </div>
   `);
   console.log(index, value);
-    // console.log(jsonData[index].countryCodes[o]);
-  $(`#${index}`).on("click", function() {
+  // console.log(jsonData[index].countryCodes[o]);
+  $(`#${index}`).on("click", function () {
     $("body > :not(nav)").remove();
 
     $("body").append(`
@@ -56,21 +51,21 @@ $(jsonData).each(function (index, value) {
         </div>
       </div>
     </div>`);
-    for (let i=0; i< jsonData[index].countryCodes.length; i++){
-        console.log("CURRENT CONSOLE LOG: " + jsonData[index].countryCodes[i] + jsonData[index]);
-// ^^ This is how to get each individual country code for selection...
-        
+    for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
+      console.log("CURRENT CONSOLE LOG: " + jsonData[index].countryCodes[i] + jsonData[index]);
+      // ^^ This is how to get each individual country code for selection...
+
       $(".availableList").append(jsonData[index].countryCodes[i]);
       let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
       let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
-      let countryImage = `<img class="img-fluid" src="imagesSmall/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
-     
+      let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
+
       let newCountryCard = $(
         `<div class='col-2-sm pt-3 border-top mt-3' id=${countryCode[i]}> ${countryName} <br class ="hidden">${countryImage}</div>`
       )
       $("#availableList").append(newCountryCard);
     }
-});
+  });
 });
 
 
