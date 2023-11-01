@@ -1,3 +1,7 @@
+$(function(){
+  $("#navbar-placeholder").load("navbar.html");
+});
+
 // Pulls the country data from the json file and stores it in the countryData variable.
 let countryData = [];
 function loadData(callback) {

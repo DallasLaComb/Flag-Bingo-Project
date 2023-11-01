@@ -1,3 +1,6 @@
+$(function(){
+  $("#navbar-placeholder").load("navbar.html");
+});
 // // Creating saved cards tab. When you click on the saved cards tab, it will display the saved cards via cookies...
 // ADD ANYTHING FOR SAVED CARDS TAB BELOW THIS LINE
 // let retrievedCookies = JSON.parse(jsonString);
