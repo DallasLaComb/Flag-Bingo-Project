@@ -25,14 +25,15 @@ $(jsonData).each(function (index, value) {
             <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
         </div>
         <div class="col-3 my-auto btn">
-            <h1 class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
+            <h1 id="${lobbyName}" class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
         </div>
   `);
 
 $(".delete-btn").on("click", function () {
+  // console.log("delete button clicked: " + $(this).attr("id"));
   let index = $(this).attr("index");
   console.log("delete button clicked for index: " + index);
-  deleteObjectFromCookie("lobbyData", "lobbyName", lobbyName);
+  deleteObjectFromCookie("lobbyData", "lobbyName", $(this).attr("id"));
   location.reload();
 });
 
