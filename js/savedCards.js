@@ -62,7 +62,7 @@ $(jsonData).each(function (index, value) {
         let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
   
         let newCountryCard = $(
-          `<div class='col-2-sm pt-3 border-top mt-3' id=${countryCode[i]}> ${countryName} <br class ="hidden">${countryImage}</div>`
+          `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
         )
         $("#availableList").append(newCountryCard);
       }
