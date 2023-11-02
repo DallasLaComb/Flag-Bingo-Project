@@ -5,9 +5,10 @@ $(function () {
 let jsonString = Cookies.get("lobbyData");
 console.log(jsonString);
 let jsonData = JSON.parse(jsonString);
+let lobbyName;
 // jsonData == [{lobbyName: "Test", countryCodes: ["us", "ca"]}, {lobbyName: "Test2", countryCodes: ["us", "ca"]}];
 $(jsonData).each(function (index, value) {
-  let lobbyName = value.lobbyName;
+  lobbyName= value.lobbyName;
   console.log(lobbyName);
   $("#saved-lobbies").append(`
     <div class="row border shadow m-3">
@@ -21,12 +22,20 @@ $(jsonData).each(function (index, value) {
             <h1><i class="bi bi-printer"></i><span class="ps-2">Print</span></h1>
         </div>
         <div class="col-2 my-auto btn">
-            <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h2>
+            <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
         </div>
         <div class="col-3 my-auto btn">
-            <h1><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h2>
+            <h1 class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
         </div>
   `);
+
+$(".delete-btn").on("click", function () {
+  let index = $(this).attr("index");
+  console.log("delete button clicked for index: " + index);
+  deleteObjectFromCookie("lobbyData", "lobbyName", lobbyName);
+  location.reload();
+});
+
   console.log(index, value);
   // console.log(jsonData[index].countryCodes[o]);
   $(`#${index}`).on("click", function () {
@@ -50,6 +59,10 @@ $(jsonData).each(function (index, value) {
         </div>
       </div>
     </div>`);
+
+
+
+
     // This adds the "Call Generator" page to the body of the page.
     // ^^ Already called, current call, and available list...
     function loadAvailableList(){
@@ -72,4 +85,34 @@ $(jsonData).each(function (index, value) {
   });
 });
 
+function deleteObjectFromCookie(cookieName, objectKey, keyValue) {
+  let cookieValue = getCookie(cookieName);
+  if (cookieValue) {
+      let data = JSON.parse(cookieValue);
+      // Assuming it's an array of objects as you described
+      let updatedData = data.filter(obj => obj[objectKey] !== keyValue);
+      setCookie(cookieName, JSON.stringify(updatedData), 1000); // Set for 7 days, adjust as needed
+  }
+}
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === name + "=") {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
 
+function setCookie(name, value) {
+  var expiryDate = new Date();
+  expiryDate.setFullYear(expiryDate.getFullYear() + 100);  // Setting expiry date to 100 years in the future
+  document.cookie = name + "=" + encodeURIComponent(value) +
+    "; expires=" + expiryDate.toUTCString() +
+    "; path=/";
+}
