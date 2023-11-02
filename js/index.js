@@ -102,7 +102,10 @@ function processData() {
     $("body > :not(nav)").remove();
     // ^^ This removes everything from the body except for the navbar.
     $("body").append(
-      `<div class="container border shadow p-4">
+      `
+      <div id="navbar-placeholder"></div>
+
+      <div class="container border shadow p-4">
         <h1>What name do you want to give to save your card selection?</h1>
         <div class="row">
           <div class="col-6 mx-auto text-center pb-3">
@@ -119,6 +122,10 @@ function processData() {
         </div>
       </div>`
     );
+    $(function () {
+      $("#navbar-placeholder").load("navbar.html");
+    });
+ 
     // ^^ When you click "Save Cards" this is the form that appears. It asks for a name to save the cards under.
     let savedCountryCodes = [];
     let cookieArray = [];
