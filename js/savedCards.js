@@ -19,7 +19,7 @@ $(jsonData).each(function (index, value) {
             <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
         </div>
         <div class="col-2 my-auto btn">
-            <h1><i class="bi bi-printer"></i><span class="ps-2">Print</span></h1>
+            <h1><i class="printbtn"></i><span class="ps-2">Print</span></h1>
         </div>
         <div class="col-2 my-auto btn">
             <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
@@ -36,6 +36,13 @@ $(".delete-btn").on("click", function () {
   deleteObjectFromCookie("lobbyData", "lobbyName", $(this).attr("id"));
   location.reload();
 });
+$(".printbtn").on("click", function () {
+  let index = $(this).attr("index");
+  console.log("print btn clicked for index: " + index);
+  printPages();
+
+
+}
 
   console.log(index, value);
   // console.log(jsonData[index].countryCodes[o]);
@@ -116,4 +123,20 @@ function setCookie(name, value) {
   document.cookie = name + "=" + encodeURIComponent(value) +
     "; expires=" + expiryDate.toUTCString() +
     "; path=/";
+}
+
+function printPages() {
+  var pageCount = parseInt(document.getElementById('pageCount').value);
+  var content = document.getElementById('content').innerHTML;
+  var printWindow = window.open('', '_blank');
+
+  for (var i = 0; i < pageCount; i++) {
+    printWindow.document.write('<html><head>');
+    printWindow.document.write('<link rel="stylesheet" href="./css/grid.css" type="text/css" />');
+    printWindow.document.write('</head><body>');
+    printWindow.document.write(content);
+    printWindow.document.write('</body></html>');
+    setTimeout(function(){mywindow.print();},1000);
+  }
+  setTimeout(function() {printWindow.print()},1000);
 }
