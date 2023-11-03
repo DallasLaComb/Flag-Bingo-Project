@@ -20,6 +20,8 @@ $(jsonData).each(function (index, value) {
         </div>
         <div class="col-2 my-auto btn">
             <h1><id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
+            <label for="pageCount"></label>
+            <input type="number" id="pageCount" min="1" value="1">
         </div>
         <div class="col-2 my-auto btn">
             <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
