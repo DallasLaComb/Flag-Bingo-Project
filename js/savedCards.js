@@ -19,9 +19,9 @@ $(jsonData).each(function (index, value) {
             <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
         </div>
         <div class="col-2 my-auto btn">
-            <h1><id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
             <label for="pageCount"></label>
             <input type="number" id="pageCount" min="1" value="1">
+            <h1><id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
         </div>
         <div class="col-2 my-auto btn">
             <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
@@ -138,6 +138,7 @@ function printPages() {
     printWindow.document.write('</head><body>');
     printWindow.document.write('<div class="bingo-grid"><div class="bingo-cell">1</div><div class="bingo-cell">2</div><div class="bingo-cell">3</div><div class="bingo-cell">4</div><div class="bingo-cell">5</div><div class="bingo-cell">6</div><div class="bingo-cell">7</div><div class="bingo-cell">8</div><div class="bingo-cell">9</div><div class="bingo-cell">10</div><div class="bingo-cell">11</div><div class="bingo-cell">12</div><div class="bingo-cell free-space">FREE</div><div class="bingo-cell">13</div><div class="bingo-cell">14</div><div class="bingo-cell">15</div><div class="bingo-cell">16</div><div class="bingo-cell">17</div><div class="bingo-cell">18</div><div class="bingo-cell">19</div><div class="bingo-cell">20</div><div class="bingo-cell">21</div><div class="bingo-cell">22</div><div class="bingo-cell">23</div><div class="bingo-cell">24</div></div>');
     printWindow.document.write('</body></html>');
+    setTimeout(function(){mywindow.print();},1000);
   }
   setTimeout(function() {printWindow.print()},1000);
 }
