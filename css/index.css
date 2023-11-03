@@ -22,3 +22,17 @@
     left:80%;
 }
 /* ^^ This id is used only for the "saved cards" button in the bottom right.  */
+.bingo-grid {
+    padding-left:10px;
+    padding-right:10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 10px;
+    text-align: center;
+    height: 10.5in;
+    }
+    
+.bingo-cell {
+    border: 1.3px solid black;
+    }

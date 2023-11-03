@@ -127,12 +127,12 @@ function setCookie(name, value) {
 
 function printPages() {
   var pageCount = parseInt(document.getElementById('pageCount').value);
-  var content = document.getElementById('content').innerHTML;
+  var content = (''
   var printWindow = window.open('', '_blank');
 
   for (var i = 0; i < pageCount; i++) {
     printWindow.document.write('<html><head>');
-    printWindow.document.write('<link rel="stylesheet" href="./css/grid.css" type="text/css" />');
+    printWindow.document.write('<link rel="stylesheet" href="./css/index.css" type="text/css" />');
     printWindow.document.write('</head><body>');
     printWindow.document.write(content);
     printWindow.document.write('</body></html>');
