@@ -33,6 +33,9 @@ $(jsonData).each(function (index, value) {
         </button>
   `);
 
+  //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
+  $("#deleteModal").load("deleteSetModal.html");
+
   // The following function performs the deletion of a card set when the set's "Delete" button is pressed
   $(".delete-btn").on("click", function () {
     /* 
@@ -40,7 +43,7 @@ $(jsonData).each(function (index, value) {
     * into the deleteObjectFromCookie() function
     */
     let index = $(this).attr("id");
-
+    
     //Function that executes when the modal is loaded
     $("#deleteModal").load("deleteSetModal.html", function () {
 
