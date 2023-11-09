@@ -11,11 +11,10 @@ let lobbyName;
 * The following function generates a row containing each card set and four buttons per each set:
 * "Play", "Print", "Edit", "Delete"
 */
-$(jsonData).each(function(index, value) {
+$(jsonData).each(function (index, value) {
   // jsonData == [{lobbyName: "Test", countryCodes: ["us", "ca"]}, {lobbyName: "Test2", countryCodes: ["us", "ca"]}];
   lobbyName= value.lobbyName;
-  function savedSetView(){
-    $("#saved-lobbies").append(`
+  $("#saved-lobbies").append(`
     <div class="row border shadow m-3">
         <div class="col-3 my-auto">
             <h2>${lobbyName}</h2>
@@ -28,15 +27,13 @@ $(jsonData).each(function(index, value) {
             <input type="number" id="pageCount" min="1" value="1">
             <h1><id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
         </div>
-        <button type="button" class="col-2 my-auto btn">
-            <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
-        </button>
-        <button type="button" class="col-3 my-auto btn delete-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <h1 id="${lobbyName}" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
+        <div class="col-2 my-auto btn">
+            <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
+        </div>
+        <button type="button" class="col-3 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <h1 id="${lobbyName}" class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
         </button>
   `);
-  }
-  savedSetView();
 
   //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
   $("#deleteModal").load("deleteSetModal.html");
@@ -65,39 +62,6 @@ $(jsonData).each(function(index, value) {
     });
   });
 
-  $(".edit-btn").on("click", function(){
-    let currentSetName = $(this).attr("id");
-    //Injects the view for editing the card set's name, global function from index.js
-    window.injectSaveSetView();
-    /* 
-    * if the submit button is clicked, update the set's from what was submitted in the form,
-    * then save to cookies and update the view
-    */
-    $(document).on("click", "#submit", function(){
-      // The input to the form is stored in a variable and will be passed as the new set name 
-      let newSetName = $("#my-input").val();
-  
-      // Update the lobby name in the jsonData array
-      jsonData.forEach((item) => {
-          if (item.lobbyName === currentSetName) {
-              item.lobbyName = newSetName;
-          }
-      });
-  
-      // Save the updated jsonData to the browser's cookies
-      setCookie("lobbyData", JSON.stringify(jsonData));
-  
-      // Update the lobby name in the rendered page
-      $(".row").each(function(index) {
-          if ($(this).find("h2").text() === currentSetName) {
-              $(this).find("h2").text(newSetName);
-          }
-      });
-  
-      // Re-render the view displaying all sets
-      window.location.href = "savedCards.html";
-    });
-  });
 
   $(".printbtn").on("click", function () {
     let index = $(this).attr("index");

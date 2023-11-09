@@ -97,8 +97,8 @@ function processData() {
         break;
     }
   }
-
-  window.injectSaveSetView = function(){
+  // ^^ Ending brackect of for loop that creates newCountryCards for each country from the data in the json file.
+  $("#save-button").on("click", function () {
     $("body > :not(nav)").remove();
     // ^^ This removes everything from the body except for the navbar.
     $("body").append(
@@ -122,10 +122,6 @@ function processData() {
         </div>
       </div>`
     );
-  }
-  // ^^ Ending brackect of for loop that creates newCountryCards for each country from the data in the json file.
-  $("#save-button").on("click", function () {
-    window.injectSaveSetView()
     $(function () {
       $("#navbar-placeholder").load("navbar.html");
     });
