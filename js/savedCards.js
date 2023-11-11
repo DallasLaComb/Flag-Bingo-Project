@@ -155,6 +155,12 @@ $(jsonData).each(function(index, value) {
 
 }); // End OUTER jsonData function 
 
+
+// Back button returns to the previous page
+$("#back-btn").on("click", function(){
+  window.location.href = "index.html";
+});
+
 function deleteObjectFromCookie(cookieName, objectKey, keyValue) {
   let cookieValue = getCookie(cookieName);
   if (cookieValue) {

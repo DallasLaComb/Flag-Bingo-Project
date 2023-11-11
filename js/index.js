@@ -120,7 +120,15 @@ function processData() {
         <div class="row">
           <div class="col-12 text-center"></div>
         </div>
-      </div>`
+      </div>
+
+      <!-- Back button -->
+      <div class="container text-end" id="back-btn-container">
+        <div class="btn btn-primary rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
+          Back
+        </div>
+      </div>
+      `
     );
   }
   // ^^ Ending brackect of for loop that creates newCountryCards for each country from the data in the json file.
@@ -128,6 +136,11 @@ function processData() {
     window.injectSaveSetView()
     $(function () {
       $("#navbar-placeholder").load("navbar.html");
+    });
+
+    // Back button returns to the previous page
+    $("#back-btn").on("click", function(){
+      window.location.href = "index.html";
     });
  
     // ^^ When you click "Save Cards" this is the form that appears. It asks for a name to save the cards under.
@@ -178,8 +191,6 @@ function processData() {
       }
       window.location.href = "savedCards.html";
     });
-
-
 
   });
 }
