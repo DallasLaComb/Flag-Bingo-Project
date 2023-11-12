@@ -23,11 +23,11 @@ $(jsonData).each(function(index, value) {
         <div class="col-2 my-auto btn">
             <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
         </div>
-        <div class="col-2 my-auto btn">
+        <button type="button" class="col-2 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticPrintModal">
             <label for="pageCount"></label>
             <input type="number" id="pageCount" min="1" value="1">
             <h1><id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
-        </div>
+        </button>
         <button type="button" class="col-2 my-auto btn">
             <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
         </button>
@@ -101,17 +101,20 @@ $(jsonData).each(function(index, value) {
  //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
  $("#printmodal").load("printmodal.html");
  // The following function performs the deletion of a card set when the set's "Delete" button is pressed
- $(".printbtn").on("click", function ()
-  {
+ $(".printbtn").on("click", function(){
+
     let index = $(this).attr("id");
-    $("#printmodal").load("printmodal.html", function()
-    {
+    console.log("printing for: " + index);
+
+    $("#printmodal").load("printmodal.html", function(){
+      
         $(document).on("click", "#modal-print", function()
         {
+          
           try
           {
-            printPages();
-            location.reload();
+            //printPages();
+            //location.reload();
           }
           catch(error)
           {
