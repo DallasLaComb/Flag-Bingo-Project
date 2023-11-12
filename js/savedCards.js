@@ -62,7 +62,7 @@ $(jsonData).each(function(index, value) {
           console.error("Error occurred while deleting from the cookie:", error);
         }
       });
-    });
+    });     
   });
 
   $(".edit-btn").on("click", function(){
@@ -98,14 +98,29 @@ $(jsonData).each(function(index, value) {
       window.location.href = "savedCards.html";
     });
   });
-
-  $(".printbtn").on("click", function () {
-    let index = $(this).attr("index");
-    console.log("print btn clicked for index: " + index);
-    printPages();
-
-
+ //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
+ $("#printmodal").load("printmodal.html");
+ // The following function performs the deletion of a card set when the set's "Delete" button is pressed
+ $(".printbtn").on("click", function ()
+  {
+    let index = $(this).attr("id");
+    $("#printmodal").load("printmodal.html", function()
+    {
+        $(document).on("click", "#modal-print", function()
+        {
+          try
+          {
+            printPages();
+            location.reload();
+          }
+          catch(error)
+          {
+            console.error("Error",error);
+          }
+        });
+    });
   });
+
 
   // The following function executes the 'play game' functionality when a set's "Play" button is pressed
   $(`#${index}`).on("click", function () {
@@ -201,5 +216,5 @@ function printPages() {
     setTimeout(function(){mywindow.print();},1000);
   }
   setTimeout(function() {printWindow.print()},1000);
-}
-
+};
+  
