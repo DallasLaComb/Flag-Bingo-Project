@@ -23,11 +23,11 @@ $(jsonData).each(function(index, value) {
         <div class="col-2 my-auto btn">
             <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
         </div>
-        <div class="col-2 my-auto btn">
+        <button type="button" class="col-2 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticPrintModal">
             <label for="pageCount"></label>
             <input type="number" id="pageCount" min="1" value="1">
-            <h1><id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
-        </div>
+            <h1 id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
+        </button>
         <button type="button" class="col-2 my-auto btn">
             <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
         </button>
@@ -62,7 +62,7 @@ $(jsonData).each(function(index, value) {
           console.error("Error occurred while deleting from the cookie:", error);
         }
       });
-    });
+    });     
   });
 
   $(".edit-btn").on("click", function(){
@@ -98,14 +98,32 @@ $(jsonData).each(function(index, value) {
       window.location.href = "savedCards.html";
     });
   });
+ //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
+ $("#printmodal").load("printmodal.html");
+ // The following function performs the deletion of a card set when the set's "Delete" button is pressed
+ $(".printbtn").on("click", function(){
 
-  $(".printbtn").on("click", function () {
-    let index = $(this).attr("index");
-    console.log("print btn clicked for index: " + index);
-    printPages();
+    let index = $(this).attr("id");
+    console.log("Printing set: " + index);
 
-
+    $("#printmodal").load("printmodal.html", function(){
+      
+        $(document).on("click", "#modal-print", function()
+        {
+          
+          try
+          {
+            printPages();
+            //location.reload();
+          }
+          catch(error)
+          {
+            console.error("Error",error);
+          }
+        });
+    });
   });
+
 
   // The following function executes the 'play game' functionality when a set's "Play" button is pressed
   $(`#${index}`).on("click", function () {
@@ -209,8 +227,19 @@ function setCookie(name, value) {
 }
 
 function printPages() {
-  var pageCount = parseInt(document.getElementById('pageCount').value);
-  var printWindow = window.open('', '_blank');
+
+  let modalPath = "printmodal.html";
+  
+  $.get(modalPath, function(data){
+    let parsedData = $(data);
+    let pageCountID = parsedData.find('#pageCount');
+    let pageCount = pageCountID.val();
+
+    console.log("Number of cards to print: "+ pageCount);
+
+  });
+  
+  /* var printWindow = window.open('', '_blank');
 
   for (var i = 0; i < pageCount; i++) {
     printWindow.document.write('<html><head>');
@@ -221,6 +250,6 @@ function printPages() {
     printWindow.document.write('</body></html>');
     setTimeout(function(){mywindow.print();},1000);
   }
-  setTimeout(function() {printWindow.print()},1000);
-}
-
+  setTimeout(function() {printWindow.print()},1000); */
+};
+  
