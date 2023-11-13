@@ -115,6 +115,7 @@ $(jsonData).each(function(index, value) {
       
       // This adds the "Call Generator" container to the body of the page
       $("body").append(`
+      <div id="navbar-placeholder"></div>
       <div class="container" id="callGenerator">
           <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
         <div class="row">
@@ -131,8 +132,17 @@ $(jsonData).each(function(index, value) {
             <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
           </div>
         </div>
-      </div>`);
-
+      </div>
+      <!-- Back button -->
+      <div class="container text-end" id="back-btn-container">
+        <div class="btn btn-primary rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
+          Back
+        </div>
+      </div>
+      `);
+      
+    //Dynamically Load navbar
+    $("#navbar-placeholder").load("navbar.html");
     // loads the current set's flags into the available list of the call generator
     function loadAvailableList(){
       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
@@ -151,6 +161,11 @@ $(jsonData).each(function(index, value) {
     }
     loadAvailableList();
 
+    // Back button returns to the previous page
+    $("#back-btn").on("click", function(){
+      window.location.href = "index.html";
+    });
+    
   }); // End 'play game' function
 
 }); // End OUTER jsonData function 
