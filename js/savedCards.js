@@ -67,8 +67,15 @@ $(jsonData).each(function(index, value) {
 
   $(".edit-btn").on("click", function(){
     let currentSetName = $(this).attr("id");
+
     //Injects the view for editing the card set's name, global function from index.js
     window.injectSaveSetView();
+
+    //Dynamic loading of the navbar
+    $(function () {
+      $("#navbar-placeholder").load("navbar.html");
+    });
+
     /* 
     * if the submit button is clicked, update the set's from what was submitted in the form,
     * then save to cookies and update the view
@@ -97,6 +104,12 @@ $(jsonData).each(function(index, value) {
       // Re-render the view displaying all sets
       window.location.href = "savedCards.html";
     });
+
+    // Back button returns to the previous page
+    $("#back-btn").on("click", function(){
+      window.location.href = "index.html";
+    });
+    
   });
 
   $(".printbtn").on("click", function () {
