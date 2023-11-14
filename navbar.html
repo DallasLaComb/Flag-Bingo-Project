@@ -4,12 +4,11 @@
 });
   Don't add the html, body, etc, as this is getting injected in a spot that already has those tags.-->
 <!-- Makes the navbar you see at the top of the page. [LALCC] [Generate Game] [Saved Cards] [How To Play] [About LALCC]-->
-<nav class="navbar navbar-expand-md bg-primary mb-4" data-bs-theme="dark">
+<nav class="navbar navbar-expand-md mb-4" data-bs-theme="dark">
   <!-- ^^ Bootstrap Classes -->
   <div class="container-fluid">
     <!-- ^^ Bootstrap Classes -->
-    <a class="navbar-brand" href="index.html"
-      target="_blank">LALCC</a>
+    <a class="navbar-brand" href="index.html" id="lalcc_logo"><img src="images/LALCC Logo.png" width="100" height="33" id="lalcc_logo_img" alt="LALCC_Logo"></a>
     <!-- ^^ Bootstrap Classes , links to LALCC Webpage when you click on "LALCC Logo"-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +36,7 @@
         </li>
         <li class="nav-item">
           <!-- ^^ Bootstrap Classes -->
-          <a class="nav-link" id="aboutLALCC" href="https://www.ccsu.edu/latin-american-latino-and-caribbean-center/mission">About LALCC</a>
+          <a class="nav-link" id="aboutLALCC" href="https://www.ccsu.edu/latin-american-latino-and-caribbean-center/mission" target="_blank">About LALCC</a>
           <!-- ^^ Bootstrap Classes. ID 'aboutLALCC' is used in index.js to select the About LALCC Button.-->
         </li>
       </ul>

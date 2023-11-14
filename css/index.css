@@ -1,3 +1,8 @@
+
+body{
+    background-color: #FFFFFF;
+}
+
 .deactivate {
     display: none;
 }
@@ -129,4 +134,12 @@ input[type='number'] {
         word-break: break-all;
         /* Ensure text breaks to avoid overflow */
     }
+
+input[type='number']
+{
+    width:70px;
+}
+
+#save-button, #back-btn, #submit{
+    background-color: #205999 !important;
 }
