@@ -134,6 +134,7 @@ input[type='number'] {
         word-break: break-all;
         /* Ensure text breaks to avoid overflow */
     }
+}
 
 input[type='number']
 {
