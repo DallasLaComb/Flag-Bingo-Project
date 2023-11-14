@@ -1,3 +1,5 @@
+window.pageCount = 1;
+
 //Loads navbar.html into the navbar-placeholder div.
 $(function () {
   $("#navbar-placeholder").load("navbar.html");
@@ -24,9 +26,7 @@ $(jsonData).each(function(index, value) {
             <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
         </div>
         <button type="button" class="col-2 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticPrintModal">
-            <label for="pageCount"></label>
-            <input type="number" id="pageCount" min="1" value="1">
-            <h1 id="${lobbyName}" class="printbtn"></i><span class="ps-2">Print</span></h1>
+            <h1 id="${lobbyName}" class="printbtn"><i class="bi bi-printer"></i><span class="ps-2">Print</span></h1>
         </button>
         <button type="button" class="col-2 my-auto btn">
             <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
@@ -114,7 +114,7 @@ $(jsonData).each(function(index, value) {
           try
           {
             printPages();
-            //location.reload();
+            location.reload();
           }
           catch(error)
           {
@@ -226,20 +226,17 @@ function setCookie(name, value) {
     "; path=/";
 }
 
+//Grabs the page count from the modal input before the print button is clicked
+
+$(document).on('input', '#pageCount', function() {
+  pageCount = $(this).val();
+  console.log("Number of cards to print: " + pageCount);
+});
+
+//printPages function that is called when the modal's "print" button is clicked (see above in file)
 function printPages() {
 
-  let modalPath = "printmodal.html";
-  
-  $.get(modalPath, function(data){
-    let parsedData = $(data);
-    let pageCountID = parsedData.find('#pageCount');
-    let pageCount = pageCountID.val();
-
-    console.log("Number of cards to print: "+ pageCount);
-
-  });
-  
-  /* var printWindow = window.open('', '_blank');
+  var printWindow = window.open('', '_blank');
 
   for (var i = 0; i < pageCount; i++) {
     printWindow.document.write('<html><head>');
@@ -250,6 +247,6 @@ function printPages() {
     printWindow.document.write('</body></html>');
     setTimeout(function(){mywindow.print();},1000);
   }
-  setTimeout(function() {printWindow.print()},1000); */
-};
+  setTimeout(function() {printWindow.print()},1000);
   
+}
