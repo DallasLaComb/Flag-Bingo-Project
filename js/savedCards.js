@@ -29,10 +29,10 @@ $(jsonData).each(function (index, value) {
             <h1 class="printbtn" data-index="${index}"><i class="bi bi-printer"></i><span class="ps-2">Print</span></h1>
         </button>
         <button type="button" class="col-2 my-auto btn">
-            <h1 class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
+          <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
         </button>
         <button type="button" class="col-3 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            <h1 class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
+          <h1 id="${lobbyName}" class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
         </button>
   `);
   }
