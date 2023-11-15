@@ -3,6 +3,31 @@ body{
     background-color: #FFFFFF;
 }
 
+/* Set the default font for paragraphs to Roboto Regular */
+p {
+    font-family: 'Roboto', sans-serif;
+}
+/* Set the secondary font for paragraphs to Montserrat Black */
+p.secondary {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* Set the default font for headings to Roboto Black */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #205999;
+}
+
+/* Set the secondary font for headings to Montserrat Black */
+h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900; /* Black */
+    color: black;
+}
+  
+
 .deactivate {
     display: none;
 }
@@ -78,6 +103,11 @@ input[type='number'] {
     /* Center the text inside the grid item */
 }
 
+#submit-btn, #back-btn, #submit-btn, #save-button, #modal-print {
+    color: #FFFFFF;
+    background-color: #205999 !important;
+}
+
 /* Apply basic reset to margins and paddings for printing */
 @media print {
 
@@ -139,8 +169,4 @@ input[type='number'] {
 input[type='number']
 {
     width:70px;
-}
-
-#save-button, #back-btn, #submit{
-    background-color: #205999 !important;
 }
