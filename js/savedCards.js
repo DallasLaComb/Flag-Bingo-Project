@@ -275,7 +275,7 @@ function printPages() {
     <div class="grid-container">
     <!-- Generate 25 div elements for the 5x5 grid -->
     <!-- Each div with the class "grid-item" represents one cell in the grid -->
-    <div class="grid-item">1</div>
+    <div class="grid-item"><p>Nepal</p><br><img class="img-fluid" src="flagImages/np.png"></div>
     <div class="grid-item">2</div>
     <div class="grid-item">3</div>
     <div class="grid-item">4</div>
