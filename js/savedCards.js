@@ -186,9 +186,11 @@ $(jsonData).each(function (index, value) {
     //Dynamically Load navbar
     $("#navbar-placeholder").load("navbar.html");
     // loads the current set's flags into the available list of the call generator
+
+    window.lobbySize = jsonData[index].countryCodes.length;
+
     function loadAvailableList() {
       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
-        console.log("CURRENT CONSOLE LOG: " + jsonData[index].countryCodes[i] + jsonData[index]);
         // ^^ This is how to get each individual country code for selection...
         $(".availableList").append(jsonData[index].countryCodes[i]);
         let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
@@ -200,6 +202,8 @@ $(jsonData).each(function (index, value) {
         )
         $("#availableList").append(newCountryCard);
       }
+      
+      console.log("The size of " + lobbyName + " is: " + lobbySize);
     }
     loadAvailableList();
 
