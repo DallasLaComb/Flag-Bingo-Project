@@ -262,11 +262,56 @@ $(document).on('input', '#pageCount', function () {
 });
 
 //printPages function that is called when the modal's "print" button is clicked (see above in file)
+
+
+
+// ====================================================================================================
+// cardGen.js 
+
+function generateBingoCard(numberOfFlags, numberOfCards) {
+  let cards = [];
+
+  for (let cardIndex = 0; cardIndex < numberOfCards; cardIndex++) {
+      let cardNumbers = new Set();
+
+      while (cardNumbers.size < 24) {
+          let randomNumber = Math.floor(Math.random() * numberOfFlags);
+          cardNumbers.add(randomNumber);
+      }
+
+      // Convert Set to Array
+      cards[cardIndex] = Array.from(cardNumbers);
+  }
+
+  console.log("Generated bingo cards: ", cards); // Log the cards array
+  return cards;
+}
+
+// Call the function and log the returned value
+console.log(generateBingoCard(50, 3));
+
+
+// calls the bingo function, passing in the lobby size and page count
+// let bingoCard = generateBingoCard(numberOfFlags, pageCount);
+// Using jQuery to log the bingo card
+// Will call when document loads
+// $(document).ready(function() {
+//     // jsondata[0] This 0 is going to need to be (index) later to target the correct lobby.
+//   // let lobbySize = jsonData[0].countryCodes.length;
+
+//     // console.log(bingoCard);
+// });
+// End of cardGen.js
+// ====================================================================================================
+// printFunction.js
 function printPages() {
 
   var printWindow = window.open('', '_blank');
+  let cardnumberCount = 0;
 
   for (var i = 0; i < pageCount; i++) {
+    cardnumberCount+23;
+
     printWindow.document.write('<html><head>');
     printWindow.document.write('<link rel="stylesheet" href="./css/index.css" type="text/css" />');
     setTimeout(1000);
@@ -275,11 +320,11 @@ function printPages() {
     <div class="grid-container">
     <!-- Generate 25 div elements for the 5x5 grid -->
     <!-- Each div with the class "grid-item" represents one cell in the grid -->
-    <div class="grid-item"><p>Nepal</p><br><img class="img-fluid" src="flagImages/np.png"></div>
-    <div class="grid-item">2</div>
-    <div class="grid-item">3</div>
-    <div class="grid-item">4</div>
-    <div class="grid-item">5</div>
+    <div class="grid-item">{randomNumber[0+cardnumberCount]}</div>
+    <div class="grid-item">{randomNumber}</div>
+    <div class="grid-item">{randomNumber}</div>
+    <div class="grid-item">{randomNumber}</div>
+    <div class="grid-item">{randomNumber}</div>
     
     <div class="grid-item">6</div>
     <div class="grid-item">7</div>
@@ -305,8 +350,10 @@ function printPages() {
     <div class="grid-item">24</div>
     <div class="grid-item">25</div>
     </div>
+    
     `);
     printWindow.document.write('</body></html>');
   }
   setTimeout(function () { printWindow.print() }, 500);
 }
+// ====================================================================================================
