@@ -112,7 +112,7 @@ function processData() {
             <div class="input-group">
               <input type="text" id="my-input" class="form-control" placeholder="Enter name">
               <div class="input-group-append">
-                <button class="btn btn-primary" id="submit" type="button">Submit</button>
+                <button class="btn" id="submit-btn" type="button">Submit</button>
               </div>
             </div>
           </div>
@@ -124,7 +124,7 @@ function processData() {
 
       <!-- Back button -->
       <div class="container text-end" id="back-btn-container">
-        <div class="btn btn-primary rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
+        <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
           Back
         </div>
       </div>
@@ -147,7 +147,7 @@ function processData() {
     let savedCountryCodes = [];
     let cookieArray = [];
     let countryName = [];
-    $("#submit").on("click", function () {
+    $("#submit-btn").on("click", function () {
       let userinput = $("#my-input").val();
       // console.log("User input:", userinput);
       for (let i = 0; i < selectedFlags.length; i++) {

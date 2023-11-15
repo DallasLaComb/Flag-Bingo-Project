@@ -80,7 +80,7 @@ $(jsonData).each(function (index, value) {
     * if the submit button is clicked, update the set's from what was submitted in the form,
     * then save to cookies and update the view
     */
-    $(document).on("click", "#submit", function () {
+    $(document).on("click", "#submit-btn", function () {
       // The input to the form is stored in a variable and will be passed as the new set name 
       let newSetName = $("#my-input").val();
 
@@ -162,7 +162,7 @@ $(jsonData).each(function (index, value) {
           <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
         <div class="row">
         <!-- ^^ Bootstrap Class -->
-          <div class="btn btn-primary shadow mx-auto col-2 mb-3" id="callButton">
+          <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
           <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
             Call
           </div>
@@ -177,7 +177,7 @@ $(jsonData).each(function (index, value) {
       </div>
       <!-- Back button -->
       <div class="container text-end" id="back-btn-container">
-        <div class="btn btn-primary rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
+        <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
           Back
         </div>
       </div>
