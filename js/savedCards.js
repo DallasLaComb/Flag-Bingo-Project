@@ -134,7 +134,7 @@ $(jsonData).each(function (index, value) {
       $(document).on("click", "#modal-print", function () {
 
         try {
-          printPages();
+          printPages(index);
 
           setTimeout(function () {
             location.reload();
@@ -270,47 +270,49 @@ $(document).on('input', '#pageCount', function () {
 
 function generateBingoCard(numberOfFlags, numberOfCards) {
   let cards = [];
-
   for (let cardIndex = 0; cardIndex < numberOfCards; cardIndex++) {
       let cardNumbers = new Set();
-
       while (cardNumbers.size < 24) {
           let randomNumber = Math.floor(Math.random() * numberOfFlags);
           cardNumbers.add(randomNumber);
       }
-
       // Convert Set to Array
       cards[cardIndex] = Array.from(cardNumbers);
   }
-
   console.log("Generated bingo cards: ", cards); // Log the cards array
   return cards;
 }
-
 // Call the function and log the returned value
-console.log(generateBingoCard(50, 3));
+// jsonData[index].countryCodes[0].length
 
+// returns an array of 3 bingo cards, each with 24 unique numbers between 0 and 49
 
-// calls the bingo function, passing in the lobby size and page count
-// let bingoCard = generateBingoCard(numberOfFlags, pageCount);
-// Using jQuery to log the bingo card
-// Will call when document loads
-// $(document).ready(function() {
-//     // jsondata[0] This 0 is going to need to be (index) later to target the correct lobby.
-//   // let lobbySize = jsonData[0].countryCodes.length;
-
-//     // console.log(bingoCard);
-// });
 // End of cardGen.js
 // ====================================================================================================
 // printFunction.js
-function printPages() {
+function printPages(lobbyIndex) {
+  let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
+  let countryCodez = jsonData[lobbyIndex].countryCodes;
+  console.log("country codez: "+countryCodez);
+  console.log(generateBingoCard(numberOfFlags, pageCount));
+  let rngCards = (generateBingoCard(numberOfFlags, pageCount));
+  console.log("Json Data looks like this after printPages(): " +jsonData);
+  // jsonData = 2d array at this point
+  console.log(jsonData[lobbyIndex])
+  // jsonData[lobbyIndex] returns an object that has countryCodes, countryName, and lobbyName
+  // console.log("country codes length: " +jsonData[lobbyIndex].countryCodes.length)
+// jsonData[lobbyIndex].countryCodes.length = number of flags selected on object you called...
+  // console.log(jsonDat
+// Something with jsonData[0].countryCodes[0].length , not 0s, have to figure out proper indexing...
+// rngCards looks something like this...
+// [
+//   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+//   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+//   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+// ]
+  let printWindow = window.open('', '_blank');
 
-  var printWindow = window.open('', '_blank');
-  let cardnumberCount = 0;
-
-  for (var i = 0; i < pageCount; i++) {
-    cardnumberCount+23;
+  for (let i = 0; i < pageCount; i++) {
 
     printWindow.document.write('<html><head>');
     printWindow.document.write('<link rel="stylesheet" href="./css/index.css" type="text/css" />');
@@ -320,35 +322,36 @@ function printPages() {
     <div class="grid-container">
     <!-- Generate 25 div elements for the 5x5 grid -->
     <!-- Each div with the class "grid-item" represents one cell in the grid -->
-    <div class="grid-item">{randomNumber[0+cardnumberCount]}</div>
-    <div class="grid-item">{randomNumber}</div>
-    <div class="grid-item">{randomNumber}</div>
-    <div class="grid-item">{randomNumber}</div>
-    <div class="grid-item">{randomNumber}</div>
-    
-    <div class="grid-item">6</div>
-    <div class="grid-item">7</div>
-    <div class="grid-item">8</div>
-    <div class="grid-item">9</div>
-    <div class="grid-item">10</div>
-    
-    <div class="grid-item">11</div>
-    <div class="grid-item">12</div>
-    <div class="grid-item">13</div>
-    <div class="grid-item">14</div>
-    <div class="grid-item">15</div>
-    
-    <div class="grid-item">16</div>
-    <div class="grid-item">17</div>
-    <div class="grid-item">18</div>
-    <div class="grid-item">19</div>
-    <div class="grid-item">20</div>
-    
-    <div class="grid-item">21</div>
-    <div class="grid-item">22</div>
-    <div class="grid-item">23</div>
-    <div class="grid-item">24</div>
-    <div class="grid-item">25</div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][0]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][1]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][2]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][3]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][4]]}.png"></div>
+
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][5]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][6]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][7]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][8]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][9]]}.png"></div>
+
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][10]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][11]]}.png"></div>
+    <div class="grid-item">FREE</div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][12]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][13]]}.png"></div>
+
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][14]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][15]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][16]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][17]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][18]]}.png"></div>
+
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][19]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][20]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][21]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][22]]}.png"></div>
+    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][23]]}.png"></div>
+
     </div>
     
     `);
