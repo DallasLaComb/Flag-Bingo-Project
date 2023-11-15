@@ -1,3 +1,7 @@
+window.pageCount;
+window.lobbySize;
+
+
 function generateBingoCard(numberOfFlags, numberOfCards) {
    
     let cards = new int[numberOfCards][25];
@@ -16,26 +20,11 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
         		}
         		
         	System.out.println("\n");
-        	
+        
+        }
 
-    return card;
+    return cards;
 }
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // swap elements
-    }
-    return array;
-}
-function generateNonRepeatingRandoms(size) {
-    // Create an array with `size` number of elements
-    const variables = Array.from({ length: size }, (v, k) => k);
-
-    // Shuffle the array
-    return shuffleArray(variables);
-}
-
-}
-let bingoCard = generateBingoCard(); // Generates a 5x5 Bingo card with unique numbers from 0 to 125
+window.bingoCard = generateBingoCard(lobbySize, pageCount); // Generates a 5x5 Bingo card with unique numbers from 0 to 125
 console.log(bingoCard);
