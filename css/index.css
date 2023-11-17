@@ -103,7 +103,7 @@ input[type='number'] {
     /* Center the text inside the grid item */
 }
 
-#submit-btn, #back-btn, #submit-btn, #save-button, #modal-print {
+#submit-btn, #back-btn, #submit-btn, #save-button, #modal-print, #flag-count-modal-submit {
     color: #FFFFFF;
     background-color: #205999 !important;
 }

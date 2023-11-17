@@ -67,10 +67,12 @@
     </div>
     <!--End of Flag Selection Container-->
 
-    <div class="btn rounded shadow" id="save-button">
+    <button type="button" class="btn rounded shadow" id="save-button" data-bs-toggle="modal" data-bs-target="#flag-count-modal">
     <!-- ^^ Bootstrap Class. ID is selected in the index.js, as well as styled in index.css-->
       Save Cards
-    </div>
+    </button>
+
+    <div class="container" id="load-flag-count-modal"></div>
 
     <script
       src="https://code.jquery.com/jquery-3.7.1.js"

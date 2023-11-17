@@ -1,3 +1,5 @@
+let flagCount = 0;
+
 $(function () {
   $("#navbar-placeholder").load("navbar.html");
 });
@@ -61,16 +63,17 @@ function processData() {
         let index = selectedFlags.indexOf(this);
         selectedFlags.splice(index, 1);
         $(this).removeClass("selected");
-
         $(this).children().removeClass("bi-check-square");
+        flagCount--;
         // console.log(selectedFlags);
       } else {
         $(this).children().addClass("bi-check-square");
         $(this).addClass("selected");
-        console.log(this);
         selectedFlags.push(this);
+        flagCount++;
         // console.log(selectedFlags);
       }
+      console.log("Flag Count: " + flagCount);
     });
     // ^^ newCountryCard is the div that is created for each country. It is appended to the appropriate continent div.
     // EX: <div class='col-2-sm pt-3 border-top mt-3' id='us'>United States<br><img class="img-fluid" src="flagImages/us.png"></div>
@@ -132,65 +135,79 @@ function processData() {
     );
   }
   // ^^ Ending brackect of for loop that creates newCountryCards for each country from the data in the json file.
+
+  //Initialize modal
+  $("#load-flag-count-modal").load("flagCountModal.html");
+  
+  //When the 'Save Cards' button is clicked
   $("#save-button").on("click", function () {
-    window.injectSaveSetView()
-    $(function () {
+
+    //Load the modal when the save button is clicked and flag selection is less than 24
+    if(flagCount < 24){
+
+      $("#load-flag-count-modal").load("flagCountModal.html");
+      console.log("Modal Called");
+
+    }else{
+
+      window.injectSaveSetView();
       $("#navbar-placeholder").load("navbar.html");
-    });
 
-    // Back button returns to the previous page
-    $("#back-btn").on("click", function(){
-      window.location.href = "index.html";
-    });
- 
-    // ^^ When you click "Save Cards" this is the form that appears. It asks for a name to save the cards under.
-    let savedCountryCodes = [];
-    let cookieArray = [];
-    let countryName = [];
-    $("#submit-btn").on("click", function () {
-      let userinput = $("#my-input").val();
-      // console.log("User input:", userinput);
-      for (let i = 0; i < selectedFlags.length; i++) {
-        savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
-        countryName[i] = $(selectedFlags[i]).text();
-      }
-      // console.log("Saved country codes:", savedCountryCodes);
-      let lobbyData = {
-        lobbyName: userinput,
-        countryCodes: savedCountryCodes,
-        countryName: countryName
-      };
-      // The data we need for the "Saved Cards" page, this gets saved in a permanent cookie later...
-      // console.log("Lobby data:", lobbyData);
-
-      if (getCookie("lobbyData") == null) {
-        // console.log("No previous cookie found. Setting new cookie...");
-        cookieArray.push(lobbyData);
-        setCookie("lobbyData", JSON.stringify(cookieArray));
-        // Sets a new cookie if user doesn't currently have one.
-      } else {
-        try {
-          // If user already has a cookie, we're gonna update the existing cookie.
-          let previousCookie = getCookie("lobbyData");
-          console.log("Previous cookie data:", previousCookie);
-          let existingData = JSON.parse(previousCookie);
-          // console.log("Parsed existing cookie data:", existingData);
-          // Check if existingData is an array
-          if (!Array.isArray(existingData)) {
-            console.log("Existing data is not an array. Converting to array...");
-            existingData = [existingData];
-          }
-          // existingData.length = 0;
-          // ^^ Can be reused to reset cookies... Just comment line below when doing so too...
-          existingData.push(lobbyData);
-          console.log("Updated cookie data:", existingData);
-          setCookie("lobbyData", JSON.stringify(existingData));
-        } catch (e) {
-          console.error("Error parsing existing cookie data:", e);
+      // Back button returns to the previous page
+      $("#back-btn").on("click", function(){
+        window.location.href = "index.html";
+      });
+  
+      // ^^ When you click "Save Cards" this is the form that appears. It asks for a name to save the cards under.
+      let savedCountryCodes = [];
+      let cookieArray = [];
+      let countryName = [];
+      $("#submit-btn").on("click", function () {
+        let userinput = $("#my-input").val();
+        // console.log("User input:", userinput);
+        for (let i = 0; i < selectedFlags.length; i++) {
+          savedCountryCodes[i] = $(selectedFlags[i]).attr("id");
+          countryName[i] = $(selectedFlags[i]).text();
         }
-      }
-      window.location.href = "savedCards.html";
-    });
+        // console.log("Saved country codes:", savedCountryCodes);
+        let lobbyData = {
+          lobbyName: userinput,
+          countryCodes: savedCountryCodes,
+          countryName: countryName
+        };
+        // The data we need for the "Saved Cards" page, this gets saved in a permanent cookie later...
+        // console.log("Lobby data:", lobbyData);
+
+        if (getCookie("lobbyData") == null) {
+          // console.log("No previous cookie found. Setting new cookie...");
+          cookieArray.push(lobbyData);
+          setCookie("lobbyData", JSON.stringify(cookieArray));
+          // Sets a new cookie if user doesn't currently have one.
+        } else {
+          try {
+            // If user already has a cookie, we're gonna update the existing cookie.
+            let previousCookie = getCookie("lobbyData");
+            console.log("Previous cookie data:", previousCookie);
+            let existingData = JSON.parse(previousCookie);
+            // console.log("Parsed existing cookie data:", existingData);
+            // Check if existingData is an array
+            if (!Array.isArray(existingData)) {
+              console.log("Existing data is not an array. Converting to array...");
+              existingData = [existingData];
+            }
+            // existingData.length = 0;
+            // ^^ Can be reused to reset cookies... Just comment line below when doing so too...
+            existingData.push(lobbyData);
+            console.log("Updated cookie data:", existingData);
+            setCookie("lobbyData", JSON.stringify(existingData));
+          } catch (e) {
+            console.error("Error parsing existing cookie data:", e);
+          }
+        }
+        window.location.href = "savedCards.html";
+      });
+
+    } // end else
 
   });
 }
