@@ -136,8 +136,6 @@ function processData() {
   }
   // ^^ Ending brackect of for loop that creates newCountryCards for each country from the data in the json file.
 
-  //Initialize modal
-  $("#load-flag-count-modal").load("flagCountModal.html");
   
   //When the 'Save Cards' button is clicked
   $("#save-button").on("click", function () {
@@ -145,8 +143,7 @@ function processData() {
     //Load the modal when the save button is clicked and flag selection is less than 24
     if(flagCount < 24){
 
-      $("#load-flag-count-modal").load("flagCountModal.html");
-      console.log("Modal Called");
+      alert("You only have "+ flagCount +" flags selected. The total flag selection must be more than 23.");
 
     }else{
 
