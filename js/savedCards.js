@@ -1,4 +1,5 @@
 window.pageCount = 1;
+let countryCardsArray = []; //Global variable for call generator
 
 //Loads navbar.html into the navbar-placeholder div.
 $(function () {
@@ -182,6 +183,7 @@ $(jsonData).each(function (index, value) {
         </div>
       </div>
       `);
+      // #availableList, #currentCall, #alreadyCalled
 
     //Dynamically Load navbar
     $("#navbar-placeholder").load("navbar.html");
@@ -200,12 +202,24 @@ $(jsonData).each(function (index, value) {
         let newCountryCard = $(
           `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
         )
+        countryCardsArray.push(newCountryCard);
+        // console.log(countryCardsArray[i]);
+
         $("#availableList").append(newCountryCard);
       }
-      
+
       console.log("The size of " + lobbyName + " is: " + lobbySize);
     }
     loadAvailableList();
+    let maxCalls = lobbySize;
+    $("#callButton").on("click", function () {
+      console.log("HELLO?")
+      let randomIndex = Math.floor(Math.random() * maxCalls);
+      maxCalls--;
+      let randomCardSelected = countryCardsArray.pop(randomIndex);
+      $("#availableList").remove(randomCardSelected)
+      $("#currentCall").append(randomCardSelected);
+    });
 
     // Back button returns to the previous page
     $("#back-btn").on("click", function () {
