@@ -215,31 +215,36 @@ $(jsonData).each(function (index, value) {
     loadAvailableList();
     let maxCalls = lobbySize;
     $("#callButton").on("click", function () {
+      // Generate a random index based on the current count of maxCalls
       let randomIndex = Math.floor(Math.random() * maxCalls);
-      maxCalls--;
-      let randomCardSelected = countryCardsArray.pop(randomIndex);
       
+      // Retrieve and remove the randomly selected card from the array
+      let randomCardSelected = countryCardsArray.splice(randomIndex, 1)[0];
+  
+      // Decrement maxCalls after removing the card from the array
+      maxCalls--;
+  
+      // Check if the current call array is empty
       if (currentCallArray.length == 0) {
           currentCallArray.push(randomCardSelected);
           $("#currentCall").append(randomCardSelected);
       } else {
           let alreadyCalled = currentCallArray.pop();
   
-          // Use prepend here to add the element at the top
-          if ($("#alreadyCalled").length == 0) {
-              $("#alreadyCalled").prependTo(alreadyCalled);
-          }
-      
-          // Change this to prepend
+          // Add the previously called card to the top of the already called list
           $("#alreadyCalled").prepend(alreadyCalled);
+          
+          // Add the new card to the current call
           currentCallArray.push(randomCardSelected);
           $("#currentCall").append(randomCardSelected);
       }
   
+      // If all calls have been made, update the button text
       if (maxCalls === 0) {
           $("#callButton").text("Reset Game");
       }
   });
+  
   
   
 
