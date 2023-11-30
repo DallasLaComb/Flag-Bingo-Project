@@ -1,5 +1,7 @@
 window.pageCount = 1;
-
+let countryCardsArray = []; //Global variable for call generator
+let currentCallArray = []; //Global variable for call generator
+let alreadyCalledArray = []; //Global variable for call generator
 //Loads navbar.html into the navbar-placeholder div.
 $(function () {
   $("#navbar-placeholder").load("navbar.html");
@@ -168,7 +170,8 @@ $(jsonData).each(function (index, value) {
           </div>
           <div class="row">
           <!-- ^^ Bootstrap Class -->
-            <div class="col border" id="alreadyCalled"><h1>Already Called:</h1></div>
+            <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
+
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
             <div class="col border" id="availableList"><h1>Available List:</h1></div>
             <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
@@ -182,6 +185,7 @@ $(jsonData).each(function (index, value) {
         </div>
       </div>
       `);
+      // #availableList, #currentCall, #alreadyCalled
 
     //Dynamically Load navbar
     $("#navbar-placeholder").load("navbar.html");
@@ -200,20 +204,50 @@ $(jsonData).each(function (index, value) {
         let newCountryCard = $(
           `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
         )
+        countryCardsArray.push(newCountryCard);
+        // console.log(countryCardsArray[i]);
+
         $("#availableList").append(newCountryCard);
       }
-      
+
       console.log("The size of " + lobbyName + " is: " + lobbySize);
     }
     loadAvailableList();
+    let maxCalls = lobbySize;
+    $("#callButton").on("click", function () {
+      let randomIndex = Math.floor(Math.random() * maxCalls);
+      maxCalls--;
+      let randomCardSelected = countryCardsArray.pop(randomIndex);
+      
+      if (currentCallArray.length == 0) {
+          currentCallArray.push(randomCardSelected);
+          $("#currentCall").append(randomCardSelected);
+      } else {
+          let alreadyCalled = currentCallArray.pop();
+  
+          // Use prepend here to add the element at the top
+          if ($("#alreadyCalled").length == 0) {
+              $("#alreadyCalled").prependTo(alreadyCalled);
+          }
+      
+          // Change this to prepend
+          $("#alreadyCalled").prepend(alreadyCalled);
+          currentCallArray.push(randomCardSelected);
+          $("#currentCall").append(randomCardSelected);
+      }
+  
+      if (maxCalls === 0) {
+          $("#callButton").text("Reset Game");
+      }
+  });
+  
+  
 
     // Back button returns to the previous page
     $("#back-btn").on("click", function () {
       window.location.href = "index.html";
     });
-
   }); // End 'play game' function
-
 }); // End OUTER jsonData function 
 
 
