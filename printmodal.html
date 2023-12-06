@@ -1,22 +1,20 @@
 <!-- Modal -->
-<div class="modal fade" id="staticPrintModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade" id="staticPrintModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" role="dialog">
+  <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Printing</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <label for="pageCount">Enter the number of pages to print:</label>
-          <input type="number" id="pageCount" min="1" value="1">
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn" id="modal-print">Print</button>
-        </div>
+          <div class="modal-header">
+              <h1 class="modal-title fs-5" id="staticBackdropLabel">Printing</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <label for="pageCount">Enter the number of pages to print:</label>
+              <input type="number" id="pageCount" min="1" value="1" aria-describedby="pageCountHelp" role="textbox">
+              <small id="pageCountHelp" class="form-text text-muted">Please enter a number greater than 0.</small>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+              <button type="button" class="btn" id="modal-print" role="button" aria-label="Print">Print</button>
+          </div>
       </div>
-    </div>
+  </div>
 </div>
-
-
-

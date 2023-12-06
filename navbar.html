@@ -4,7 +4,7 @@
 });
   Don't add the html, body, etc, as this is getting injected in a spot that already has those tags.-->
 <!-- Makes the navbar you see at the top of the page. [LALCC] [Generate Game] [Saved Cards] [How To Play] [About LALCC]-->
-<nav class="navbar navbar-expand-md mb-4" data-bs-theme="dark">
+<nav class="navbar navbar-expand-md mb-4" data-bs-theme="dark" role="navigation" aria-label="Main Navigation">
   <!-- ^^ Bootstrap Classes -->
   <div class="container-fluid">
     <!-- ^^ Bootstrap Classes -->
@@ -12,7 +12,7 @@
     <!-- ^^ Bootstrap Classes , links to LALCC Webpage when you click on "LALCC Logo"-->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+      <span class="navbar-toggler-icon" role="img" aria-label="Toggle Navigation"></span>
     </button>
     <!-- ^^ Bootstrap functionality for when the hamburger icon shows up -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,23 +21,25 @@
         <!-- ^^ Bootstrap Classes -->
         <li class="nav-item">
           <!-- ^^ Bootstrap Classes -->
-          <a class="nav-link active" aria-current="page" href="index.html">Generate Game</a>
+          <a class="nav-link active" aria-current="page" href="index.html" role="menuitem">Generate Game</a>
           <!--^^ Creates link to homepage.-->
         </li>
         <li class="nav-item">
           <!-- ^^ Bootstrap Classes -->
-          <a class="nav-link" id="savedCards" href="savedCards.html">Saved Cards</a>
+          <a class="nav-link" id="savedCards" href="savedCards.html" role="menuitem">Saved Cards</a>
           <!-- ^^ Bootstrap Classes. ID 'savedCards' is used in index.js to select the Saved Cards Button. -->
         </li>
         <li class="nav-item">
           <!-- ^^ Bootstrap Classes -->
-          <a class="nav-link" id="howToPlay" href="howToPlay.html">How To Play</a>
+          <a class="nav-link" id="howToPlay" href="howToPlay.html" role="menuitem">How To Play</a>
           <!-- ^^ Bootstrap Classes. ID 'howToPlay' is used in index.js to select the How To Play Button..-->
         </li>
         <li class="nav-item">
           <!-- ^^ Bootstrap Classes -->
-          <a class="nav-link" id="aboutLALCC" href="https://www.ccsu.edu/latin-american-latino-and-caribbean-center/mission" target="_blank">About LALCC</a>
+          <a class="nav-link" id="aboutLALCC" href="https://www.ccsu.edu/latin-american-latino-and-caribbean-center/mission" target="_blank" role="menuitem">About LALCC</a>
           <!-- ^^ Bootstrap Classes. ID 'aboutLALCC' is used in index.js to select the About LALCC Button.-->
         </li>
       </ul>
+    </div>
+  </div>
 </nav>

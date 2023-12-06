@@ -1,114 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Everything above this is standard for every HTML page -->
     <title>How to Play</title>
-    <!-- The title gets added to the tab / bookmarks of your page. This is also necessary meta-data -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
     />
-    <!-- ^^ Links bootstrap CSS class. 5.3.2 was newest bootstrap at the time we created this project. -->
-    <!-- Within this HTML there will be comments when the class is related to bootstrap or our own classes... -->
-    <!-- If it is in bootstrap, we will not explain what it does in the comments, go to the bootstrap documentation to find out if you don't know. -->
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
-    <!-- ^^ Links bootstrap icons.-->
     <link href="css/index.css" rel="stylesheet" />
-    <!-- ^^ Links our personal css stylesheet -->
     <link rel="stylesheet" href="css/navbar.css">
-  </head>
-  <body>
-    <div id="navbar-placeholder">
-      
+</head>
+<body>
+    <div id="navbar-placeholder" role="navigation">
+        <!-- Placeholder for navbar -->
     </div>
-<!--^^ This is a navbar placeholder, the id is to target it in the javascript... It gets loaded navbar.html...-->
-<!-- Add this HTML to your page -->
 
-<div class="container" role="main">
-  <h1>What is Flag Bingo?</h1>
-  <p style="font-size:1.5em;font-weight: bold;">Flag Bingo is just like bingo with a twist, the squares are the different countries of the world!
-    We provide a bingo caller that randomly calls countries. However, It is not a virtual bingo game. You will be able to print
-    as many bingo cards as you like through the site.</p>
-  </div>
-  
-  <div class="container">
-  
-  <h1>Starting Off</h1>
-  <p style="font-size:1.5em;font-weight: bold; ">Choose the countries you'd like by clicking
-    the checkboxes next to them. When you are finished,
-    click "Save Game", in the botton right of your screen. You will then be prompted to name your card set.
-  </p>
-  <img src="images/howtoplayfgif1.gif" alt="" style="height:70%;width:100%"> 
-  </div>
-  
-  <div class="container">
-  <p style="font-size:1.5em;font-weight: bold; ">Click "Saved Cards" in the top navigation bar.
-      <img src="images/howtoplaygif2.gif" style="height:70%;width:100%;">
-  </p>
-  </div>
-  <div class="container">
-    <p style="font-size:1.5em;font-weight: bold; ">Select between playing, printing bingo cards, editing
-    your country set, or deleting the set.</p>
-    <img src="images/howtoplaypic1.png" style="height:70%;width:100%;">
-  </div>
-   
-  <!--
-  
-  <div class="container">
-      <h1>Playing Bingo</h1>
-    <img>
-    <p></p>
+    <div class="container" role="main">
+        <h1>What is Flag Bingo?</h1>
+        <p style="font-size:1.5em;font-weight: bold;">Flag Bingo is just like bingo with a twist, the squares are the different countries of the world!
+            We provide a bingo caller that randomly calls countries. However, It is not a virtual bingo game. You will be able to print
+            as many bingo cards as you like through the site.
+        </p>
     </div>
-  
+
     <div class="container">
-    <h1>Printing Cards</h1>
-    <img>
-    <p></p>
+        <h1>Starting Off</h1>
+        <p style="font-size:1.5em;font-weight: bold; ">Choose the countries you'd like by clicking
+            the checkboxes next to them. When you are finished,
+            click "Save Game", in the bottom right of your screen. You will then be prompted to name your card set.
+        </p>
+        <img src="images/howtoplayfgif1.gif" alt="" style="height:70%;width:100%" role="img">
     </div>
+
     <div class="container">
-  
-    <h1>Edit Set</h1>
-    <img>
-    <p></p>
+        <p style="font-size:1.5em;font-weight: bold; ">Click "Saved Cards" in the top navigation bar.
+            <img src="images/howtoplaygif2.gif" style="height:70%;width:100%;" role="img">
+        </p>
     </div>
-  
+
     <div class="container">
-    <h1>Delete Set</h1>
-    <img>
-    <p></p>
+        <p style="font-size:1.5em;font-weight: bold; ">Select between playing, printing bingo cards, editing
+        your country set, or deleting the set.</p>
+        <img src="images/howtoplaypic1.png" style="height:70%;width:100%;" role="img">
     </div>
-  -->
 
+    <!-- Additional sections can be uncommented and added with ARIA roles and attributes -->
 
-
-
-
-
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ^^ Links jQuery. -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <!-- ^^ Links Bootstrap JS. -->
-    <script src="
-        https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-    <!-- ^^ Links JS Cookie. -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <script src="js/index.js"></script>
-    <!-- ^^ Links our personal JS file. Our file must stay at the bottom of all linkings, this is due to how HTML is read top-down, so the order you link your files matters... -->
     <script src="js/savedCards.js"></script>
     <script src="js/cardGen.js"></script>
-  </body>
+</body>
 </html>
