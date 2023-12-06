@@ -1,94 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Everything above this is standard for every HTML page -->
     <title>Flag Bingo</title>
-    <!-- The title gets added to the tab / bookmarks of your page. This is also necessary meta-data -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
     />
-    <!-- ^^ Links bootstrap CSS class. 5.3.2 was newest bootstrap at the time we created this project. -->
-    <!-- Within this HTML there will be comments when the class is related to bootstrap or our own classes... -->
-    <!-- If it is in bootstrap, we will not explain what it does in the comments, go to the bootstrap documentation to find out if you don't know. -->
     <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
-    <!-- ^^ Links bootstrap icons.-->
     <link href="css/index.css" rel="stylesheet" />
-    <!-- ^^ Links our personal css stylesheet -->
     <link rel="stylesheet" href="css/navbar.css">
-  </head>
-  <body>
-    <div id="navbar-placeholder">
-      
+</head>
+<body>
+    <div id="navbar-placeholder" role="navigation">
+        <!-- Placeholder for navbar -->
     </div>
-<!--^^ This is a navbar placeholder, the id is to target it in the javascript... It gets loaded navbar.html...-->
-<!-- Add this HTML to your page -->
 
-
-<div id="my-overlay" class="overlay"></div>
+    <div id="my-overlay" class="overlay" role="presentation"></div>
 
     <!--End of NavBar / Start of Flag Selection Container...-->
-    <div class="container" id ="flagSelectionContainer">
-    <!-- ^^ Bootstrap Class | flagSelectionContainer is a selector used in index.js-->
-      <div class="row">
-        <!-- ^^ Bootstrap Class -->
-        <div class="col-md-2 border" id="na_">
-            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
-            <h3>North America</h3>
+    <div class="container" id="flagSelectionContainer" role="region" aria-label="Flag Selection">
+        <div class="row">
+            <div class="col-md-2 border" id="na_" role="region" aria-label="North America">
+                <h3>North America</h3>
+            </div>
+            <div class="col-md-2 border" id="eu_" role="region" aria-label="Europe">
+                <h3>Europe</h3>
+            </div>
+            <div class="col-md-2 border" id="as_" role="region" aria-label="Asia">
+                <h3>Asia</h3>
+            </div>
+            <div class="col-md-2 border" id="af_" role="region" aria-label="Africa">
+                <h3>Africa</h3>
+            </div>
+            <div class="col-md-2 border" id="sa_" role="region" aria-label="South America">
+                <h3>South America</h3>
+            </div>
+            <div class="col-md-2 border" id="au_" role="region" aria-label="Australia">
+                <h3>Australia</h3>
+            </div>
         </div>
-        <div class="col-md-2 border" id="eu_">
-            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
-          <h3>Europe</h3>
-        </div>
-        <div class="col-md-2 border" id="as_">
-            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
-          <h3>Asia</h3>
-        </div>
-        <div class="col-md-2 border" id="af_">
-            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
-            <h3>Africa</h3>
-          </div>        
-        <div class="col-md-2 border" id="sa_">
-            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
-          <h3>South America</h3>
-        </div>
-        <div class="col-md-2 border" id="au_">
-            <!-- ^^ Bootstrap Classes | ID must include the underscore due to afghistan country code being 'af' it interferes with africa id to be 'af'. | ID is a selector used in index.js.-->
-          <h3>Australia</h3>
-        </div>
-      </div>
     </div>
     <!--End of Flag Selection Container-->
 
-    <button type="button" class="btn rounded shadow" id="save-button">
-    <!-- ^^ Bootstrap Class. ID is selected in the index.js, as well as styled in index.css-->
-      Save Cards
+    <button type="button" class="btn rounded shadow" id="save-button" role="button" aria-label="Save Cards">
+        Save Cards
     </button>
     
-    <script
-      src="https://code.jquery.com/jquery-3.7.1.js"
-      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-      crossorigin="anonymous"
-    ></script>
-    <!-- ^^ Links jQuery. -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
-    <!-- ^^ Links Bootstrap JS. -->
-    <script src="
-        https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-    <!-- ^^ Links JS Cookie. -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
     <script src="js/index.js"></script>
-    <!-- ^^ Links our personal JS file. Our file must stay at the bottom of all linkings, this is due to how HTML is read top-down, so the order you link your files matters... -->
     <script src="js/savedCards.js"></script>
-  </body>
+</body>
 </html>
