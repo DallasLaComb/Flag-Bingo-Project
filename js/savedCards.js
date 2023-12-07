@@ -6,11 +6,9 @@ let alreadyCalledArray = []; //Global variable for call generator
 $(function () {
   $("#navbar-placeholder").load("navbar.html");
 });
-
 let jsonString = Cookies.get("lobbyData");
 let jsonData = JSON.parse(jsonString);
 let lobbyName;
-
 /*
 * The following function generates a row containing each card set and four buttons per each set:
 * "Play", "Print", "Edit", "Delete"
@@ -39,10 +37,8 @@ $(jsonData).each(function (index, value) {
   `);
   }
   savedSetView();
-
   //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
   $("#deleteModal").load("deleteSetModal.html");
-
   // The following function performs the deletion of a card set when the set's "Delete" button is pressed
   $(".delete-btn").on("click", function () {
     /* 
@@ -50,10 +46,8 @@ $(jsonData).each(function (index, value) {
     * into the deleteObjectFromCookie() function
     */
     let index = $(this).attr("id");
-
     //Function that executes when the modal is loaded
     $("#deleteModal").load("deleteSetModal.html", function () {
-
       //Perform the try-catch block when the modal's "Yes" button is pressed
       $(document).on("click", "#modal-delete", function () {
         // Perform the deletion of the set from the browser's cookies
@@ -66,18 +60,14 @@ $(jsonData).each(function (index, value) {
       });
     });
   });
-
   $(".edit-btn").on("click", function () {
     let currentSetName = $(this).attr("id");
-
     //Injects the view for editing the card set's name, global function from index.js
     window.injectSaveSetView();
-
     //Dynamic loading of the navbar
     $(function () {
       $("#navbar-placeholder").load("navbar.html");
     });
-
     /* 
     * if the submit button is clicked, update the set's from what was submitted in the form,
     * then save to cookies and update the view
@@ -85,63 +75,52 @@ $(jsonData).each(function (index, value) {
     $(document).on("click", "#submit-btn", function () {
       // The input to the form is stored in a variable and will be passed as the new set name 
       let newSetName = $("#my-input").val();
-
       // Update the lobby name in the jsonData array
       jsonData.forEach((item) => {
         if (item.lobbyName === currentSetName) {
           item.lobbyName = newSetName;
         }
       });
-
       // Save the updated jsonData to the browser's cookies
       setCookie("lobbyData", JSON.stringify(jsonData));
-
       // Update the lobby name in the rendered page
       $(".row").each(function (index) {
         if ($(this).find("h2").text() === currentSetName) {
           $(this).find("h2").text(newSetName);
         }
       });
-
       // Re-render the view displaying all sets
       window.location.href = "savedCards.html";
     });
-
     // Back button returns to the previous page
-    $("#back-btn").on("click", function(){
+    $("#back-btn").on("click", function () {
       window.location.href = "index.html";
     });
-    
+
   });
   //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
   $("#printmodal").load("printmodal.html");
   // The following function performs the deletion of a card set when the set's "Delete" button is pressed
   $(".printbtn").on("click", function () {
-
     let index = $(this).data("index");
     // This properly gets the index of the object your are clicking print on ^^^
     console.log("Printing set: " + index);
     let cookieValue = getCookie("lobbyData");
     if (cookieValue) {
       let jsonData = JSON.parse(cookieValue);
-    for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
-      // This for loop is to get each individual country code for selection...
-      console.log("country # "+i+" " + jsonData[index].countryCodes[i] );}
+      for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
+        // This for loop is to get each individual country code for selection...
+        console.log("country # " + i + " " + jsonData[index].countryCodes[i]);
+      }
     }
-
-    
-
     $("#printmodal").load("printmodal.html", function () {
-
       $(document).on("click", "#modal-print", function () {
-
+        console.log("Print button clicked");
         try {
-          printPages(index);
-
+          toggleForPrintPageSetUp(index);
           setTimeout(function () {
             location.reload();
           }, 501);
-
         }
         catch (error) {
           console.error("Error", error);
@@ -150,13 +129,10 @@ $(jsonData).each(function (index, value) {
     });
   });
 
-
   // The following function executes the 'play game' functionality when a set's "Play" button is pressed
   $(`#${index}`).on("click", function () {
-
     //This removes everything from the body except for the navbar.
     $("body > :not(nav)").remove();
-
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
       <div id="navbar-placeholder"></div>
@@ -171,7 +147,6 @@ $(jsonData).each(function (index, value) {
           <div class="row">
           <!-- ^^ Bootstrap Class -->
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
-
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
             <div class="col border" id="availableList"><h1>Available List:</h1></div>
             <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
@@ -185,14 +160,12 @@ $(jsonData).each(function (index, value) {
         </div>
       </div>
       `);
-      // #availableList, #currentCall, #alreadyCalled
+    // #availableList, #currentCall, #alreadyCalled
 
     //Dynamically Load navbar
     $("#navbar-placeholder").load("navbar.html");
     // loads the current set's flags into the available list of the call generator
-
     window.lobbySize = jsonData[index].countryCodes.length;
-
     function loadAvailableList() {
       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
         // ^^ This is how to get each individual country code for selection...
@@ -200,7 +173,6 @@ $(jsonData).each(function (index, value) {
         let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
         let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
         let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
-
         let newCountryCard = $(
           `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
         )
@@ -217,36 +189,36 @@ $(jsonData).each(function (index, value) {
     $("#callButton").on("click", function () {
       // Generate a random index based on the current count of maxCalls
       let randomIndex = Math.floor(Math.random() * maxCalls);
-      
+
       // Retrieve and remove the randomly selected card from the array
       let randomCardSelected = countryCardsArray.splice(randomIndex, 1)[0];
-  
+
       // Decrement maxCalls after removing the card from the array
       maxCalls--;
-  
+
       // Check if the current call array is empty
       if (currentCallArray.length == 0) {
-          currentCallArray.push(randomCardSelected);
-          $("#currentCall").append(randomCardSelected);
+        currentCallArray.push(randomCardSelected);
+        $("#currentCall").append(randomCardSelected);
       } else {
-          let alreadyCalled = currentCallArray.pop();
-  
-          // Add the previously called card to the top of the already called list
-          $("#alreadyCalled").prepend(alreadyCalled);
-          
-          // Add the new card to the current call
-          currentCallArray.push(randomCardSelected);
-          $("#currentCall").append(randomCardSelected);
+        let alreadyCalled = currentCallArray.pop();
+
+        // Add the previously called card to the top of the already called list
+        $("#alreadyCalled").prepend(alreadyCalled);
+
+        // Add the new card to the current call
+        currentCallArray.push(randomCardSelected);
+        $("#currentCall").append(randomCardSelected);
       }
-  
+
       // If all calls have been made, update the button text
       if (maxCalls === 0) {
-          $("#callButton").text("Reset Game");
+        $("#callButton").text("Reset Game");
       }
-  });
-  
-  
-  
+    });
+
+
+
 
     // Back button returns to the previous page
     $("#back-btn").on("click", function () {
@@ -310,13 +282,13 @@ $(document).on('input', '#pageCount', function () {
 function generateBingoCard(numberOfFlags, numberOfCards) {
   let cards = [];
   for (let cardIndex = 0; cardIndex < numberOfCards; cardIndex++) {
-      let cardNumbers = new Set();
-      while (cardNumbers.size < 24) {
-          let randomNumber = Math.floor(Math.random() * numberOfFlags);
-          cardNumbers.add(randomNumber);
-      }
-      // Convert Set to Array
-      cards[cardIndex] = Array.from(cardNumbers);
+    let cardNumbers = new Set();
+    while (cardNumbers.size < 24) {
+      let randomNumber = Math.floor(Math.random() * numberOfFlags);
+      cardNumbers.add(randomNumber);
+    }
+    // Convert Set to Array
+    cards[cardIndex] = Array.from(cardNumbers);
   }
   console.log("Generated bingo cards: ", cards); // Log the cards array
   return cards;
@@ -329,26 +301,20 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
 // End of cardGen.js
 // ====================================================================================================
 // printFunction.js
-function printPages(lobbyIndex) {
+function toggleForPrintPageSetUp(lobbyIndex) {
   let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
   let countryCodez = jsonData[lobbyIndex].countryCodes;
-  console.log("country codez: "+countryCodez);
+  console.log("country codez: " + countryCodez);
   console.log(generateBingoCard(numberOfFlags, pageCount));
   let rngCards = (generateBingoCard(numberOfFlags, pageCount));
-  console.log("Json Data looks like this after printPages(): " +jsonData);
-  // jsonData = 2d array at this point
+  console.log("Json Data looks like this after printPages(): " + jsonData);
   console.log(jsonData[lobbyIndex])
-  // jsonData[lobbyIndex] returns an object that has countryCodes, countryName, and lobbyName
-  // console.log("country codes length: " +jsonData[lobbyIndex].countryCodes.length)
-// jsonData[lobbyIndex].countryCodes.length = number of flags selected on object you called...
-  // console.log(jsonDat
-// Something with jsonData[0].countryCodes[0].length , not 0s, have to figure out proper indexing...
-// rngCards looks something like this...
-// [
-//   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-//   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-//   [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-// ]
+
+
+  printCards(countryCodez,rngCards);
+}
+
+function printCards(countryCodez,rngCards){
   let printWindow = window.open('', '_blank');
 
   for (let i = 0; i < pageCount; i++) {
@@ -398,4 +364,4 @@ function printPages(lobbyIndex) {
   }
   setTimeout(function () { printWindow.print() }, 500);
 }
-// ====================================================================================================
+
