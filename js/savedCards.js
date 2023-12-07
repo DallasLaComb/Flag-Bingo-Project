@@ -1,3 +1,4 @@
+// This is for testing git commit messages...
 window.pageCount = 1;
 let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
