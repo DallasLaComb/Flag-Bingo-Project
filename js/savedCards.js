@@ -4,7 +4,9 @@ $('#pageCount').on('input', function () {
   pageCount = $(this).val();
 });
 
-
+$(document).ready(function() {
+  editSet();
+});
 let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
 let alreadyCalledArray = []; //Global variable for call generator
@@ -71,44 +73,46 @@ $("#deleteModal").load("deleteSetModal.html");
     //   });
     // });
   // });
-//   $(".edit-btn").on("click", function () {
-//     let currentSetName = $(this).attr("id");
-//     //Injects the view for editing the card set's name, global function from index.js
-//     window.injectSaveSetView();
-//     //Dynamic loading of the navbar
-//     $(function () {
-//       $("#navbar-placeholder").load("navbar.html");
-//     });
-//     /* 
-//     * if the submit button is clicked, update the set's from what was submitted in the form,
-//     * then save to cookies and update the view
-//     */
-//     $(document).on("click", "#submit-btn", function () {
-//       // The input to the form is stored in a variable and will be passed as the new set name 
-//       let newSetName = $("#my-input").val();
-//       // Update the lobby name in the jsonData array
-//       jsonData.forEach((item) => {
-//         if (item.lobbyName === currentSetName) {
-//           item.lobbyName = newSetName;
-//         }
-//       });
-//       // Save the updated jsonData to the browser's cookies
-//       setCookie("lobbyData", JSON.stringify(jsonData));
-//       // Update the lobby name in the rendered page
-//       $(".row").each(function (index) {
-//         if ($(this).find("h2").text() === currentSetName) {
-//           $(this).find("h2").text(newSetName);
-//         }
-//       });
-//       // Re-render the view displaying all sets
-//       window.location.href = "savedCards.html";
-//     });
-//     // Back button returns to the previous page
-//     $("#back-btn").on("click", function () {
-//       window.location.href = "index.html";
-//     });
 
-//   });
+  // $(".edit-btn").on("click", function () {
+  //   let currentSetName = $(this).attr("id");
+  //   //Injects the view for editing the card set's name, global function from index.js
+  //   window.injectSaveSetView();
+  //   //Dynamic loading of the navbar
+  //   $(function () {
+  //     $("#navbar-placeholder").load("navbar.html");
+  //   });
+  //   /* 
+  //   * if the submit button is clicked, update the set's from what was submitted in the form,
+  //   * then save to cookies and update the view
+  //   */
+  //   $(document).on("click", "#submit-btn", function () {
+  //     // The input to the form is stored in a variable and will be passed as the new set name 
+  //     let newSetName = $("#my-input").val();
+  //     // Update the lobby name in the jsonData array
+  //     jsonData.forEach((item) => {
+  //       if (item.lobbyName === currentSetName) {
+  //         item.lobbyName = newSetName;
+  //       }
+  //     });
+  //     // Save the updated jsonData to the browser's cookies
+  //     setCookie("lobbyData", JSON.stringify(jsonData));
+  //     // Update the lobby name in the rendered page
+  //     $(".row").each(function (index) {
+  //       if ($(this).find("h2").text() === currentSetName) {
+  //         $(this).find("h2").text(newSetName);
+  //       }
+  //     });
+  //     // Re-render the view displaying all sets
+  //     window.location.href = "savedCards.html";
+  //   });
+  //   // Back button returns to the previous page
+  //   $("#back-btn").on("click", function () {
+  //     window.location.href = "index.html";
+  //   });
+  // });
+
+
 //   //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
 //   $("#printmodal").load("printmodal.html");
 //   // The following function performs the deletion of a card set when the set's "Delete" button is pressed
@@ -263,8 +267,32 @@ function deleteSet(index) {
   });
 }
 
-function editSet(index) {
-  // ...
+function editSet() {
+  $(".edit-btn").on("click", function () {
+    let currentSetName = $(this).attr("id");
+    window.injectSaveSetView();
+    $(function () {
+      $("#navbar-placeholder").load("navbar.html");
+    });
+    $(document).on("click", "#submit-btn", function () {
+      let newSetName = $("#my-input").val();
+      jsonData.forEach((item) => {
+        if (item.lobbyName === currentSetName) {
+          item.lobbyName = newSetName;
+        }
+      });
+      setCookie("lobbyData", JSON.stringify(jsonData));
+      $(".row").each(function (index) {
+        if ($(this).find("h2").text() === currentSetName) {
+          $(this).find("h2").text(newSetName);
+        }
+      });
+      window.location.href = "savedCards.html";
+    });
+    $("#back-btn").on("click", function () {
+      window.location.href = "index.html";
+    });
+  });
 }
 
 function printSet(index) {
@@ -281,10 +309,7 @@ $("#saved-lobbies").on("click", ".delete-btn", function() {
   deleteSet(index);
 });
 
-$("#saved-lobbies").on("click", ".edit-btn", function() {
-  let index = $(this).data("index");
-  editSet(index);
-});
+
 
 $("#saved-lobbies").on("click", ".printbtn", function() {
   let index = $(this).data("index");
