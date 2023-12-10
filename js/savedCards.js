@@ -284,7 +284,7 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
   let cards = [];
   for (let cardIndex = 0; cardIndex < numberOfCards; cardIndex++) {
     let cardNumbers = new Set();
-    while (cardNumbers.size < 24) {
+    while (cardNumbers.size < 25) {
       let randomNumber = Math.floor(Math.random() * numberOfFlags);
       cardNumbers.add(randomNumber);
     }
@@ -304,18 +304,21 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
 // printFunction.js
 function toggleForPrintPageSetUp(lobbyIndex) {
   let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
-  let countryCodez = jsonData[lobbyIndex].countryCodes;
-  console.log("country codez: " + countryCodez);
+  let twoLetterCountryCode = jsonData[lobbyIndex].countryCodes;
+  let countryName = jsonData[lobbyIndex].countryName;
+
+  console.log("country codez: " + twoLetterCountryCode);
+  console.log("country names: " + countryName)
   console.log(generateBingoCard(numberOfFlags, pageCount));
   let rngCards = (generateBingoCard(numberOfFlags, pageCount));
   console.log("Json Data looks like this after printPages(): " + jsonData);
   console.log(jsonData[lobbyIndex])
 
 
-  printCards(countryCodez,rngCards);
+  printCards(twoLetterCountryCode,rngCards, countryName);
 }
 
-function printCards(countryCodez, rngCards) {
+function printCards(twoLetterCountryCode, rngCards, countryName) {
   let printWindow = window.open('', '_blank');
 
   for (let i = 0; i < pageCount; i++) {
@@ -329,7 +332,7 @@ function printCards(countryCodez, rngCards) {
       if (j === 12) {
         printWindow.document.write('<div class="grid-item">FREE</div>\n');
       } else {
-        printWindow.document.write(`<div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][j]]}.png"></div>\n`);
+        printWindow.document.write(`<div class="grid-item"><p>${countryName[rngCards[i][j]]}</p><img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png"></div>\n`);
       }
     }
 
