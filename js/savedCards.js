@@ -1,11 +1,12 @@
-// This is for testing git commit messages...
 let pageCount = 1;
-$('#pageCount').on('input', function () {
-  pageCount = $(this).val();
-});
-
+// This is for testing git commit messages...
 $(document).ready(function() {
   editSet();
+  printSet();
+  $(document).on('input', '#pageCount', function () {
+    pageCount = $(this).val();
+    console.log("Number of cards to print: " + pageCount);
+  });
 });
 let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
@@ -19,12 +20,7 @@ let jsonData = JSON.parse(jsonString);
 let lobbyName;
 
 $("#deleteModal").load("deleteSetModal.html");
-
-
-
-
-
-
+$("#printmodal").load("printmodal.html");
 
 // $(jsonData).each(function (index, value) {
 //   // jsonData == [{lobbyName: "Test", countryCodes: ["us", "ca"]}, {lobbyName: "Test2", countryCodes: ["us", "ca"]}];
@@ -114,35 +110,35 @@ $("#deleteModal").load("deleteSetModal.html");
 
 
 //   //Calling the modal once to create a DOM element for the modal, MUST BE DONE BEFORE CALLING MODAL
-//   $("#printmodal").load("printmodal.html");
+  // $("#printmodal").load("printmodal.html");
 //   // The following function performs the deletion of a card set when the set's "Delete" button is pressed
-//   $(".printbtn").on("click", function () {
-//     let index = $(this).data("index");
-//     // This properly gets the index of the object your are clicking print on ^^^
-//     console.log("Printing set: " + index);
-//     let cookieValue = getCookie("lobbyData");
-//     if (cookieValue) {
-//       let jsonData = JSON.parse(cookieValue);
-//       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
-//         // This for loop is to get each individual country code for selection...
-//         console.log("country # " + i + " " + jsonData[index].countryCodes[i]);
-//       }
-//     }
-//     $("#printmodal").load("printmodal.html", function () {
-//       $(document).on("click", "#modal-print", function () {
-//         console.log("Print button clicked");
-//         try {
-//           toggleForPrintPageSetUp(index);
-//           setTimeout(function () {
-//             location.reload();
-//           }, 501);
-//         }
-//         catch (error) {
-//           console.error("Error", error);
-//         }
-//       });
-//     });
-//   });
+  // $(".printbtn").on("click", function () {
+  //   let index = $(this).data("index");
+  //   // This properly gets the index of the object your are clicking print on ^^^
+  //   console.log("Printing set: " + index);
+  //   let cookieValue = getCookie("lobbyData");
+  //   if (cookieValue) {
+  //     let jsonData = JSON.parse(cookieValue);
+  //     for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
+  //       // This for loop is to get each individual country code for selection...
+  //       console.log("country # " + i + " " + jsonData[index].countryCodes[i]);
+  //     }
+  //   }
+  //   $("#printmodal").load("printmodal.html", function () {
+  //     $(document).on("click", "#modal-print", function () {
+  //       console.log("Print button clicked");
+  //       try {
+  //         toggleForPrintPageSetUp(index);
+  //         setTimeout(function () {
+  //           location.reload();
+  //         }, 501);
+  //       }
+  //       catch (error) {
+  //         console.error("Error", error);
+  //       }
+  //     });
+  //   });
+  // });
 //   // The following function executes the 'play game' functionality when a set's "Play" button is pressed
 //   $(`#${index}`).on("click", function () {
 //     //This removes everything from the body except for the navbar.
@@ -295,8 +291,32 @@ function editSet() {
   });
 }
 
-function printSet(index) {
-  // ...
+function printSet() {
+  $(".printbtn").on("click", function () {
+    let index = $(this).data("index");
+    console.log("Printing set: " + index);
+    let cookieValue = getCookie("lobbyData");
+    if (cookieValue) {
+      let jsonData = JSON.parse(cookieValue);
+      for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
+        console.log("country # " + i + " " + jsonData[index].countryCodes[i]);
+      }
+    }
+    $("#printmodal").load("printmodal.html", function () {
+      $(document).on("click", "#modal-print", function () {
+        console.log("Print button clicked");
+        try {
+          toggleForPrintPageSetUp(index, pageCount); // Pass pageCount to the function
+          setTimeout(function () {
+            location.reload();
+          }, 501);
+        }
+        catch (error) {
+          console.error("Error", error);
+        }
+      });
+    });
+  });
 }
 
 function playGame(index) {
@@ -386,7 +406,8 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
 }
 
 
-function toggleForPrintPageSetUp(lobbyIndex) {
+function toggleForPrintPageSetUp(lobbyIndex, pageCount) {
+  console.log("pageCount: " + pageCount);
   let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
   let twoLetterCountryCode = jsonData[lobbyIndex].countryCodes;
   let countryName = jsonData[lobbyIndex].countryName;
