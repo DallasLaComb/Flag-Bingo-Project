@@ -315,54 +315,28 @@ function toggleForPrintPageSetUp(lobbyIndex) {
   printCards(countryCodez,rngCards);
 }
 
-function printCards(countryCodez,rngCards){
+function printCards(countryCodez, rngCards) {
   let printWindow = window.open('', '_blank');
 
   for (let i = 0; i < pageCount; i++) {
-
     printWindow.document.write('<html><head>');
     printWindow.document.write('<link rel="stylesheet" href="./css/index.css" type="text/css" />');
     setTimeout(1000);
     printWindow.document.write('</head><body>');
-    printWindow.document.write(`  
-    <div class="grid-container">
-    <!-- Generate 25 div elements for the 5x5 grid -->
-    <!-- Each div with the class "grid-item" represents one cell in the grid -->
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][0]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][1]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][2]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][3]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][4]]}.png"></div>
+    printWindow.document.write('<div class="grid-container">\n');
 
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][5]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][6]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][7]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][8]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][9]]}.png"></div>
+    for (let j = 0; j < 25; j++) {
+      if (j === 12) {
+        printWindow.document.write('<div class="grid-item">FREE</div>\n');
+      } else {
+        printWindow.document.write(`<div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][j]]}.png"></div>\n`);
+      }
+    }
 
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][10]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][11]]}.png"></div>
-    <div class="grid-item">FREE</div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][12]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][13]]}.png"></div>
-
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][14]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][15]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][16]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][17]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][18]]}.png"></div>
-
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][19]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][20]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][21]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][22]]}.png"></div>
-    <div class="grid-item"><img src="flagImages/${countryCodez[rngCards[i][23]]}.png"></div>
-
-    </div>
-    
-    `);
+    printWindow.document.write('</div>\n');
     printWindow.document.write('</body></html>');
   }
+
   setTimeout(function () { printWindow.print() }, 500);
 }
 
