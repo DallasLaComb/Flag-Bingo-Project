@@ -315,29 +315,33 @@ function toggleForPrintPageSetUp(lobbyIndex) {
   console.log(jsonData[lobbyIndex])
 
 
-  printCards(twoLetterCountryCode,rngCards, countryName);
-}
+  printCards(twoLetterCountryCode, rngCards, countryName, pageCount);}
 
-function printCards(twoLetterCountryCode, rngCards, countryName) {
+function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
   let printWindow = window.open('', '_blank');
 
   for (let i = 0; i < pageCount; i++) {
-    printWindow.document.write('<html><head>');
-    printWindow.document.write('<link rel="stylesheet" href="./css/index.css" type="text/css" />');
-    setTimeout(1000);
-    printWindow.document.write('</head><body>');
-    printWindow.document.write('<div class="grid-container">\n');
-
+    let gridItems = '';
     for (let j = 0; j < 25; j++) {
       if (j === 12) {
-        printWindow.document.write('<div class="grid-item">FREE</div>\n');
+        gridItems += '<div class="grid-item">FREE</div>\n';
       } else {
-        printWindow.document.write(`<div class="grid-item"><p>${countryName[rngCards[i][j]]}</p><img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png"></div>\n`);
+        gridItems += `<div class="grid-item"><p>${countryName[rngCards[i][j]]}</p><img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png"></div>\n`;
       }
     }
 
-    printWindow.document.write('</div>\n');
-    printWindow.document.write('</body></html>');
+    printWindow.document.write(`
+      <html>
+        <head>
+          <link rel="stylesheet" href="./css/index.css" type="text/css" />
+        </head>
+        <body>
+          <div class="grid-container">
+            ${gridItems}
+          </div>
+        </body>
+      </html>
+    `);
   }
 
   setTimeout(function () { printWindow.print() }, 500);
