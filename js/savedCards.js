@@ -16,6 +16,7 @@ let jsonString = Cookies.get("lobbyData");
 let jsonData = JSON.parse(jsonString);
 let lobbyName;
 
+$("#deleteModal").load("deleteSetModal.html");
 
 
 
@@ -57,18 +58,18 @@ let lobbyName;
   //   */
   //   let index = $(this).attr("id");
   //   //Function that executes when the modal is loaded
-  //   $("#deleteModal").load("deleteSetModal.html", function () {
-  //     //Perform the try-catch block when the modal's "Yes" button is pressed
-  //     $(document).on("click", "#modal-delete", function () {
-  //       // Perform the deletion of the set from the browser's cookies
-  //       try {
-  //         deleteObjectFromCookie("lobbyData", "lobbyName", index);
-  //         location.reload();
-  //       } catch (error) {
-  //         console.error("Error occurred while deleting from the cookie:", error);
-  //       }
-  //     });
-  //   });
+    // $("#deleteModal").load("deleteSetModal.html", function () {
+    //   //Perform the try-catch block when the modal's "Yes" button is pressed
+    //   $(document).on("click", "#modal-delete", function () {
+    //     // Perform the deletion of the set from the browser's cookies
+    //     try {
+    //       deleteObjectFromCookie("lobbyData", "lobbyName", index);
+    //       location.reload();
+    //     } catch (error) {
+    //       console.error("Error occurred while deleting from the cookie:", error);
+    //     }
+    //   });
+    // });
   // });
 //   $(".edit-btn").on("click", function () {
 //     let currentSetName = $(this).attr("id");
@@ -244,26 +245,23 @@ function savedSetView(index, lobbyName) {
 `);
 }
 
-
-
-
-// function deleteSet(index) {
-//   $("#deleteModal").load("deleteSetModal.html");
-//     let index = $(this).attr("id");
-//     //Function that executes when the modal is loaded
-//     $("#deleteModal").load("deleteSetModal.html", function () {
-//       //Perform the try-catch block when the modal's "Yes" button is pressed
-//       $(document).on("click", "#modal-delete", function () {
-//         // Perform the deletion of the set from the browser's cookies
-//         try {
-//           deleteObjectFromCookie("lobbyData", "lobbyName", index);
-//           location.reload();
-//         } catch (error) {
-//           console.error("Error occurred while deleting from the cookie:", error);
-//         }
-//       });
-//     });
-// }
+function deleteSet(index) {
+  console.log("index"+ index)
+  console.log("deleteSet() called")
+  // Store the index on the #modal-delete element
+  $("#modal-delete").data("index", index);
+  $(document).on("click", "#modal-delete", function () {
+    // Retrieve the index from the #modal-delete element
+    let index = $(this).data("index");
+    // Perform the deletion of the set from the browser's cookies
+    try {
+      deleteObjectFromCookie("lobbyData", "lobbyName", index);
+      console.log("Deleted set at index:", index);
+    } catch (error) {
+      console.error("Error occurred while deleting from the cookie:", error);
+    }
+  });
+}
 
 function editSet(index) {
   // ...
@@ -279,7 +277,7 @@ function playGame(index) {
 
 // Use event delegation for button clicks
 $("#saved-lobbies").on("click", ".delete-btn", function() {
-  let index = $(this).data("index");
+  let index = $(this).attr("id");
   deleteSet(index);
 });
 
@@ -315,8 +313,10 @@ function deleteObjectFromCookie(cookieName, objectKey, keyValue) {
   let cookieValue = getCookie(cookieName);
   if (cookieValue) {
     let data = JSON.parse(cookieValue);
+    console.log("Data:", data);
     // Assuming it's an array of objects as you described
     let updatedData = data.filter(obj => obj[objectKey] !== keyValue);
+    console.log("Updated data:", updatedData);
     setCookie(cookieName, JSON.stringify(updatedData), 1000); // Set for 7 days, adjust as needed
   }
 }
