@@ -1,5 +1,10 @@
 // This is for testing git commit messages...
-window.pageCount = 1;
+let pageCount = 1;
+$('#pageCount').on('input', function () {
+  pageCount = $(this).val();
+});
+
+
 let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
 let alreadyCalledArray = []; //Global variable for call generator
@@ -228,12 +233,7 @@ $(jsonData).each(function (index, value) {
   }); // End 'play game' function
 }); // End OUTER jsonData function 
 
-
-// Back button returns to the previous page
-$("#back-btn").on("click", function () {
-  window.location.href = "index.html";
-});
-
+// Function to delete an object from a cookie / Deletes your lobby from the cookie.
 function deleteObjectFromCookie(cookieName, objectKey, keyValue) {
   let cookieValue = getCookie(cookieName);
   if (cookieValue) {
@@ -243,6 +243,8 @@ function deleteObjectFromCookie(cookieName, objectKey, keyValue) {
     setCookie(cookieName, JSON.stringify(updatedData), 1000); // Set for 7 days, adjust as needed
   }
 }
+
+// Function to get cookie that we set earlier.
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -258,6 +260,7 @@ function getCookie(name) {
   return cookieValue;
 }
 
+// Function to set an effectively permanent cookie.
 function setCookie(name, value) {
   var expiryDate = new Date();
   expiryDate.setFullYear(expiryDate.getFullYear() + 100);  // Setting expiry date to 100 years in the future
@@ -265,20 +268,6 @@ function setCookie(name, value) {
     "; expires=" + expiryDate.toUTCString() +
     "; path=/";
 }
-
-//Grabs the page count from the modal input before the print button is clicked
-
-$(document).on('input', '#pageCount', function () {
-  pageCount = $(this).val();
-  console.log("Number of cards to print: " + pageCount);
-});
-
-//printPages function that is called when the modal's "print" button is clicked (see above in file)
-
-
-
-// ====================================================================================================
-// cardGen.js 
 
 function generateBingoCard(numberOfFlags, numberOfCards) {
   let cards = [];
@@ -288,34 +277,20 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
       let randomNumber = Math.floor(Math.random() * numberOfFlags);
       cardNumbers.add(randomNumber);
     }
-    // Convert Set to Array
-    cards[cardIndex] = Array.from(cardNumbers);
+    // Convert Set to Array and add to cards
+    cards.push(Array.from(cardNumbers));
   }
-  console.log("Generated bingo cards: ", cards); // Log the cards array
   return cards;
 }
-// Call the function and log the returned value
-// jsonData[index].countryCodes[0].length
 
-// returns an array of 3 bingo cards, each with 24 unique numbers between 0 and 49
 
-// End of cardGen.js
-// ====================================================================================================
-// printFunction.js
 function toggleForPrintPageSetUp(lobbyIndex) {
   let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
   let twoLetterCountryCode = jsonData[lobbyIndex].countryCodes;
   let countryName = jsonData[lobbyIndex].countryName;
-
-  console.log("country codez: " + twoLetterCountryCode);
-  console.log("country names: " + countryName)
-  console.log(generateBingoCard(numberOfFlags, pageCount));
   let rngCards = (generateBingoCard(numberOfFlags, pageCount));
-  console.log("Json Data looks like this after printPages(): " + jsonData);
-  console.log(jsonData[lobbyIndex])
-
-
-  printCards(twoLetterCountryCode, rngCards, countryName, pageCount);}
+  printCards(twoLetterCountryCode, rngCards, countryName, pageCount);
+}
 
 function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
   let printWindow = window.open('', '_blank');
@@ -346,4 +321,9 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
 
   setTimeout(function () { printWindow.print() }, 500);
 }
+
+// Back button returns to the previous page
+$("#back-btn").on("click", function () {
+  window.location.href = "index.html";
+});
 
