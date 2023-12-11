@@ -111,31 +111,33 @@ function playGame(index) {
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
       <div id="navbar-placeholder"></div>
-      <div class="container" id="callGenerator">
-          <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
-        <div class="row">
-        <!-- ^^ Bootstrap Class -->
-          <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
-          <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
-            Call
-          </div>
-          <div class="row">
-          <div class="row justify-content-center">
-          <div class="col-4 text-center">
+      <div class="container-fluid border shadow d-flex flex-column justify-content-center align-items-center p-4">
+      <div class="row">
+        <div class="col-md-2 border d-flex justify-content-center align-items-center">
+          <button class="btn btn-primary btn-lg">Call</button>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-2">
+        <div class="col-md-6 text-center">
           Country Names:
           <label class="switch">
             <input type="checkbox" id="country-name-checkbox" class="form-check-input">
             <span class="slider round"></span>
           </label>
         </div>
-        <div class="col-4 text-center">
+        <div class="col-md-6 text-center">
           Country Flags:
           <label class="switch">
             <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
             <span class="slider round"></span>
           </label>
         </div>
-        </div>
+      </div>
+  </div>
+
+      <div class="container-fluid border shadow d-flex flex-column justify-content-center align-items-center p-4">
+        <div class="row">
+          <div class="col-md-2 border d-flex justify-content-center align-items-center">
           <!-- ^^ Bootstrap Class -->
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
