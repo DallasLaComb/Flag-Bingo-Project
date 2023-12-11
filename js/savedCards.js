@@ -140,110 +140,136 @@ $("#printmodal").load("printmodal.html");
   //   });
   // });
 //   // The following function executes the 'play game' functionality when a set's "Play" button is pressed
-//   $(`#${index}`).on("click", function () {
-//     //This removes everything from the body except for the navbar.
-//     $("body > :not(nav)").remove();
-//     // This adds the "Call Generator" container to the body of the page
-//     $("body").append(`
-//       <div id="navbar-placeholder"></div>
-//       <div class="container" id="callGenerator">
-//           <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
-//         <div class="row">
-//         <!-- ^^ Bootstrap Class -->
-//           <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
-//           <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
-//             Call
-//           </div>
-//           <div class="row">
-//           <!-- ^^ Bootstrap Class -->
-//             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
-//             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
-//             <div class="col border" id="availableList"><h1>Available List:</h1></div>
-//             <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
-//           </div>
-//         </div>
-//       </div>
-//       <!-- Back button -->
-//       <div class="container text-end" id="back-btn-container">
-//         <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
-//           Back
-//         </div>
-//       </div>
-//       `);
-//     // #availableList, #currentCall, #alreadyCalled
-//     //Dynamically Load navbar
-//     $("#navbar-placeholder").load("navbar.html");
-//     // loads the current set's flags into the available list of the call generator
-//     window.lobbySize = jsonData[index].countryCodes.length;
-//     function loadAvailableList() {
-//       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
-//         // ^^ This is how to get each individual country code for selection...
-//         $(".availableList").append(jsonData[index].countryCodes[i]);
-//         let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
-//         let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
-//         let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
-//         let newCountryCard = $(
-//           `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
-//         )
-//         countryCardsArray.push(newCountryCard);
-//         // console.log(countryCardsArray[i]);
-//         $("#availableList").append(newCountryCard);
-//       }
-//       console.log("The size of " + lobbyName + " is: " + lobbySize);
-//     }
-//     loadAvailableList();
-//     let maxCalls = lobbySize;
-//     $("#callButton").on("click", function () {
-//       // Generate a random index based on the current count of maxCalls
-//       let randomIndex = Math.floor(Math.random() * maxCalls);
-//       // Retrieve and remove the randomly selected card from the array
-//       let randomCardSelected = countryCardsArray.splice(randomIndex, 1)[0];
-//       // Decrement maxCalls after removing the card from the array
-//       maxCalls--;
-//       // Check if the current call array is empty
-//       if (currentCallArray.length == 0) {
-//         currentCallArray.push(randomCardSelected);
-//         $("#currentCall").append(randomCardSelected);
-//       } else {
-//         let alreadyCalled = currentCallArray.pop();
-//         // Add the previously called card to the top of the already called list
-//         $("#alreadyCalled").prepend(alreadyCalled);
-//         // Add the new card to the current call
-//         currentCallArray.push(randomCardSelected);
-//         $("#currentCall").append(randomCardSelected);
-//       }
-//       // If all calls have been made, update the button text
-//       if (maxCalls === 0) {
-//         $("#callButton").text("Reset Game");
-//       }
-//     });
-//     // Back button returns to the previous page
-//     $("#back-btn").on("click", function () {
-//       window.location.href = "index.html";
-//     });
-//   }); // End 'play game' function
+  // $(`#${index}`).on("click", function () {
+  //   //This removes everything from the body except for the navbar.
+  //   $("body > :not(nav)").remove();
+  //   // This adds the "Call Generator" container to the body of the page
+  //   $("body").append(`
+  //     <div id="navbar-placeholder"></div>
+  //     <div class="container" id="callGenerator">
+  //         <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
+  //       <div class="row">
+  //       <!-- ^^ Bootstrap Class -->
+  //         <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
+  //         <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
+  //           Call
+  //         </div>
+  //         <div class="row">
+  //         <!-- ^^ Bootstrap Class -->
+  //           <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
+  //           <div class="col border" id="currentCall"><h1>Current Call</h1></div>
+  //           <div class="col border" id="availableList"><h1>Available List:</h1></div>
+  //           <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
+  //         </div>
+  //       </div>
+  //     </div>
+  //     <!-- Back button -->
+  //     <div class="container text-end" id="back-btn-container">
+  //       <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
+  //         Back
+  //       </div>
+  //     </div>
+  //     `);
+  //   // #availableList, #currentCall, #alreadyCalled
+  //   //Dynamically Load navbar
+  //   $("#navbar-placeholder").load("navbar.html");
+  //   // loads the current set's flags into the available list of the call generator
+  //   window.lobbySize = jsonData[index].countryCodes.length;
+  //   function loadAvailableList() {
+  //     for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
+  //       // ^^ This is how to get each individual country code for selection...
+  //       $(".availableList").append(jsonData[index].countryCodes[i]);
+  //       let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
+  //       let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
+  //       let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
+  //       let newCountryCard = $(
+  //         `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
+  //       )
+  //       countryCardsArray.push(newCountryCard);
+  //       // console.log(countryCardsArray[i]);
+  //       $("#availableList").append(newCountryCard);
+  //     }
+  //     console.log("The size of " + lobbyName + " is: " + lobbySize);
+  //   }
+  //   loadAvailableList();
+  //   let maxCalls = lobbySize;
+  //   $("#callButton").on("click", function () {
+  //     // Generate a random index based on the current count of maxCalls
+  //     let randomIndex = Math.floor(Math.random() * maxCalls);
+  //     // Retrieve and remove the randomly selected card from the array
+  //     let randomCardSelected = countryCardsArray.splice(randomIndex, 1)[0];
+  //     // Decrement maxCalls after removing the card from the array
+  //     maxCalls--;
+  //     // Check if the current call array is empty
+  //     if (currentCallArray.length == 0) {
+  //       currentCallArray.push(randomCardSelected);
+  //       $("#currentCall").append(randomCardSelected);
+  //     } else {
+  //       let alreadyCalled = currentCallArray.pop();
+  //       // Add the previously called card to the top of the already called list
+  //       $("#alreadyCalled").prepend(alreadyCalled);
+  //       // Add the new card to the current call
+  //       currentCallArray.push(randomCardSelected);
+  //       $("#currentCall").append(randomCardSelected);
+  //     }
+  //     // If all calls have been made, update the button text
+  //     if (maxCalls === 0) {
+  //       $("#callButton").text("Reset Game");
+  //     }
+  //   });
+  //   // Back button returns to the previous page
+  //   $("#back-btn").on("click", function () {
+  //     window.location.href = "index.html";
+  //   });
+  // }); // End 'play game' function
 // }); // End OUTER jsonData function 
 // Define your functions
+
+
+
 function savedSetView(index, lobbyName) {
   $("#saved-lobbies").append(`
   <div class="row border shadow m-3">
       <div class="col-3 my-auto">
           <h2>${lobbyName}</h2>
       </div>
-      <div class="col-2 my-auto btn">
-          <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
+      <div class="col-2 my-auto btn play-btn" data-index="${index}">
+          <h1><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
       </div>
-      <button type="button" class="col-2 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticPrintModal">
-          <h1 class="printbtn" data-index="${index}"><i class="bi bi-printer"></i><span class="ps-2">Print</span></h1>
+      <button type="button" class="col-2 my-auto btn printbtn" data-bs-toggle="modal" data-bs-target="#staticPrintModal" data-index="${index}">
+          <h1><i class="bi bi-printer "></i><span class="ps-2">Print</span></h1>
       </button>
-      <button type="button" class="col-2 my-auto btn">
-        <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
+      <button type="button" class="col-2 my-auto btn edit-btn" data-lobby-name="${lobbyName}">
+        <h1><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
       </button>
-      <button type="button" class="col-3 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        <h1 id="${lobbyName}" class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
+      <button type="button" class="col-3 my-auto btn delete-btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-lobby-name="${lobbyName}" data-index="${index}">
+        <h1><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
       </button>
-`);
+  `);
 }
+// function savedSetView(index, lobbyName) {
+//   $("#saved-lobbies").append(`
+//   <div class="row border shadow m-3">
+//       <div class="col-3 my-auto">
+//           <h2>${lobbyName}</h2>
+//       </div>
+//       <div class="col-2 my-auto btn">
+//           <h1 id="${index}" ><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
+//       </div>
+//       <button type="button" class="col-2 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticPrintModal">
+//           <h1 class="printbtn" data-index="${index}"><i class="bi bi-printer"></i><span class="ps-2">Print</span></h1>
+//       </button>
+//       <button type="button" class="col-2 my-auto btn">
+//         <h1 id="${lobbyName}" class="edit-btn"><i class="bi bi-pencil-square"></i><span class="ps-2">Edit</span></h1>
+//       </button>
+//       <button type="button" class="col-3 my-auto btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+//         <h1 id="${lobbyName}" class="delete-btn" data-index="${index}"><i class="bi bi-x-square"></i><span class="ps-2">Delete</span></h1>
+//       </button>
+// `);
+// }
+
+
+
 
 function deleteSet(index) {
   console.log("index"+ index)
@@ -256,7 +282,8 @@ function deleteSet(index) {
     // Perform the deletion of the set from the browser's cookies
     try {
       deleteObjectFromCookie("lobbyData", "lobbyName", index);
-      console.log("Deleted set at index:", index);
+      // console.log("Deleted set at index: " + index)
+      location.reload();
     } catch (error) {
       console.error("Error occurred while deleting from the cookie:", error);
     }
@@ -265,7 +292,7 @@ function deleteSet(index) {
 
 function editSet() {
   $(".edit-btn").on("click", function () {
-    let currentSetName = $(this).attr("id");
+    let currentSetName = $(this).data("lobby-name");
     window.injectSaveSetView();
     $(function () {
       $("#navbar-placeholder").load("navbar.html");
@@ -320,16 +347,95 @@ function printSet() {
 }
 
 function playGame(index) {
-  // ...
+  console.log("Play game called");
+  //This removes everything from the body except for the navbar.
+  $("body > :not(nav)").remove();
+    // This adds the "Call Generator" container to the body of the page
+    $("body").append(`
+      <div id="navbar-placeholder"></div>
+      <div class="container" id="callGenerator">
+          <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
+        <div class="row">
+        <!-- ^^ Bootstrap Class -->
+          <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
+          <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
+            Call
+          </div>
+          <div class="row">
+          <!-- ^^ Bootstrap Class -->
+            <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
+            <div class="col border" id="currentCall"><h1>Current Call</h1></div>
+            <div class="col border" id="availableList"><h1>Available List:</h1></div>
+            <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
+          </div>
+        </div>
+      </div>
+      <!-- Back button -->
+      <div class="container text-end" id="back-btn-container">
+        <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
+          Back
+        </div>
+      </div>
+      `);
+    // #availableList, #currentCall, #alreadyCalled
+    //Dynamically Load navbar
+    $("#navbar-placeholder").load("navbar.html");
+    // loads the current set's flags into the available list of the call generator
+    window.lobbySize = jsonData[index].countryCodes.length;
+    function loadAvailableList() {
+      for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
+        // ^^ This is how to get each individual country code for selection...
+        $(".availableList").append(jsonData[index].countryCodes[i]);
+        let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
+        let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
+        let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
+        let newCountryCard = $(
+          `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
+        )
+        countryCardsArray.push(newCountryCard);
+        // console.log(countryCardsArray[i]);
+        $("#availableList").append(newCountryCard);
+      }
+      console.log("The size of " + lobbyName + " is: " + lobbySize);
+    }
+    loadAvailableList();
+    let maxCalls = lobbySize;
+    $("#callButton").on("click", function () {
+      // Generate a random index based on the current count of maxCalls
+      let randomIndex = Math.floor(Math.random() * maxCalls);
+      // Retrieve and remove the randomly selected card from the array
+      let randomCardSelected = countryCardsArray.splice(randomIndex, 1)[0];
+      // Decrement maxCalls after removing the card from the array
+      maxCalls--;
+      // Check if the current call array is empty
+      if (currentCallArray.length == 0) {
+        currentCallArray.push(randomCardSelected);
+        $("#currentCall").append(randomCardSelected);
+      } else {
+        let alreadyCalled = currentCallArray.pop();
+        // Add the previously called card to the top of the already called list
+        $("#alreadyCalled").prepend(alreadyCalled);
+        // Add the new card to the current call
+        currentCallArray.push(randomCardSelected);
+        $("#currentCall").append(randomCardSelected);
+      }
+      // If all calls have been made, update the button text
+      if (maxCalls === 0) {
+        $("#callButton").text("Reset Game");
+      }
+    });
+    // Back button returns to the previous page
+    $("#back-btn").on("click", function () {
+      window.location.href = "index.html";
+    });
+ // End 'play game' function
 }
 
 // Use event delegation for button clicks
 $("#saved-lobbies").on("click", ".delete-btn", function() {
-  let index = $(this).attr("id");
+  let index = $(this).data("lobby-name");
   deleteSet(index);
 });
-
-
 
 $("#saved-lobbies").on("click", ".printbtn", function() {
   let index = $(this).data("index");
