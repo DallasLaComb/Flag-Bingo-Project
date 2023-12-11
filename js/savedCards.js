@@ -272,30 +272,33 @@ function toggleForPrintPageSetUp(lobbyIndex) {
 
 function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags){
   $("body > :not(#navbar-placeholder)").remove();
-  $("body").append(`
+ $("body").append(`
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-4 text-center">
-        Country Names: <input type="checkbox" class="form-check-input">
+        Country Names: <input type="checkbox" id="country-name-checkbox" class="form-check-input">
       </div>
       <div class="col-4 text-center">
-        Country Flags: <input type="checkbox" class="form-check-input">
+        Country Flags: <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
       </div>
     </div>
     <div class="row justify-content-center">
-      <div class="col-4 text-center">
-        PageCount: <input type="number" id="pageCount" min="1" value="pageCount">
-      </div>
-    </div>
-    <div class="row justify-content-center">
-      <div class="col-4 text-center">
-      <button class="btn btn-primary" id="print-btn">Print Cards</button>      
-      </div>
+    <div class="col-4 text-center">
+      PageCount: <input type="number" id="pageCount" min="1" value="pageCount">
     </div>
   </div>
+    <div class="row justify-content-center">
+    <div class="col-4 text-center">
+    <button class="btn btn-primary" id="print-btn">Print Cards</button>      
+    </div>
+  </div>
+  </div>
 `);
+
 $("#print-btn").on("click", function () {
   let pageCount = parseInt($("#pageCount").val(), 10);
+  countryName = $("#country-name-checkbox").is(":checked") ? countryName : "";
+  twoLetterCountryCode = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
   let rngCards = generateBingoCard(numberOfFlags, pageCount);
   try {
     printCards(twoLetterCountryCode, rngCards, countryName, pageCount);
@@ -317,7 +320,9 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
       if (j === 12) {
         gridItems += '<div class="grid-item">FREE</div>\n';
       } else {
-        gridItems += `<div class="grid-item"><p>${countryName[rngCards[i][j]]}</p><img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png"></div>\n`;
+        let countryNameHtml = countryName ? `<p>${countryName[rngCards[i][j]]}</p>` : '';
+        let flagImageHtml = twoLetterCountryCode ? `<img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png">` : '';
+        gridItems += `<div class="grid-item">${countryNameHtml}${flagImageHtml}</div>\n`;
       }
     }
     printWindow.document.write(`
