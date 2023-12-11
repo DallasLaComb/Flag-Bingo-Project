@@ -151,6 +151,10 @@ input[type='number'] {
     }
 
     .grid-item {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: normal; /* Change this line */
+
         background-color: transparent;
         /* Make background transparent for printing */
         border: 1px solid black;
@@ -158,11 +162,6 @@ input[type='number'] {
         margin: 0;
         /* Reset margin for printing */
         padding: 5px;
-        /* Maintain padding inside each grid item */
-        overflow: hidden;
-        /* Hide overflow content */
-        word-break: break-all;
-        /* Ensure text breaks to avoid overflow */
     }
 }
 

@@ -331,8 +331,12 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
           <link rel="stylesheet" href="./css/index.css" type="text/css" />
         </head>
         <body>
+        <div class="print-container">
+        <div class="grid-wrapper">
           <div class="grid-container">
             ${gridItems}
+            </div>
+          </div>
           </div>
         </body>
       </html>
