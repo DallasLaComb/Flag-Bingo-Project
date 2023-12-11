@@ -136,22 +136,6 @@ function playGame(index) {
           </label>
         </div>
         </div>
-          <div class="row justify-content-center">
-          <div class="col-4 text-center">
-          Country Names:
-          <label class="switch">
-            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="col-4 text-center">
-          Country Flags:
-          <label class="switch">
-            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        </div>
           <!-- ^^ Bootstrap Class -->
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
@@ -326,7 +310,7 @@ function toggleForPrintPageSetUp(lobbyIndex) {
   loadUpTogglePrintPage(twoLetterCountryCode , countryName, numberOfFlags,lobbyName);
 }
 
-function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags){
+function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
   $("body > :not(#navbar-placeholder)").remove();
   $("body").append(`
     <div class="container">
@@ -368,21 +352,26 @@ function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags
 
 
 
-$("#print-btn").on("click", function () {
-  let pageCount = parseInt($("#pageCount").val(), 10);
-  countryName = $("#country-name-checkbox").is(":checked") ? countryName : "";
-  twoLetterCountryCode = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
-  let rngCards = generateBingoCard(numberOfFlags, pageCount);
-  try {
-    printCards(twoLetterCountryCode, rngCards, countryName, pageCount);
-    setTimeout(function () {
-      location.reload();
-    }, 501);
-  }
-  catch (error) {
-    console.error("Error", error);
-  }
-});
+  $("#print-btn").on("click", function () {
+    let pageCount = parseInt($("#pageCount").val(), 10);
+    
+    // Determine if country names should be included based on the switch
+    let includedCountryNames = $("#country-name-checkbox").is(":checked") ? countryName : "";
+    // Determine if country codes should be included based on the switch
+    let includedCountryCodes = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
+  
+    let rngCards = generateBingoCard(numberOfFlags, pageCount);
+    try {
+      printCards(includedCountryCodes, rngCards, includedCountryNames, pageCount, lobbyName);
+      setTimeout(function () {
+        location.reload();
+      }, 501);
+    }
+    catch (error) {
+      console.error("Error", error);
+    }
+  });
+  
 }
 
 function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobbyName) {
