@@ -1,12 +1,7 @@
-let pageCount = 1;
 // This is for testing git commit messages...
 $(document).ready(function() {
   editSet();
   printSet();
-  $(document).on('input', '#pageCount', function () {
-    pageCount = $(this).val();
-    console.log("Number of cards to print: " + pageCount);
-  });
 });
 
 let countryCardsArray = []; //Global variable for call generator
@@ -32,7 +27,7 @@ function savedSetView(index, lobbyName) {
       <div class="col-2 my-auto btn play-btn" data-index="${index}">
           <h1><i class="bi bi-dice-5"></i><span class="ps-2">Play</span></h1>
       </div>
-      <button type="button" class="col-2 my-auto btn printbtn" data-bs-toggle="modal" data-bs-target="#staticPrintModal" data-index="${index}">
+      <button type="button" class="col-2 my-auto btn printbtn"  data-bs-target="#staticPrintModal" data-index="${index}">
           <h1><i class="bi bi-printer "></i><span class="ps-2">Print</span></h1>
       </button>
       <button type="button" class="col-2 my-auto btn edit-btn" data-lobby-name="${lobbyName}">
@@ -96,26 +91,16 @@ function printSet() {
     let index = $(this).data("index");
     console.log("Printing set: " + index);
     let cookieValue = getCookie("lobbyData");
-    if (cookieValue) {
-      let jsonData = JSON.parse(cookieValue);
-      for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
-        console.log("country # " + i + " " + jsonData[index].countryCodes[i]);
-      }
-    }
-    $("#printmodal").load("printmodal.html", function () {
-      $(document).on("click", "#modal-print", function () {
-        console.log("Print button clicked");
+
         try {
-          toggleForPrintPageSetUp(index, pageCount); // Pass pageCount to the function
-          setTimeout(function () {
-            location.reload();
-          }, 501);
+          toggleForPrintPageSetUp(index); 
+          // setTimeout(function () {
+          //   location.reload();
+          // }, 501);
         }
         catch (error) {
           console.error("Error", error);
         }
-      });
-    });
   });
 }
 
@@ -278,18 +263,54 @@ function generateBingoCard(numberOfFlags, numberOfCards) {
 }
 
 
-function toggleForPrintPageSetUp(lobbyIndex, pageCount) {
-  console.log("pageCount: " + pageCount);
+function toggleForPrintPageSetUp(lobbyIndex) {
   let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
   let twoLetterCountryCode = jsonData[lobbyIndex].countryCodes;
   let countryName = jsonData[lobbyIndex].countryName;
-  let rngCards = (generateBingoCard(numberOfFlags, pageCount));
-  printCards(twoLetterCountryCode, rngCards, countryName, pageCount);
+  loadUpTogglePrintPage(twoLetterCountryCode , countryName, numberOfFlags);
+}
+
+function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags){
+  $("body > :not(#navbar-placeholder)").remove();
+  $("body").append(`
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-4 text-center">
+        Country Names: <input type="checkbox" class="form-check-input">
+      </div>
+      <div class="col-4 text-center">
+        Country Flags: <input type="checkbox" class="form-check-input">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4 text-center">
+        PageCount: <input type="number" id="pageCount" min="1" value="pageCount">
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4 text-center">
+      <button class="btn btn-primary" id="print-btn">Print Cards</button>      
+      </div>
+    </div>
+  </div>
+`);
+$("#print-btn").on("click", function () {
+  let pageCount = parseInt($("#pageCount").val(), 10);
+  let rngCards = generateBingoCard(numberOfFlags, pageCount);
+  try {
+    printCards(twoLetterCountryCode, rngCards, countryName, pageCount);
+    setTimeout(function () {
+      location.reload();
+    }, 501);
+  }
+  catch (error) {
+    console.error("Error", error);
+  }
+});
 }
 
 function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
   let printWindow = window.open('', '_blank');
-
   for (let i = 0; i < pageCount; i++) {
     let gridItems = '';
     for (let j = 0; j < 25; j++) {
@@ -299,7 +320,6 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
         gridItems += `<div class="grid-item"><p>${countryName[rngCards[i][j]]}</p><img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png"></div>\n`;
       }
     }
-
     printWindow.document.write(`
       <html>
         <head>
