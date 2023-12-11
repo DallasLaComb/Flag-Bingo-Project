@@ -233,3 +233,34 @@ function getCookie(name) {
   return cookieValue;
 }
 // Helper function to get cookies that you have set earlier...
+
+
+
+
+
+
+// Get the current document title
+var pageTitle = document.title;
+
+// Select the navigation links by their IDs
+var generateGameLink = document.getElementById('generateGameLink');
+var savedCardsLink = document.getElementById('savedCardsLink');
+var howToPlayLink = document.getElementById('howToPlayLink');
+var aboutLALCCLink = document.getElementById('aboutLALCCLink');
+
+// Remove the "active" class from all links
+generateGameLink.classList.remove('active');
+savedCardsLink.classList.remove('active');
+howToPlayLink.classList.remove('active');
+aboutLALCCLink.classList.remove('active');
+
+// Set the "active" class based on the document title
+if (pageTitle === "Flag Bingo") {
+  generateGameLink.classList.add('active');
+} else if (pageTitle === "Saved Cards") {
+  savedCardsLink.classList.add('active');
+} else if (pageTitle === "How to Play") {
+  howToPlayLink.classList.add('active');
+} else if (pageTitle === "About LALCC") {
+  aboutLALCCLink.classList.add('active');
+}
