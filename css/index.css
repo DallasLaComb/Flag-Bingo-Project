@@ -1,111 +1,174 @@
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
 
 body{
-    background-color: #FFFFFF;
+  background-color: #FFFFFF;
 }
 
 /* Set the default font for paragraphs to Roboto Regular */
 p {
-    font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 /* Set the secondary font for paragraphs to Montserrat Black */
 p.secondary {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
 }
 
 /* Set the default font for headings to Roboto Black */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    color: #205999;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  color: #205999;
 }
 
 /* Set the secondary font for headings to Montserrat Black */
 h1.secondary, h2.secondary, h3.secondary, h4.secondary, h5.secondary, h6.secondary {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900; /* Black */
-    color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; /* Black */
+  color: black;
 }
-  
+
 
 .deactivate {
-    display: none;
+  display: none;
 }
 
 /* The purpose of the deactivate class is to hide / unhide elements when certain things are clicked...
-   It is set up this way due to the fact that we don't have a back end, it's nice to have data consistency,
-   as well as the appearance of 'different tabs'...
+ It is set up this way due to the fact that we don't have a back end, it's nice to have data consistency,
+ as well as the appearance of 'different tabs'...
 */
 
 .bi-app {
-    justify-content: end;
-    align-items: center;
-    padding-left: 20px;
+  justify-content: end;
+  align-items: center;
+  padding-left: 20px;
 }
 
 /*  bi-app gets added as a class to each selection icon in index.js. This class makes it appear to the right of the flag with some space currently...*/
 .bi-app:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* ^^ This makes it so when you hover over the selection box on a pc it changes your cursor.*/
 #save-button {
-    position: sticky;
-    bottom: 10%;
-    left: 80%;
+  position: sticky;
+  bottom: 10%;
+  left: 80%;
 }
 
 /* ^^ This id is used only for the "saved cards" button in the bottom right.  */
 .bingo-grid {
-    padding-left: 10px;
-    padding-right: 10px;
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 10px;
-    text-align: center;
-    height: 10.5in;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+  text-align: center;
+  height: 10.5in;
 }
 
 .bingo-cell {
-    border: 1.3px solid black;
+  border: 1.3px solid black;
 }
 
 input[type='number'] {
-    width: 70px;
+  width: 70px;
 }
 
 /* =========================================*/
 /*The CSS Below is to have the print screen be a proper size...*/
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    /* Creates 5 columns */
-    grid-template-rows: repeat(5, 1fr);
-    /* Creates 5 rows */
-    gap: 10px;
-    /* Space between grid items */
-    padding: 10px;
-    /* Space between grid and container edges */
-    border: 1px solid #000;
-    /* Border around the entire grid */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* Creates 5 columns */
+  grid-template-rows: repeat(5, 1fr);
+  /* Creates 5 rows */
+  gap: 10px;
+  /* Space between grid items */
+  padding: 10px;
+  /* Space between grid and container edges */
+  border: 1px solid #000;
+  /* Border around the entire grid */
 }
 
 .grid-item {
-    background-color: #f0f0f0;
-    /* Light grey background */
-    border: 1px solid #ddd;
-    /* Light grey border */
-    padding: 5px;
-    /* Padding inside each grid item */
-    text-align: center;
-    /* Center the text inside the grid item */
+  background-color: #f0f0f0;
+  /* Light grey background */
+  border: 1px solid #ddd;
+  /* Light grey border */
+  padding: 5px;
+  /* Padding inside each grid item */
+  text-align: center;
+  /* Center the text inside the grid item */
 }
 
 #submit-btn, #back-btn, #submit-btn, #save-button, #modal-print, #flag-count-modal-submit {
-    color: #FFFFFF;
-    background-color: #205999 !important;
+  color: #FFFFFF;
+  background-color: #205999 !important;
 }
 @media print {
   html, body {
@@ -143,7 +206,6 @@ input[type='number'] {
     border: 1px solid black; /* Single border for each item */
     margin-right: -1px; /* Overlap borders on the right */
     margin-bottom: -1px; /* Overlap borders at the bottom */
-    background-color: #f0f0f0; /* Background color set to red for printed page */
   }
 
   .grid-item img {

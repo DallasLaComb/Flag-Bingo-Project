@@ -111,33 +111,31 @@ function playGame(index) {
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
       <div id="navbar-placeholder"></div>
-      <div class="container-fluid border shadow d-flex flex-column justify-content-center align-items-center p-4">
-      <div class="row">
-        <div class="col-md-2 border d-flex justify-content-center align-items-center">
-          <button class="btn btn-primary btn-lg">Call</button>
-        </div>
-      </div>
-      <div class="row justify-content-center mt-2">
-        <div class="col-md-6 text-center">
+      <div class="container" id="callGenerator">
+          <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
+        <div class="row">
+        <!-- ^^ Bootstrap Class -->
+          <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
+          <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
+            Call
+          </div>
+          <div class="row">
+          <div class="row justify-content-center">
+          <div class="col-4 text-center">
           Country Names:
           <label class="switch">
             <input type="checkbox" id="country-name-checkbox" class="form-check-input">
             <span class="slider round"></span>
           </label>
         </div>
-        <div class="col-md-6 text-center">
+        <div class="col-4 text-center">
           Country Flags:
           <label class="switch">
             <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
             <span class="slider round"></span>
           </label>
         </div>
-      </div>
-  </div>
-
-      <div class="container-fluid border shadow d-flex flex-column justify-content-center align-items-center p-4">
-        <div class="row">
-          <div class="col-md-2 border d-flex justify-content-center align-items-center">
+        </div>
           <!-- ^^ Bootstrap Class -->
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
@@ -312,68 +310,46 @@ function toggleForPrintPageSetUp(lobbyIndex) {
   loadUpTogglePrintPage(twoLetterCountryCode , countryName, numberOfFlags,lobbyName);
 }
 
-function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
+function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags,lobbyName){
   $("body > :not(#navbar-placeholder)").remove();
-  $("body").append(`
-    <div class="container border bg-light shadow p-3">
-      <div class="row justify-content-center">
-        <div class="col-4 text-center">
-          Country Names:
-          <label class="switch">
-            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="col-4 text-center">
-          Country Flags:
-          <label class="switch">
-            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
+ $("body").append(`
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-4 text-center">
+        Country Names: <input type="checkbox" id="country-name-checkbox" class="form-check-input">
       </div>
-      <div class="row justify-content-center">
-        <div class="col-2 text-center shadow p-1 m-1">
-          PageCount: <input type="number" id="pageCount" min="1" value="1">
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-4 text-center mt-3">
-          <button class="btn btn-primary" id="print-btn">Print Cards</button>      
-        </div>
+      <div class="col-4 text-center">
+        Country Flags: <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
       </div>
     </div>
-  `);
-  
-  // Initialize the switches to the "on" position if needed
-  $('#country-name-checkbox').prop('checked', true);
-  $('#country-flag-checkbox').prop('checked', true);
-  
-  // Add any additional JavaScript/jQuery logic for the switch functionality
-  // ...
+    <div class="row justify-content-center">
+    <div class="col-4 text-center">
+      PageCount: <input type="number" id="pageCount" min="1" value="pageCount">
+    </div>
+  </div>
+    <div class="row justify-content-center">
+    <div class="col-4 text-center">
+    <button class="btn btn-primary" id="print-btn">Print Cards</button>      
+    </div>
+  </div>
+  </div>
+`);
 
-
-
-  $("#print-btn").on("click", function () {
-    let pageCount = parseInt($("#pageCount").val(), 10);
-    
-    // Determine if country names should be included based on the switch
-    let includedCountryNames = $("#country-name-checkbox").is(":checked") ? countryName : "";
-    // Determine if country codes should be included based on the switch
-    let includedCountryCodes = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
-  
-    let rngCards = generateBingoCard(numberOfFlags, pageCount);
-    try {
-      printCards(includedCountryCodes, rngCards, includedCountryNames, pageCount, lobbyName);
-      setTimeout(function () {
-        location.reload();
-      }, 501);
-    }
-    catch (error) {
-      console.error("Error", error);
-    }
-  });
-  
+$("#print-btn").on("click", function () {
+  let pageCount = parseInt($("#pageCount").val(), 10);
+  countryName = $("#country-name-checkbox").is(":checked") ? countryName : "";
+  twoLetterCountryCode = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
+  let rngCards = generateBingoCard(numberOfFlags, pageCount);
+  try {
+    printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobbyName);
+    setTimeout(function () {
+      location.reload();
+    }, 501);
+  }
+  catch (error) {
+    console.error("Error", error);
+  }
+});
 }
 
 function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobbyName) {
@@ -388,7 +364,7 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobb
       } else {
         let countryNameHtml = countryName ? `<p>${countryName[rngCards[i][j]]}</p>` : '';
         let flagImageHtml = twoLetterCountryCode ? `<img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png">` : '';
-        gridItems += `<div class="grid-item center-vertically"">${countryNameHtml}${flagImageHtml}</div>\n`;
+        gridItems += `<div class="grid-item center-vertically">${countryNameHtml}${flagImageHtml}</div>\n`;
       }
     }
     printWindow.document.write(`
@@ -417,33 +393,3 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobb
 $("#back-btn").on("click", function () {
   window.location.href = "index.html";
 });
-
-
-
-
-
-// Get the current document title
-var pageTitle = document.title;
-
-// Select the navigation links by their IDs
-var generateGameLink = document.getElementById('generateGameLink');
-var savedCardsLink = document.getElementById('savedCardsLink');
-var howToPlayLink = document.getElementById('howToPlayLink');
-var aboutLALCCLink = document.getElementById('aboutLALCCLink');
-
-// Remove the "active" class from all links
-generateGameLink.classList.remove('active');
-savedCardsLink.classList.remove('active');
-howToPlayLink.classList.remove('active');
-aboutLALCCLink.classList.remove('active');
-
-// Set the "active" class based on the document title
-if (pageTitle === "Flag Bingo") {
-  generateGameLink.classList.add('active');
-} else if (pageTitle === "Saved Cards") {
-  savedCardsLink.classList.add('active');
-} else if (pageTitle === "How to Play") {
-  howToPlayLink.classList.add('active');
-} else if (pageTitle === "About LALCC") {
-  aboutLALCCLink.classList.add('active');
-}
