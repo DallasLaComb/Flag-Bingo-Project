@@ -313,7 +313,7 @@ function toggleForPrintPageSetUp(lobbyIndex) {
 function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
   $("body > :not(#navbar-placeholder)").remove();
   $("body").append(`
-    <div class="container">
+    <div class="container border bg-light shadow p-3">
       <div class="row justify-content-center">
         <div class="col-4 text-center">
           Country Names:
@@ -331,12 +331,12 @@ function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags,
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-4 text-center">
+        <div class="col-2 text-center shadow p-1 m-1">
           PageCount: <input type="number" id="pageCount" min="1" value="1">
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-4 text-center">
+        <div class="col-4 text-center mt-3">
           <button class="btn btn-primary" id="print-btn">Print Cards</button>      
         </div>
       </div>
