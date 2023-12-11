@@ -120,6 +120,22 @@ function playGame(index) {
             Call
           </div>
           <div class="row">
+          <div class="row justify-content-center">
+          <div class="col-4 text-center">
+          Country Names:
+          <label class="switch">
+            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="col-4 text-center">
+          Country Flags:
+          <label class="switch">
+            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        </div>
           <!-- ^^ Bootstrap Class -->
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
@@ -148,11 +164,34 @@ function playGame(index) {
         let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
         let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
         let newCountryCard = $(
-          `<div class='col-2-sm pt-3 border-top mt-3' id="${countryCode[i]}"> ${countryName} <br class ="hidden">${countryImage}</div>`
+          `<div class='col-2-sm pt-3  mt-3 country-name' > ${countryName}</div><div class="col-2-sm pt-3 mt-3 country-flag">${countryImage}</div> <hr> `
         )
+        
         countryCardsArray.push(newCountryCard);
         // console.log(countryCardsArray[i]);
         $("#availableList").append(newCountryCard);
+        $('#country-name-checkbox').prop('checked', true);
+        $('#country-flag-checkbox').prop('checked', true);
+      
+        // Show all elements with the classes 'country-name' and 'country-flag' by default
+        $('.country-name').show();
+        $('.country-flag').show();
+
+        $('#country-name-checkbox').on('change', function() {
+          if ($(this).is(':checked')) {
+            $('.country-name').show(); // Show all elements with the class 'country-name'
+          } else {
+            $('.country-name').hide(); // Hide them
+          }
+        });
+      
+        $('#country-flag-checkbox').on('change', function() {
+          if ($(this).is(':checked')) {
+            $('.country-flag').show(); // Show all elements with the class 'country-flag'
+          } else {
+            $('.country-flag').hide(); // Hide them
+          }
+        });
       }
       console.log("The size of " + lobbyName + " is: " + lobbySize);
     }
@@ -267,53 +306,78 @@ function toggleForPrintPageSetUp(lobbyIndex) {
   let numberOfFlags = jsonData[lobbyIndex].countryCodes.length;
   let twoLetterCountryCode = jsonData[lobbyIndex].countryCodes;
   let countryName = jsonData[lobbyIndex].countryName;
-  loadUpTogglePrintPage(twoLetterCountryCode , countryName, numberOfFlags);
+  let lobbyName = jsonData[lobbyIndex].lobbyName;
+  loadUpTogglePrintPage(twoLetterCountryCode , countryName, numberOfFlags,lobbyName);
 }
 
-function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags){
+function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
   $("body > :not(#navbar-placeholder)").remove();
- $("body").append(`
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-4 text-center">
-        Country Names: <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+  $("body").append(`
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          Country Names:
+          <label class="switch">
+            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="col-4 text-center">
+          Country Flags:
+          <label class="switch">
+            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
-      <div class="col-4 text-center">
-        Country Flags: <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          PageCount: <input type="number" id="pageCount" min="1" value="1">
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          <button class="btn btn-primary" id="print-btn">Print Cards</button>      
+        </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-    <div class="col-4 text-center">
-      PageCount: <input type="number" id="pageCount" min="1" value="pageCount">
-    </div>
-  </div>
-    <div class="row justify-content-center">
-    <div class="col-4 text-center">
-    <button class="btn btn-primary" id="print-btn">Print Cards</button>      
-    </div>
-  </div>
-  </div>
-`);
+  `);
+  
+  // Initialize the switches to the "on" position if needed
+  $('#country-name-checkbox').prop('checked', true);
+  $('#country-flag-checkbox').prop('checked', true);
+  
+  // Add any additional JavaScript/jQuery logic for the switch functionality
+  // ...
 
-$("#print-btn").on("click", function () {
-  let pageCount = parseInt($("#pageCount").val(), 10);
-  countryName = $("#country-name-checkbox").is(":checked") ? countryName : "";
-  twoLetterCountryCode = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
-  let rngCards = generateBingoCard(numberOfFlags, pageCount);
-  try {
-    printCards(twoLetterCountryCode, rngCards, countryName, pageCount);
-    setTimeout(function () {
-      location.reload();
-    }, 501);
-  }
-  catch (error) {
-    console.error("Error", error);
-  }
-});
+
+
+  $("#print-btn").on("click", function () {
+    let pageCount = parseInt($("#pageCount").val(), 10);
+    
+    // Determine if country names should be included based on the switch
+    let includedCountryNames = $("#country-name-checkbox").is(":checked") ? countryName : "";
+    // Determine if country codes should be included based on the switch
+    let includedCountryCodes = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
+  
+    let rngCards = generateBingoCard(numberOfFlags, pageCount);
+    try {
+      printCards(includedCountryCodes, rngCards, includedCountryNames, pageCount, lobbyName);
+      setTimeout(function () {
+        location.reload();
+      }, 501);
+    }
+    catch (error) {
+      console.error("Error", error);
+    }
+  });
+  
 }
 
-function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
+function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobbyName) {
   let printWindow = window.open('', '_blank');
+  printWindow.document.title = lobbyName;
+
   for (let i = 0; i < pageCount; i++) {
     let gridItems = '';
     for (let j = 0; j < 25; j++) {
@@ -328,6 +392,7 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
     printWindow.document.write(`
       <html>
         <head>
+          <title>Lobby Name: ${lobbyName}</title>
           <link rel="stylesheet" href="./css/index.css" type="text/css" />
         </head>
         <body>
@@ -343,11 +408,10 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount) {
     `);
   }
 
-  setTimeout(function () { printWindow.print() }, 500);
+  setTimeout(function () { printWindow.print(); printWindow.close(); }, 500);
 }
 
 // Back button returns to the previous page
 $("#back-btn").on("click", function () {
   window.location.href = "index.html";
 });
-
