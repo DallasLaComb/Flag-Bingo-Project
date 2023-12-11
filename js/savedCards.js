@@ -310,46 +310,68 @@ function toggleForPrintPageSetUp(lobbyIndex) {
   loadUpTogglePrintPage(twoLetterCountryCode , countryName, numberOfFlags,lobbyName);
 }
 
-function loadUpTogglePrintPage(twoLetterCountryCode, countryName , numberOfFlags,lobbyName){
+function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
   $("body > :not(#navbar-placeholder)").remove();
- $("body").append(`
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-4 text-center">
-        Country Names: <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+  $("body").append(`
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          Country Names:
+          <label class="switch">
+            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="col-4 text-center">
+          Country Flags:
+          <label class="switch">
+            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
-      <div class="col-4 text-center">
-        Country Flags: <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          PageCount: <input type="number" id="pageCount" min="1" value="1">
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-4 text-center">
+          <button class="btn btn-primary" id="print-btn">Print Cards</button>      
+        </div>
       </div>
     </div>
-    <div class="row justify-content-center">
-    <div class="col-4 text-center">
-      PageCount: <input type="number" id="pageCount" min="1" value="pageCount">
-    </div>
-  </div>
-    <div class="row justify-content-center">
-    <div class="col-4 text-center">
-    <button class="btn btn-primary" id="print-btn">Print Cards</button>      
-    </div>
-  </div>
-  </div>
-`);
+  `);
+  
+  // Initialize the switches to the "on" position if needed
+  $('#country-name-checkbox').prop('checked', true);
+  $('#country-flag-checkbox').prop('checked', true);
+  
+  // Add any additional JavaScript/jQuery logic for the switch functionality
+  // ...
 
-$("#print-btn").on("click", function () {
-  let pageCount = parseInt($("#pageCount").val(), 10);
-  countryName = $("#country-name-checkbox").is(":checked") ? countryName : "";
-  twoLetterCountryCode = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
-  let rngCards = generateBingoCard(numberOfFlags, pageCount);
-  try {
-    printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobbyName);
-    setTimeout(function () {
-      location.reload();
-    }, 501);
-  }
-  catch (error) {
-    console.error("Error", error);
-  }
-});
+
+
+  $("#print-btn").on("click", function () {
+    let pageCount = parseInt($("#pageCount").val(), 10);
+    
+    // Determine if country names should be included based on the switch
+    let includedCountryNames = $("#country-name-checkbox").is(":checked") ? countryName : "";
+    // Determine if country codes should be included based on the switch
+    let includedCountryCodes = $("#country-flag-checkbox").is(":checked") ? twoLetterCountryCode : "";
+  
+    let rngCards = generateBingoCard(numberOfFlags, pageCount);
+    try {
+      printCards(includedCountryCodes, rngCards, includedCountryNames, pageCount, lobbyName);
+      setTimeout(function () {
+        location.reload();
+      }, 501);
+    }
+    catch (error) {
+      console.error("Error", error);
+    }
+  });
+  
 }
 
 function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobbyName) {
