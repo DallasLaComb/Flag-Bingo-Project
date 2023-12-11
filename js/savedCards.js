@@ -382,7 +382,7 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobb
     let gridItems = '';
     for (let j = 0; j < 25; j++) {
       if (j === 12) {
-        gridItems += '<div class="grid-item center-vertically">FREE<br><img src="/images/x.jpg"></div>\n';
+        gridItems += '<div class="grid-item center-vertically">FREE<br><img src="../images/x.png"></div>\n';
       } else {
         let countryNameHtml = countryName ? `<p>${countryName[rngCards[i][j]]}</p>` : '';
         let flagImageHtml = twoLetterCountryCode ? `<img src="flagImages/${twoLetterCountryCode[rngCards[i][j]]}.png">` : '';
