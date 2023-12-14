@@ -3,7 +3,7 @@ $(document).ready(function() {
   editSet();
   printSet();
 });
-
+let maxCalls = 0;
 let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
 let alreadyCalledArray = []; //Global variable for call generator
@@ -186,8 +186,9 @@ function playGame(index) {
     //Dynamically Load navbar
     
     // loads the current set's flags into the available list of the call generator
-    window.lobbySize = jsonData[index].countryCodes.length;
     function loadAvailableList() {
+      let lobbySize = jsonData[index].countryCodes.length;
+      maxCalls = lobbySize;
       countryCardsArray=[];
       currentCallArray=[];
       alreadyCalledArray=[];
@@ -238,7 +239,6 @@ function playGame(index) {
       console.log("The size of " + lobbyName + " is: " + lobbySize);
     }
     loadAvailableList();
-    let maxCalls = lobbySize;
     $("#callButton").on("click", function () {
       // Generate a random index based on the current count of maxCalls
       let randomIndex = Math.floor(Math.random() * maxCalls);
