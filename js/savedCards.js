@@ -380,7 +380,7 @@ function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags,
       </div>
       <div class="row justify-content-center">
         <div class="col-4 text-center">
-          PageCount: <input type="number" id="pageCount" min="1" value="1">
+          Number of cards you want to print: <input type="number" id="pageCount" min="1" value="1">
         </div>
       </div>
       <div class="row justify-content-center">
