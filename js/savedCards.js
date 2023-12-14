@@ -129,55 +129,52 @@ function playGame(index) {
   $("body > :not(#navbar-placeholder)").remove();
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
-      <div class="container" id="callGenerator">
+    <div class="container mt-4 border shadow bg-light p-3">
 
-
-          <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
-          <div class="row justify-content-center">
-          <!-- Bootstrap Class to center content -->
-          <div class="col-auto mb-3 me-3">
-            <!-- Bootstrap margin classes: mb-3 for bottom margin, me-3 for right margin (margin-end) -->
-            <div class="btn shadow" id="callButton">
-              Call
-            </div>
-          </div>
-          <div class="col-auto mb-3">
-            <!-- Bootstrap margin class: mb-3 for bottom margin -->
-            <div class="btn shadow" id="resetButton">
-              Reset
-            </div>
-          </div>
-        </div>
-        
-          <div class="row">
-          <div class="row justify-content-center">
-          <div class="col-4 text-center">
-          Country Names:
-          <label class="switch">
-            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="col-4 text-center">
-          Country Flags:
-          <label class="switch">
-            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        </div>
-
-
-          <!-- ^^ Bootstrap Class -->
-          <div class="row bg-light">
-            <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
-            <div class="col border" ><h1>Current Call</h1><span id="currentCall"></span></div>
-            <div class="col border" ><h1>Available List:</h1><span id="availableList"></span></div>
-            <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
-            </div>
-          </div>
-        </div>
+    <!-- This row is just for the toggles, centered -->
+    <div class="row justify-content-center">
+      <!-- Toggle for Country Names -->
+      <div class="col-auto text-center">
+        Country Names:
+        <label class="switch">
+          <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+          <span class="slider round"></span>
+        </label>
       </div>
+      <!-- Toggle for Country Flags -->
+      <div class="col-auto text-center">
+        Country Flags:
+        <label class="switch">
+          <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- This row is for the buttons and toggles -->
+    <div class="row justify-content-center">
+      
+      <!-- This column is for the buttons, centered -->
+      <div class="col-auto text-center mt-3">
+        <!-- Call button with margin to the right -->
+        <div class="btn shadow me-3" id="callButton">Call</div>
+        <!-- Reset button -->
+        <div class="btn shadow" id="resetButton">Reset</div>
+      </div>
+      
+    </div>
+  </div>
+  
+    
+    <!-- This is the second container for Call Generator -->
+    <div class="container mt-1">
+      <div class="row border shadow bg-light">
+        <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
+        <div class="col border" ><h1>Current Call</h1><span id="currentCall"></span></div>
+        <div class="col border" ><h1>Available List:</h1><span id="availableList"></span></div>
+      </div>
+    </div>
+    
       <!-- Back button -->
       <div class="container text-end" id="back-btn-container">
         <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
