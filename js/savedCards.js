@@ -361,7 +361,7 @@ function toggleForPrintPageSetUp(lobbyIndex) {
 function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
   $("body > :not(#navbar-placeholder)").remove();
   $("body").append(`
-    <div class="container">
+    <div class="container border shadow bg-light p-3">
       <div class="row justify-content-center">
         <div class="col-4 text-center">
           Country Names:
