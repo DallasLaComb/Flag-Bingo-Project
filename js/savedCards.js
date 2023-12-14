@@ -8,9 +8,30 @@ let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
 let alreadyCalledArray = []; //Global variable for call generator
 //Loads navbar.html into the navbar-placeholder div.
-$(function () {
-  $("#navbar-placeholder").load("navbar.html");
+$(function(){
+  $("#navbar-placeholder").load("navbar.html", function() {
+      // Get the current path
+      var currentPath = window.location.pathname;
+
+      // Get all nav-link elements
+      var navLinks = document.querySelectorAll('.nav-item .nav-link');
+
+      // Iterate over each link
+      navLinks.forEach(function(link) {
+          var linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
+
+          // Check if the link's path matches the current path
+          if (currentPath === linkPath) {
+              // Add the 'active' class to the matching link
+              link.classList.add('active');
+          } else {
+              // Remove the 'active' class from other links
+              link.classList.remove('active');
+          }
+      });
+  });
 });
+
 let jsonString = Cookies.get("lobbyData");
 let jsonData = JSON.parse(jsonString);
 let lobbyName;
@@ -415,3 +436,5 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobb
 $("#back-btn").on("click", function () {
   window.location.href = "index.html";
 });
+
+
