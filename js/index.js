@@ -129,7 +129,9 @@ function processData() {
       `
 
       <div class="container border shadow p-4">
-        <h1>What name do you want to give to save your card selection?</h1>
+        <h1>What name do you want to give to your flag selection? </h1>
+        <p style="color: #205999; font-weight: bold;"
+        >( Use a name that will help you remember what flags you chose. Examples: "North America", "Study Practice for Test 2", etc... )</p>
         <div class="row">
           <div class="col-6 mx-auto text-center pb-3">
             <div class="input-group">
