@@ -129,39 +129,52 @@ function playGame(index) {
   $("body > :not(#navbar-placeholder)").remove();
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
-      <div class="container" id="callGenerator">
-          <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
-        <div class="row">
-        <!-- ^^ Bootstrap Class -->
-          <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
-          <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
-            Call
-          </div>
-          <div class="row">
-          <div class="row justify-content-center">
-          <div class="col-4 text-center">
-          Country Names:
-          <label class="switch">
-            <input type="checkbox" id="country-name-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        <div class="col-4 text-center">
-          Country Flags:
-          <label class="switch">
-            <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
-            <span class="slider round"></span>
-          </label>
-        </div>
-        </div>
-          <!-- ^^ Bootstrap Class -->
-            <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
-            <div class="col border" id="currentCall"><h1>Current Call</h1></div>
-            <div class="col border" id="availableList"><h1>Available List:</h1></div>
-            <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
-          </div>
-        </div>
+    <div class="container mt-4 border shadow bg-light p-3">
+
+    <!-- This row is just for the toggles, centered -->
+    <div class="row justify-content-center">
+      <!-- Toggle for Country Names -->
+      <div class="col-auto text-center">
+        Country Names:
+        <label class="switch">
+          <input type="checkbox" id="country-name-checkbox" class="form-check-input">
+          <span class="slider round"></span>
+        </label>
       </div>
+      <!-- Toggle for Country Flags -->
+      <div class="col-auto text-center">
+        Country Flags:
+        <label class="switch">
+          <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- This row is for the buttons and toggles -->
+    <div class="row justify-content-center">
+      
+      <!-- This column is for the buttons, centered -->
+      <div class="col-auto text-center mt-3">
+        <!-- Call button with margin to the right -->
+        <div class="btn shadow me-3" id="callButton">Call</div>
+        <!-- Reset button -->
+        <div class="btn shadow" id="resetButton">Reset</div>
+      </div>
+      
+    </div>
+  </div>
+  
+    
+    <!-- This is the second container for Call Generator -->
+    <div class="container mt-1">
+      <div class="row border shadow bg-light">
+        <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
+        <div class="col border" ><h1>Current Call</h1><span id="currentCall"></span></div>
+        <div class="col border" ><h1>Available List:</h1><span id="availableList"></span></div>
+      </div>
+    </div>
+    
       <!-- Back button -->
       <div class="container text-end" id="back-btn-container">
         <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
@@ -175,9 +188,17 @@ function playGame(index) {
     // loads the current set's flags into the available list of the call generator
     window.lobbySize = jsonData[index].countryCodes.length;
     function loadAvailableList() {
+      countryCardsArray=[];
+      currentCallArray=[];
+      alreadyCalledArray=[];
+      $("#availableList").empty();
+      $("#currentCall").empty();
+      $("#alreadyCalled").empty();
       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
         // ^^ This is how to get each individual country code for selection...
-        $(".availableList").append(jsonData[index].countryCodes[i]);
+
+
+        // $(".availableList").append(jsonData[index].countryCodes[i]);
         let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
         let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
         let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
@@ -187,7 +208,10 @@ function playGame(index) {
         
         countryCardsArray.push(newCountryCard);
         // console.log(countryCardsArray[i]);
-        $("#availableList").append(newCountryCard);
+        $.each(countryCardsArray, function(index, newCountryCard) {
+          $("#availableList").append(newCountryCard);
+        });
+        
         $('#country-name-checkbox').prop('checked', true);
         $('#country-flag-checkbox').prop('checked', true);
       
@@ -236,8 +260,11 @@ function playGame(index) {
       }
       // If all calls have been made, update the button text
       if (maxCalls === 0) {
-        $("#callButton").text("Reset Game");
+        loadAvailableList();
       }
+    });
+    $("#resetButton").on("click", function () {
+      loadAvailableList();
     });
     // Back button returns to the previous page
     $("#back-btn").on("click", function () {
@@ -331,7 +358,7 @@ function toggleForPrintPageSetUp(lobbyIndex) {
 function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags, lobbyName) {
   $("body > :not(#navbar-placeholder)").remove();
   $("body").append(`
-    <div class="container">
+    <div class="container border shadow bg-light p-3">
       <div class="row justify-content-center">
         <div class="col-4 text-center">
           Country Names:
@@ -350,7 +377,7 @@ function loadUpTogglePrintPage(twoLetterCountryCode, countryName, numberOfFlags,
       </div>
       <div class="row justify-content-center">
         <div class="col-4 text-center">
-          PageCount: <input type="number" id="pageCount" min="1" value="1">
+          Number of cards you want to print: <input type="number" id="pageCount" min="1" value="1">
         </div>
       </div>
       <div class="row justify-content-center">
