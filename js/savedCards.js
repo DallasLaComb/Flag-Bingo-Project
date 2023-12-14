@@ -155,10 +155,12 @@ function playGame(index) {
         </div>
         </div>
           <!-- ^^ Bootstrap Class -->
+          <div class="row bg-light">
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
             <div class="col border" id="currentCall"><h1>Current Call</h1></div>
             <div class="col border" id="availableList"><h1>Available List:</h1></div>
             <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
+            </div>
           </div>
         </div>
       </div>
