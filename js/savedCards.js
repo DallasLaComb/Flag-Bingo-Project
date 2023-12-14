@@ -8,9 +8,30 @@ let countryCardsArray = []; //Global variable for call generator
 let currentCallArray = []; //Global variable for call generator
 let alreadyCalledArray = []; //Global variable for call generator
 //Loads navbar.html into the navbar-placeholder div.
-$(function () {
-  $("#navbar-placeholder").load("navbar.html");
+$(function(){
+  $("#navbar-placeholder").load("navbar.html", function() {
+      // Get the current path
+      var currentPath = window.location.pathname;
+
+      // Get all nav-link elements
+      var navLinks = document.querySelectorAll('.nav-item .nav-link');
+
+      // Iterate over each link
+      navLinks.forEach(function(link) {
+          var linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
+
+          // Check if the link's path matches the current path
+          if (currentPath === linkPath) {
+              // Add the 'active' class to the matching link
+              link.classList.add('active');
+          } else {
+              // Remove the 'active' class from other links
+              link.classList.remove('active');
+          }
+      });
+  });
 });
+
 let jsonString = Cookies.get("lobbyData");
 let jsonData = JSON.parse(jsonString);
 let lobbyName;
@@ -62,9 +83,7 @@ function editSet() {
   $(".edit-btn").on("click", function () {
     let currentSetName = $(this).data("lobby-name");
     window.injectSaveSetView();
-    $(function () {
-      $("#navbar-placeholder").load("navbar.html");
-    });
+
     $(document).on("click", "#submit-btn", function () {
       let newSetName = $("#my-input").val();
       jsonData.forEach((item) => {
@@ -107,10 +126,9 @@ function printSet() {
 function playGame(index) {
   console.log("Play game called");
   //This removes everything from the body except for the navbar.
-  $("body > :not(nav)").remove();
+  $("body > :not(#navbar-placeholder)").remove();
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
-      <div id="navbar-placeholder"></div>
       <div class="container" id="callGenerator">
           <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
         <div class="row">
@@ -153,7 +171,7 @@ function playGame(index) {
       `);
     // #availableList, #currentCall, #alreadyCalled
     //Dynamically Load navbar
-    $("#navbar-placeholder").load("navbar.html");
+    
     // loads the current set's flags into the available list of the call generator
     window.lobbySize = jsonData[index].countryCodes.length;
     function loadAvailableList() {
@@ -415,3 +433,5 @@ function printCards(twoLetterCountryCode, rngCards, countryName, pageCount, lobb
 $("#back-btn").on("click", function () {
   window.location.href = "index.html";
 });
+
+

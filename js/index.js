@@ -1,8 +1,29 @@
 let flagCount = 0;
 
-$(function () {
-  $("#navbar-placeholder").load("navbar.html");
+$(function(){
+  $("#navbar-placeholder").load("navbar.html", function() {
+      // Get the current path
+      var currentPath = window.location.pathname;
+
+      // Get all nav-link elements
+      var navLinks = document.querySelectorAll('.nav-item .nav-link');
+
+      // Iterate over each link
+      navLinks.forEach(function(link) {
+          var linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
+
+          // Check if the link's path matches the current path
+          if (currentPath === linkPath) {
+              // Add the 'active' class to the matching link
+              link.classList.add('active');
+          } else {
+              // Remove the 'active' class from other links
+              link.classList.remove('active');
+          }
+      });
+  });
 });
+
 // ^^ Loads navbar.html into the navbar-placeholder div.
 // Pulls the country data from the json file and stores it in the countryData variable.
 let countryData = [];
@@ -102,11 +123,10 @@ function processData() {
   }
 
   window.injectSaveSetView = function(){
-    $("body > :not(nav)").remove();
+    $("body > :not(#navbar-placeholder)").remove();
     // ^^ This removes everything from the body except for the navbar.
     $("body").append(
       `
-      <div id="navbar-placeholder"></div>
 
       <div class="container border shadow p-4">
         <h1>What name do you want to give to save your card selection?</h1>
@@ -148,7 +168,6 @@ function processData() {
     }else{
 
       window.injectSaveSetView();
-      $("#navbar-placeholder").load("navbar.html");
 
       // Back button returns to the previous page
       $("#back-btn").on("click", function(){
@@ -233,34 +252,3 @@ function getCookie(name) {
   return cookieValue;
 }
 // Helper function to get cookies that you have set earlier...
-
-
-
-
-
-
-// Get the current document title
-var pageTitle = document.title;
-
-// Select the navigation links by their IDs
-var generateGameLink = document.getElementById('generateGameLink');
-var savedCardsLink = document.getElementById('savedCardsLink');
-var howToPlayLink = document.getElementById('howToPlayLink');
-var aboutLALCCLink = document.getElementById('aboutLALCCLink');
-
-// Remove the "active" class from all links
-generateGameLink.classList.remove('active');
-savedCardsLink.classList.remove('active');
-howToPlayLink.classList.remove('active');
-aboutLALCCLink.classList.remove('active');
-
-// Set the "active" class based on the document title
-if (pageTitle === "Flag Bingo") {
-  generateGameLink.classList.add('active');
-} else if (pageTitle === "Saved Cards") {
-  savedCardsLink.classList.add('active');
-} else if (pageTitle === "How to Play") {
-  howToPlayLink.classList.add('active');
-} else if (pageTitle === "About LALCC") {
-  aboutLALCCLink.classList.add('active');
-}
