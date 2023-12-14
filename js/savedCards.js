@@ -130,13 +130,25 @@ function playGame(index) {
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
       <div class="container" id="callGenerator">
+
+
           <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
-        <div class="row">
-        <!-- ^^ Bootstrap Class -->
-          <div class="btn shadow mx-auto col-2 mb-3" id="callButton">
-          <!-- ^^ Bootstrap Class. ID Call button will be used as a selector in index.js...Will have oncClick then do this logic to it... -->
-            Call
+          <div class="row justify-content-center">
+          <!-- Bootstrap Class to center content -->
+          <div class="col-auto mb-3 me-3">
+            <!-- Bootstrap margin classes: mb-3 for bottom margin, me-3 for right margin (margin-end) -->
+            <div class="btn shadow" id="callButton">
+              Call
+            </div>
           </div>
+          <div class="col-auto mb-3">
+            <!-- Bootstrap margin class: mb-3 for bottom margin -->
+            <div class="btn shadow" id="resetButton">
+              Reset
+            </div>
+          </div>
+        </div>
+        
           <div class="row">
           <div class="row justify-content-center">
           <div class="col-4 text-center">
@@ -154,11 +166,13 @@ function playGame(index) {
           </label>
         </div>
         </div>
+
+
           <!-- ^^ Bootstrap Class -->
           <div class="row bg-light">
             <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
-            <div class="col border" id="currentCall"><h1>Current Call</h1></div>
-            <div class="col border" id="availableList"><h1>Available List:</h1></div>
+            <div class="col border" ><h1>Current Call</h1><span id="currentCall"></span></div>
+            <div class="col border" ><h1>Available List:</h1><span id="availableList"></span></div>
             <!-- ^^ Bootstrap Classes. ID's are selected in the index.js and given logic to them. -->
             </div>
           </div>
@@ -177,9 +191,17 @@ function playGame(index) {
     // loads the current set's flags into the available list of the call generator
     window.lobbySize = jsonData[index].countryCodes.length;
     function loadAvailableList() {
+      countryCardsArray=[];
+      currentCallArray=[];
+      alreadyCalledArray=[];
+      $("#availableList").empty();
+      $("#currentCall").empty();
+      $("#alreadyCalled").empty();
       for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
         // ^^ This is how to get each individual country code for selection...
-        $(".availableList").append(jsonData[index].countryCodes[i]);
+
+
+        // $(".availableList").append(jsonData[index].countryCodes[i]);
         let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
         let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
         let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
@@ -189,7 +211,10 @@ function playGame(index) {
         
         countryCardsArray.push(newCountryCard);
         // console.log(countryCardsArray[i]);
-        $("#availableList").append(newCountryCard);
+        $.each(countryCardsArray, function(index, newCountryCard) {
+          $("#availableList").append(newCountryCard);
+        });
+        
         $('#country-name-checkbox').prop('checked', true);
         $('#country-flag-checkbox').prop('checked', true);
       
@@ -238,8 +263,11 @@ function playGame(index) {
       }
       // If all calls have been made, update the button text
       if (maxCalls === 0) {
-        $("#callButton").text("Reset Game");
+        loadAvailableList();
       }
+    });
+    $("#resetButton").on("click", function () {
+      loadAvailableList();
     });
     // Back button returns to the previous page
     $("#back-btn").on("click", function () {
