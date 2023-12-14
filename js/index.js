@@ -123,11 +123,10 @@ function processData() {
   }
 
   window.injectSaveSetView = function(){
-    $("body > :not(nav)").remove();
+    $("body > :not(#navbar-placeholder)").remove();
     // ^^ This removes everything from the body except for the navbar.
     $("body").append(
       `
-      <div id="navbar-placeholder"></div>
 
       <div class="container border shadow p-4">
         <h1>What name do you want to give to save your card selection?</h1>
@@ -169,7 +168,6 @@ function processData() {
     }else{
 
       window.injectSaveSetView();
-      $("#navbar-placeholder").load("navbar.html");
 
       // Back button returns to the previous page
       $("#back-btn").on("click", function(){

@@ -83,9 +83,7 @@ function editSet() {
   $(".edit-btn").on("click", function () {
     let currentSetName = $(this).data("lobby-name");
     window.injectSaveSetView();
-    $(function () {
-      $("#navbar-placeholder").load("navbar.html");
-    });
+
     $(document).on("click", "#submit-btn", function () {
       let newSetName = $("#my-input").val();
       jsonData.forEach((item) => {
@@ -128,10 +126,9 @@ function printSet() {
 function playGame(index) {
   console.log("Play game called");
   //This removes everything from the body except for the navbar.
-  $("body > :not(nav)").remove();
+  $("body > :not(#navbar-placeholder)").remove();
     // This adds the "Call Generator" container to the body of the page
     $("body").append(`
-      <div id="navbar-placeholder"></div>
       <div class="container" id="callGenerator">
           <!-- ^^ Container = Bootstrap. | callGenerator id is used as a selector in index.js. | It is selected to take off class deactivate, which is a class made in index.css to hide elements from user. This gives the appearance of multiple screens even though it's just one. -->
         <div class="row">
@@ -174,7 +171,7 @@ function playGame(index) {
       `);
     // #availableList, #currentCall, #alreadyCalled
     //Dynamically Load navbar
-    $("#navbar-placeholder").load("navbar.html");
+    
     // loads the current set's flags into the available list of the call generator
     window.lobbySize = jsonData[index].countryCodes.length;
     function loadAvailableList() {
