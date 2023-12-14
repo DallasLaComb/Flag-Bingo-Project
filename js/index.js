@@ -163,9 +163,9 @@ function processData() {
   $("#save-button").on("click", function () {
 
     //Load the modal when the save button is clicked and flag selection is less than 24
-    if(flagCount < 24){
+    if(flagCount < 31){
 
-      alert("You only have "+ flagCount +" flags selected. The total flag selection must be more than 23.");
+      alert("You only have "+ flagCount +" flags selected. The total flag selection must be more than 30.");
 
     }else{
 
