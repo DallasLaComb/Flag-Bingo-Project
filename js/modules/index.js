@@ -1,28 +1,6 @@
 let flagCount = 0;
 
-$(function(){
-  $("#navbar-placeholder").load("navbar.html", function() {
-      // Get the current path
-      var currentPath = window.location.pathname;
 
-      // Get all nav-link elements
-      var navLinks = document.querySelectorAll('.nav-item .nav-link');
-
-      // Iterate over each link
-      navLinks.forEach(function(link) {
-          var linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
-
-          // Check if the link's path matches the current path
-          if (currentPath === linkPath) {
-              // Add the 'active' class to the matching link
-              link.classList.add('active');
-          } else {
-              // Remove the 'active' class from other links
-              link.classList.remove('active');
-          }
-      });
-  });
-});
 
 // ^^ Loads navbar.html into the navbar-placeholder div.
 // Pulls the country data from the json file and stores it in the countryData variable.
@@ -232,25 +210,8 @@ function processData() {
 // ^^ Ending bracket of processData function.
 loadData(processData);
 // Helper function to set a cookie with a name and value
-function setCookie(name, value) {
-  var expiryDate = new Date();
-  expiryDate.setFullYear(expiryDate.getFullYear() + 100);  // Setting expiry date to 100 years in the future
-  document.cookie = name + "=" + encodeURIComponent(value) +
-    "; expires=" + expiryDate.toUTCString() +
-    "; path=/";
-}
+
 function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== "") {
-    const cookies = document.cookie.split(";");
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === name + "=") {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
-      }
-    }
-  }
-  return cookieValue;
+
 }
 // Helper function to get cookies that you have set earlier...

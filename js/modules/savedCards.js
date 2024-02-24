@@ -1,4 +1,3 @@
-// This is for testing git commit messages...
 $(document).ready(function() {
   editSet();
   printSet();
@@ -12,14 +11,11 @@ $(function(){
   $("#navbar-placeholder").load("navbar.html", function() {
       // Get the current path
       var currentPath = window.location.pathname;
-
       // Get all nav-link elements
       var navLinks = document.querySelectorAll('.nav-item .nav-link');
-
       // Iterate over each link
       navLinks.forEach(function(link) {
           var linkPath = new URL(link.getAttribute('href'), window.location.href).pathname;
-
           // Check if the link's path matches the current path
           if (currentPath === linkPath) {
               // Add the 'active' class to the matching link
@@ -124,153 +120,7 @@ function printSet() {
 }
 
 function playGame(index) {
-  console.log("Play game called");
-  //This removes everything from the body except for the navbar.
-  $("body > :not(#navbar-placeholder)").remove();
-    // This adds the "Call Generator" container to the body of the page
-    $("body").append(`
-    <div class="container mt-4 border shadow bg-light p-3">
 
-    <!-- This row is just for the toggles, centered -->
-    <div class="row justify-content-center">
-      <!-- Toggle for Country Names -->
-      <div class="col-auto text-center">
-        Country Names:
-        <label class="switch">
-          <input type="checkbox" id="country-name-checkbox" class="form-check-input">
-          <span class="slider round"></span>
-        </label>
-      </div>
-      <!-- Toggle for Country Flags -->
-      <div class="col-auto text-center">
-        Country Flags:
-        <label class="switch">
-          <input type="checkbox" id="country-flag-checkbox" class="form-check-input">
-          <span class="slider round"></span>
-        </label>
-      </div>
-    </div>
-
-    <!-- This row is for the buttons and toggles -->
-    <div class="row justify-content-center">
-      
-      <!-- This column is for the buttons, centered -->
-      <div class="col-auto text-center mt-3">
-        <!-- Call button with margin to the right -->
-        <div class="btn shadow me-3" id="callButton">Call</div>
-        <!-- Reset button -->
-        <div class="btn shadow" id="resetButton">Reset</div>
-      </div>
-      
-    </div>
-  </div>
-  
-    
-    <!-- This is the second container for Call Generator -->
-    <div class="container mt-1">
-      <div class="row border shadow bg-light">
-        <div class="col border" ><h1>Already Called:</h1><span id="alreadyCalled"></span></div>
-        <div class="col border" ><h1>Current Call</h1><span id="currentCall"></span></div>
-        <div class="col border" ><h1>Available List:</h1><span id="availableList"></span></div>
-      </div>
-    </div>
-    
-      <!-- Back button -->
-      <div class="container text-end" id="back-btn-container">
-        <div class="btn rounded shadow text-end mx-5 my-3 btn-lg" id="back-btn">
-          Back
-        </div>
-      </div>
-      `);
-    // #availableList, #currentCall, #alreadyCalled
-    //Dynamically Load navbar
-    
-    // loads the current set's flags into the available list of the call generator
-    function loadAvailableList() {
-      let lobbySize = jsonData[index].countryCodes.length;
-      maxCalls = lobbySize;
-      countryCardsArray=[];
-      currentCallArray=[];
-      alreadyCalledArray=[];
-      $("#availableList").empty();
-      $("#currentCall").empty();
-      $("#alreadyCalled").empty();
-      for (let i = 0; i < jsonData[index].countryCodes.length; i++) {
-        // ^^ This is how to get each individual country code for selection...
-
-
-        // $(".availableList").append(jsonData[index].countryCodes[i]);
-        let countryCode = jsonData[index].countryCodes[i]; // country code is used for the image source. EX: us.png == ${countryCode}.png
-        let countryName = jsonData[index].countryName[i]; // countryName is used to display the country name on the page: EX: United States
-        let countryImage = `<img class="img-fluid" src="flagImages/${countryCode}.png" alt=>`; // countryImage is used to display the country flag on the page: EX: <img src="imagesSmall/us.png"> displays US Flag
-        let newCountryCard = $(
-          `<div class='col-2-sm pt-3  mt-3 country-name' > ${countryName}</div><div class="col-2-sm pt-3 mt-3 country-flag">${countryImage}</div> <hr> `
-        )
-        
-        countryCardsArray.push(newCountryCard);
-        // console.log(countryCardsArray[i]);
-        $.each(countryCardsArray, function(index, newCountryCard) {
-          $("#availableList").append(newCountryCard);
-        });
-        
-        $('#country-name-checkbox').prop('checked', true);
-        $('#country-flag-checkbox').prop('checked', true);
-      
-        // Show all elements with the classes 'country-name' and 'country-flag' by default
-        $('.country-name').show();
-        $('.country-flag').show();
-
-        $('#country-name-checkbox').on('change', function() {
-          if ($(this).is(':checked')) {
-            $('.country-name').show(); // Show all elements with the class 'country-name'
-          } else {
-            $('.country-name').hide(); // Hide them
-          }
-        });
-      
-        $('#country-flag-checkbox').on('change', function() {
-          if ($(this).is(':checked')) {
-            $('.country-flag').show(); // Show all elements with the class 'country-flag'
-          } else {
-            $('.country-flag').hide(); // Hide them
-          }
-        });
-      }
-      console.log("The size of " + lobbyName + " is: " + lobbySize);
-    }
-    loadAvailableList();
-    $("#callButton").on("click", function () {
-      // Generate a random index based on the current count of maxCalls
-      let randomIndex = Math.floor(Math.random() * maxCalls);
-      // Retrieve and remove the randomly selected card from the array
-      let randomCardSelected = countryCardsArray.splice(randomIndex, 1)[0];
-      // Decrement maxCalls after removing the card from the array
-      maxCalls--;
-      // Check if the current call array is empty
-      if (currentCallArray.length == 0) {
-        currentCallArray.push(randomCardSelected);
-        $("#currentCall").append(randomCardSelected);
-      } else {
-        let alreadyCalled = currentCallArray.pop();
-        // Add the previously called card to the top of the already called list
-        $("#alreadyCalled").prepend(alreadyCalled);
-        // Add the new card to the current call
-        currentCallArray.push(randomCardSelected);
-        $("#currentCall").append(randomCardSelected);
-      }
-      // If all calls have been made, update the button text
-      if (maxCalls === 0) {
-        loadAvailableList();
-      }
-    });
-    $("#resetButton").on("click", function () {
-      loadAvailableList();
-    });
-    // Back button returns to the previous page
-    $("#back-btn").on("click", function () {
-      window.location.href = "index.html";
-    });
- // End 'play game' function
 }
 
 // Use event delegation for button clicks
@@ -294,18 +144,6 @@ $.each(jsonData, function(index, value) {
   savedSetView(index, value.lobbyName);
 });
 
-// Function to delete an object from a cookie / Deletes your lobby from the cookie.
-function deleteObjectFromCookie(cookieName, objectKey, keyValue) {
-  let cookieValue = getCookie(cookieName);
-  if (cookieValue) {
-    let data = JSON.parse(cookieValue);
-    console.log("Data:", data);
-    // Assuming it's an array of objects as you described
-    let updatedData = data.filter(obj => obj[objectKey] !== keyValue);
-    console.log("Updated data:", updatedData);
-    setCookie(cookieName, JSON.stringify(updatedData), 1000); // Set for 7 days, adjust as needed
-  }
-}
 
 // Function to get cookie that we set earlier.
 function getCookie(name) {
